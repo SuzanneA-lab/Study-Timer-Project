@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html>
+    
+<center>
+
+<head>
+    <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="starclear.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <br>
+    <h1>Pomodoro Timer</h1>
+    <p id = "introtext"> Welcome to TinyTimer ! Reach goals to unlock themes and features! enjoy :)</p>
+
+    <br>
+
+    <button class="topbutton">Timer</button>
+
+    <a href="checklist.html">
+        Checklist
+    </a>
+    
+    <a href="Shop.html">
+        Shop
+    </a>
+
+    <div id="clock">
+        <br>
+        <br>
+        <div id = "settings">
+            <button id="Study" onclick="Study()">Study</button>
+            <button id="ShortB" onclick="ShortB()">Short Break</button>
+            <button id="LongB" onclick="LongB()">Long Break</button>
+        </div>
+
+        <div id = "display">
+            25:00
+        </div>
+    </div>
+
+    <br>
+    <div id = "controls">
+        <button id="Start" onclick="start()">Start</button>
+        <button id="Stop" onclick="stop()">Stop</button>
+        <button id="Reset" onclick="reset()">Reset</button>
+    </div>
+
+    <audio id="ding">
+        <source src = "PerituneMaterial_Harvest2.mp3">
+    </audio>
+
+    <script src="index.js"></script>
+</body>    
+
+</center>
+
+</html>

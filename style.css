@@ -1,0 +1,88 @@
+html { 
+  background: url(tempbg2.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a{
+    background: #d6d6d6;
+    color: rgb(0, 0, 0);
+    line-height: 50px;
+    width: 170px;
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 45px;
+    margin-left: 45px;
+    margin-bottom: 2em;
+}
+
+.topbutton{
+    background: #d6d6d6;
+    color: rgb(0, 0, 0);
+    line-height: 48px;
+    width: 170px;
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 5px;
+    border-width: 0px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 45px;
+    margin-left: 45px;
+    margin-bottom: 2em;
+}
+
+#controls button{
+    font-size: 1rem;
+    border-radius: 4px;
+    margin: 15px;
+    cursor: pointer;
+    margin-right: 35px;
+    margin-left: 35px;
+}
+
+#settings button{
+    font-size: 1rem;
+    border-radius: 4px;
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#Start{
+    background-color: greenyellow;
+}
+
+#Stop{
+    background-color: red;
+}
+
+#display{
+    font-size: 8rem;
+}
+
+#clock {
+    background: rgba(255, 255, 255, .5);
+    border-radius: 50px;
+    width: 550px;
+    height: 260px;
+}
+
+#introtext{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 3em;
+    padding-right: 3em;
+}
