@@ -6,6 +6,7 @@
 
 <head>
     <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="starclear.png">
     <meta charset="UTF-8">
@@ -32,15 +33,13 @@
     </a>
     -->
 
-    <div id="clock">
-        <br>
-        <br>
-        <div id = "settings">
-            <button id="Study" onclick="Study()">Study</button>
-            <button id="ShortB" onclick="ShortB()">Short Break</button>
-            <button id="LongB" onclick="LongB()">Long Break</button>
-        </div>
+    <div id = "topbutton">
+        <button id="Study" onclick="Study()">Study</button>
+        <button id="ShortB" onclick="ShortB()">Short Break</button>
+        <button id="LongB" onclick="LongB()">Long Break</button>
+    </div>
 
+    <div id="clock">
         <div id = "display">
             25:00
         </div>
@@ -48,9 +47,14 @@
 
     <br>
     <div id = "controls">
+        <span class="material-symbols-outlined" id="playicon">play_arrow</span>
+        <span class="material-symbols-outlined" id="pauseicon">pause</span>
+        <span class="material-symbols-outlined" id= "reseticon">replay</span>
+        <!--
         <button id="Start" onclick="start()">Start</button>
         <button id="Stop" onclick="stop()">Stop</button>
         <button id="Reset" onclick="reset()">Reset</button>
+        -->
     </div>
 
     <audio id="ding">
