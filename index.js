@@ -15,7 +15,6 @@ let autorun = true;
 
 function start(){
     if (!isRunning){
-        console.log("please");
         time = Date.now() - time_passed;
         
         if (autorun){
