@@ -14,40 +14,40 @@ html {
 
 }
 
-nav{
+.menu nav{
     background-color: rgb(6, 9, 72);
 }
 
-nav ul{
+.menu{
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 250px;
     z-index:999;
-    background-color: rgb(6, 9, 72);
+    background-color: rgb(6, 9, 72, 0.7);
     box-shadow: -10px 0 10px rgba(0,0,0,0.1);
-    backdrop-filter: blur(10px);
-    display: flex;
+    backdrop-filter: blur(5px);
+    display: none;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-nav li{
+.menu li{
     height: 50px;
+    width: 100%;
 }
 
-nav a{
+.menu a{
     height: 100%;
-    width: 100%;
     padding: 0 30px;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
-nav a:hover{
+.menu a:hover{
     background-color: #c7c8f7;
     color: black;
 }
@@ -62,8 +62,10 @@ a{
     color: rgb(255, 255, 255);
 }
 
-div {
+#centeredelements {
+  height: 80vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -104,6 +106,7 @@ div {
 #display{
     font-size: 8rem;
     color: black;
+    text-align: center;
 }
 
 #clock {
@@ -141,6 +144,13 @@ div {
     font-size: 60px;
 }
 
-#sidemenu{
+#menuicon{
+    display: flex;
+    color: rgb(6, 9, 72)
+}
 
+#Headertext{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }

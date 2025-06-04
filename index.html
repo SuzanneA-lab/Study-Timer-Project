@@ -15,17 +15,21 @@
 
 <body>
     <nav>
-        <ul>
-            <span class="material-symbols-outlined" id="menuicon">menu</span>
+        <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+        <ul class="menu">
+            <span class="material-symbols-outlined" id="menuicon2" onclick="Closemenu()">menu</span>
             <li><a href="index.html">Timer</a></li>
             <li><a href="checklist.html">Tasks</a></li>
             <li><a href="Shop.html">Shop</a></li>
         </ul>
     </nav>
 
+
+<div id="centeredelements">
+
     <div id="Headertext">
-        <br>
         <h1>Pomodoro Timer</h1>
+        <br>
         <p id = "introtext"> Welcome to TinyTimer ! Reach goals to unlock themes and features! enjoy :)</p>
         <br>
     </div>
@@ -74,6 +78,8 @@
         <button id="Reset" onclick="reset()">Reset</button>
         -->
     </div>
+
+</div>
 
     <audio id="ding">
         <source src = "PerituneMaterial_Harvest2.mp3">

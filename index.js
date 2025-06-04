@@ -1,4 +1,5 @@
 const display = document.getElementById("display");
+const sidebar = document.querySelector('.menu');
 
 let work=1500000; //25 min interval
 let short_break=300000; //5 min interval
@@ -150,4 +151,12 @@ function setdisplay(current_setting){
     seconds = String(seconds).padStart(2,"0");
 
     display.textContent = `${minutes}:${seconds}`;
+}
+
+function Openmenu(){
+    sidebar.style.display = 'flex';
+}
+
+function Closemenu(){
+    sidebar.style.display = 'none';
 }
