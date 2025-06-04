@@ -1,31 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
 html { 
+  min-height: 100vh;
   background: url(tempbg3.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+}
+
+nav{
+    background-color: rgb(6, 9, 72);
+}
+
+nav ul{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    z-index:999;
+    background-color: rgb(6, 9, 72);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+nav li{
+    height: 50px;
+}
+
+nav a{
+    height: 100%;
+    width: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+nav a:hover{
+    background-color: #c7c8f7;
+    color: black;
 }
 
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white
+
 }
 
 a{
-    background: #d6d6d6;
-    color: rgb(0, 0, 0);
-    line-height: 50px;
-    width: 170px;
-    font-size: 1.2em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-radius: 5px;
-    border-width: 0px;
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 45px;
-    margin-left: 45px;
-    margin-bottom: 2em;
+    color: rgb(255, 255, 255);
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #topbutton button{
@@ -46,15 +86,6 @@ a{
     cursor: pointer;
 }
 
-#controls button{
-    font-size: 1rem;
-    border-radius: 4px;
-    margin: 15px;
-    cursor: pointer;
-    margin-right: 35px;
-    margin-left: 35px;
-}
-
 #settings button{
     font-size: 1rem;
     border-radius: 4px;
@@ -64,13 +95,11 @@ a{
     cursor: pointer;
 }
 
-#Start{
-    background-color: greenyellow;
-}
-
-#Stop{
-    background-color: red;
-}
+#controls button{
+    background: none;
+    border: none;
+    padding: 0;
+} 
 
 #display{
     font-size: 8rem;
@@ -96,10 +125,11 @@ a{
     'wght' 400,
     'GRAD' 200,
     'opsz' 40;
-    font-size: 70px;
+    font-size: 60px;
     cursor: pointer;
     margin-left: 5px;
     margin-right: 5px;
+    color: #ffffff;
 }
 
 #reseticon{
@@ -108,5 +138,9 @@ a{
     'wght' 700,
     'GRAD' -200,
     'opsz' 40;
-    font-size: 70px;
+    font-size: 60px;
+}
+
+#sidemenu{
+
 }
