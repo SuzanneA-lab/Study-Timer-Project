@@ -113,6 +113,9 @@ a{
     border-radius: 40px;
     width: 535px;
     height: 170px;
+    font-size: 8rem;
+    color: black;
+    text-align: center;
 }
 
 #introtext{
@@ -146,7 +149,11 @@ a{
 #menuicon{
     top: 0;
     right: 0;
-    color: rgb(6, 9, 72);
+    color: rgb(255, 255, 255);
+}
+
+#menuicon2{
+    color: rgb(255, 255, 255);
 }
 
 #Headertext{
@@ -154,3 +161,21 @@ a{
     flex-direction: column;
     align-items: center;
 }
+
+#menuicon3{
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' -200,
+    'opsz' 40;
+    font-size: 30px;
+    margin-right: 40px;
+    left: 0;
+}
+
+#topmenu{
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    width: 100%;
+    margin-bottom: 10px;
+}
+

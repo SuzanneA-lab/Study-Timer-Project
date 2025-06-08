@@ -1,4 +1,4 @@
-const display = document.getElementById("display");
+const display = document.getElementById("clock");
 const sidebar = document.querySelector('.menu');
 
 let work=1500000; //25 min interval
