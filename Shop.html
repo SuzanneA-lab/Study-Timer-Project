@@ -2,34 +2,113 @@
 
 <html>
 
-<center>
-
 <head>
     <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="starclear.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <br>
-    <h1>Pomodoro Timer</h1>
-    <p id = "introtext"> Welcome to TinyTimer ! Reach goals to unlock themes and features! enjoy :)</p>
+    <nav>
+        <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+        <ul class="menu">
+        <div id="topmenu">
+            <span class="material-symbols-outlined" id="menuicon2" onclick="Closemenu()">close</span>
+            <br>
+        </div>
 
-    <br>
+            <li><a href="index.html">
+                <span class="material-symbols-outlined" id="menuicon3">
+                schedule
+                </span>
+                Timer</a>
+            </li>
+            
+            <li><a href="checklist.html">
+                <span class="material-symbols-outlined" id="menuicon3">
+                checklist
+                </span>
+                Tasks</a>
+            </li>
 
-    <a href="index.html">
-        Timer
-    </a>
+            <li><a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                shopping_bag
+                </span>
+                Shop</a>
+            </li>
 
-    <a href="checklist.html">
-        Checklist
-    </a>
-    
-    <button class="topbutton">Shop</button>
 
-</body>
+            <li>    
+            <a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                settings
+                </span>
+                Settings</a>
+            </li>
 
-</center>
+            <li>
+            <a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                help
+                </span>
+                Help</a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <div id="Headertext">
+        <h1>Shop</h1>
+        <br>
+        <p id = "introtext"> Welcome to the shop ! purchase items with the coins you earn by completing tasks</p>
+        <br>
+    </div>
+
+<div id="centeredelements">
+
+        <div id="items">
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+
+            <div class="buttonitem">
+            <img src="tempbg2.png" id="shop image">
+            <button class="topbutton" onclick="Study()">buy</button>
+            </div>
+        </div>
+
+</div>
+
+
+
+    <script src="index.js"></script>
+</body>    
+
+
 
 </html>

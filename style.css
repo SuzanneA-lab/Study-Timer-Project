@@ -69,7 +69,7 @@ a{
   justify-content: center;
 }
 
-#topbutton button{
+.topbutton{
     background: #ffffff;
     color: rgb(0, 0, 0);
     line-height: 48px;
@@ -150,6 +150,7 @@ a{
     top: 0;
     right: 0;
     color: rgb(255, 255, 255);
+    margin-bottom: 0px;
 }
 
 #menuicon2{
@@ -157,6 +158,7 @@ a{
 }
 
 #Headertext{
+    margin-top: 0px;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -179,3 +181,40 @@ a{
     margin-bottom: 10px;
 }
 
+#items{
+    height: 80vh;
+    width: 80vw;
+    display: inline-block;
+    text-align: center;
+}
+
+#items img{
+    width: 30vh;
+    margin: 3vw;
+    margin-bottom: 2vw;
+    margin-top: 1vw;
+}
+
+.buttonitem{
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.shopbutton{
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    line-height: 48px;
+    width: 15vw;
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 25px;
+    border-width: 0px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
