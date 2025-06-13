@@ -4,7 +4,7 @@
 }
 
 
-html { 
+body { 
   min-height: 100vh;
   background: url(tempbg3.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -195,7 +195,11 @@ a{
 #items{
     height: 80vh;
     width: 80vw;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
 }
 

@@ -14,6 +14,8 @@ let stored_time = 0;
 let study_sessions = 0;
 let autorun = true;
 
+let boughtitem = [true, true, false, false, false, false,]
+
 function start(){
     if (!isRunning){
         time = Date.now() - time_passed;
@@ -159,4 +161,28 @@ function Openmenu(){
 
 function Closemenu(){
     sidebar.style.display = 'none';
+}
+
+function BuyEquip(click_id){
+    item_num = parseInt(click_id);
+    if (boughtitem[item_num-1]){
+        changeUIcolours(item_num);
+    }
+
+    else{
+    }
+}
+
+function changeUIcolours(item_num){
+    if (item_num == 2){
+        document.body.style.backgroundImage = 'url(IMG_0657.png)';
+        document.getElementById("Headertext").style.color = 'black';  
+        document.getElementById("menuicon").style.color = 'black';
+    }
+
+    else {
+        document.body.style.backgroundImage = 'url(tempbg3.png)';
+        document.getElementById("Headertext").style.color = 'white';  
+        document.getElementById("menuicon").style.color = 'white';
+    }
 }
