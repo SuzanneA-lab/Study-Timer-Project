@@ -1,4 +1,6 @@
 const display = document.getElementById("clock")
+const buttons = document.getElementsByClassName("topbutton");
+const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
 
 let work=1500000; //25 min interval
@@ -15,6 +17,53 @@ let study_sessions = 0;
 let autorun = true;
 
 let boughtitem = [true, true, false, false, false, false,]
+
+localStorage.setItem("Stars", "Own");
+localStorage.setItem("Ocean", "Own");
+
+function Load(){
+    let theme = localStorage.getItem("theme");
+    let bg = localStorage.getItem("Background");
+    let accent;
+
+    if (theme === null || bg === null ){
+        theme = "white"
+        bg = "Stars"
+    }
+
+    if (theme == "white"){
+        accent = "black";
+    }
+
+    else {
+        accent = "white"
+    }
+
+    document.getElementById("Headertext").style.color = theme;  
+
+    if (page == "main"){
+        for (i=0, len = icons.length; i < len; i++){
+            icons[i].style.color = theme;
+        }
+
+        for (i=0, len = buttons.length; i < len; i++){
+            buttons[i].style.color = accent;
+            buttons[i].style.background = theme;
+        }
+
+        display.style.color = accent;
+        display.style.background = theme;
+    }
+
+    if (bg === "Stars"){ //bypass later by changing tag to filename - one line instead of ifs
+        document.body.style.backgroundImage = 'url(tempbg3.png)';
+    }
+
+    else if (bg === "Ocean"){
+        document.body.style.backgroundImage = 'url(IMG_065.png)';
+    }
+    
+}
 
 function start(){
     if (!isRunning){
@@ -164,18 +213,29 @@ function Closemenu(){
 }
 
 function BuyEquip(click_id){
-    item_num = parseInt(click_id);
-    if (boughtitem[item_num-1]){
-        changeUIcolours(item_num);
+    let status = localStorage.getItem(click_id)
+
+    if (status === "Own"){
+        if (click_id === "Stars"){
+            localStorage.setItem("theme", "white");
+        }
+
+        else {
+            localStorage.setItem("theme", "black");
+        }
+        
+        localStorage.setItem("Background", "hi");
+        Load();
     }
 
-    else{
-    }
+    localStorage.setItem("Background", click_id);
+    Load();
 }
+
 
 function changeUIcolours(item_num){
     if (item_num == 2){
-        document.body.style.backgroundImage = 'url(IMG_0657.png)';
+        document.body.style.backgroundImage = 'url(IMG_065.png)';
         document.getElementById("Headertext").style.color = 'black';  
         document.getElementById("menuicon").style.color = 'black';
     }

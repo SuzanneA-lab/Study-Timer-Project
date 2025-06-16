@@ -145,16 +145,24 @@ a{
     cursor: pointer;
     margin-left: 5px;
     margin-right: 5px;
-    color: #ffffff;
 }
 
 #reseticon{
+    color: white;
     font-variation-settings:
     'FILL' 1,
     'wght' 700,
     'GRAD' -200,
     'opsz' 40;
     font-size: 60px;
+}
+
+#playicon{
+    color:white;
+}
+
+#pauseicon{
+    color: white;
 }
 
 #menuicon{
