@@ -58,10 +58,6 @@ li:hover #menuicon3{
     transition: all 0.3s ease-in-out;
 }
 
-.menu .bm{
-    justify-content: flex-end;
-}
-
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: white
@@ -166,10 +162,35 @@ a{
 }
 
 #menuicon{
-    top: 0;
-    right: 0;
     color: rgb(255, 255, 255);
     margin-bottom: 0px;
+}
+
+#ick{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding:10px;
+}
+
+#menuiconright1{
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 700,
+        'GRAD' -200,
+        'opsz' 40;
+    align-self: flex-end;
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+#menuiconright2{
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 700,
+        'GRAD' -200,
+        'opsz' 40;
+    align-self: flex-end;
 }
 
 #menuicon2{
@@ -257,4 +278,12 @@ a{
     margin-right: 15px;
     margin-left: 15px;
     cursor: pointer;
+}
+
+/* checklist page style */
+#progressbar{
+    width: 500px;
+    height: 70px;
+    border-radius: 50px;
+    border-width: 0px;
 }

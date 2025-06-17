@@ -3,9 +3,11 @@ const buttons = document.getElementsByClassName("topbutton");
 const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
 
+//All variables required for Timer functions
+
 let work=1500000; //25 min interval
 let short_break=300000; //5 min interval
-let long_break=10000;//=600000; //10 min interval
+let long_break=10000;//=600000; //10 min interval (10 second placeholder currently being used for testing)
 let time; //start time
 let current_setting = work;
 let remaining_time = current_setting;
@@ -28,6 +30,7 @@ function Load(){
 
     if (theme === null || bg === null ){
         theme = "white"
+        accent = "black"
         bg = "Stars"
     }
 

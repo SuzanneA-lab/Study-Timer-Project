@@ -2,36 +2,85 @@
 
 <html>
 
-<center>
 
 <head>
     <title>Pomodoro Timer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="starclear.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <body onload = "Load()">
 </head>
 
 <body>
-    <br>
-    <h1>Pomodoro Timer</h1>
-    <p id = "introtext"> Welcome to TinyTimer ! Reach goals to unlock themes and features! enjoy :)</p>
 
-    <br>
+    <nav>
+        <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+        <ul class="menu">
+        <div id="topmenu">
+            <span class="material-symbols-outlined" id="menuicon2" onclick="Closemenu()">close</span>
+            <br>
+        </div>
 
-    <a href="index.html">
-        Timer
-    </a>
+            <li><a href="index.html">
+                <span class="material-symbols-outlined" id="menuicon3">
+                schedule
+                </span>
+                Timer</a>
+            </li>
+            
+            <li><a href="checklist.html">
+                <span class="material-symbols-outlined" id="menuicon3">
+                checklist
+                </span>
+                Tasks</a>
+            </li>
 
-    <button class="topbutton">Checklist</button>
-    
-    <a href="Shop.html">
-        Shop
-    </a>
+            <li><a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                shopping_bag
+                </span>
+                Shop</a>
+            </li>
 
-    <img src="clock.png">
+
+            <li class="bm">    
+            <a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                settings
+                </span>
+                Settings</a>
+            </li>
+
+            <li class="bm">
+            <a href="Shop.html">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                help
+                </span>
+                Help</a>
+            </li>
+
+        </ul>
+    </nav>
+
+
+    <div id="centeredelements">
+
+        <div id="Headertext">
+            <h1>Checklist</h1>
+            <br>
+            <p id = "introtext"> Complete quests and personal tasks to recieve coins !</p>
+            <br>
+        </div>
+
+        <button id="progressbar"></button>
+
+        <script> const page = "to-do"; </script>
+        <script src="index.js"></script>
+
+    </div>
+
 </body>
-
-</center>
 
 </html>
