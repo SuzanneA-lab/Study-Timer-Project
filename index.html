@@ -13,10 +13,27 @@
 </head>
 
 <body>
+    <div id="popupbg">
+        <div id="popupwindow">
+            <span class="material-symbols-outlined" id="popupclose" onclick="Closepopup()">close</span>
+            <h1 id="popuptitle">Help</h1>
+
+            <div id="popuptext">
+                <h3>What is this?</h3>
+                <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
+                <h3>How do I earn coins?</h3>
+                <p>Earn coins by completing on the Tasks page, by either completing your own checklist items, or by completing (daily) challenges.</p>
+                <h3>What do I use coins for?</h3>
+                <p>Use coins to purchase additional themes, audio tracks and speakers on the shop page. Items you purchased will be saved the next time you open the app.</p>
+            </div>
+
+        </div>
+    </div>
+
     <nav>
         <div id="ick">
             <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
-            <span class="material-symbols-outlined" id="menuiconright1" onclick="Openmenu()">help</span>
+            <span class="material-symbols-outlined" id="menuiconright1" onclick="Openhelp()">help</span>
             <span class="material-symbols-outlined" id="menuiconright2" onclick="Openmenu()">settings</span>
         </div>
 

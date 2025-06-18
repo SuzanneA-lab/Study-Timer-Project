@@ -2,6 +2,7 @@ const display = document.getElementById("clock")
 const buttons = document.getElementsByClassName("topbutton");
 const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
+const popup = document.getElementById("popupbg");
 
 //All variables required for Timer functions
 
@@ -248,4 +249,12 @@ function changeUIcolours(item_num){
         document.getElementById("Headertext").style.color = 'white';  
         document.getElementById("menuicon").style.color = 'white';
     }
+}
+
+function Closepopup(){
+    popup.style.display = 'none';
+}
+
+function Openhelp(){
+    popup.style.display = 'flex';
 }
