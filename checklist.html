@@ -14,9 +14,34 @@
 </head>
 
 <body>
+    <div id="popupbg">
+        <div id="popupwindow">
+            <span class="material-symbols-outlined" id="popupclose" onclick="Closepopup()">close</span>
+            <h1 id="popuptitle">Help</h1>
+
+            <div id="popuptext">
+                <h3>What is this?</h3>
+                <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
+                <h3>How do I earn coins?</h3>
+                <p>Earn coins by completing on the Tasks page, by either completing your own checklist items, or by completing (daily) challenges.</p>
+                <h3>What do I use coins for?</h3>
+                <p>Use coins to purchase additional themes, audio tracks and speakers on the shop page. Items you purchased will be saved the next time you open the app.</p>
+            </div>
+
+        </div>
+    </div>
 
     <nav>
-        <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+        <div id="ick">
+            <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+            <span class="material-symbols-outlined" id="menuiconright1" onclick="Openhelp()">help</span>
+            <span class="material-symbols-outlined" id="menuiconright2" onclick="Openmenu()">settings</span>
+            
+            <div id="CoinCounter">
+                <img id="coinicon" src="Coinicon.png"></img>
+            </div>
+        </div>
+
         <ul class="menu">
         <div id="topmenu">
             <span class="material-symbols-outlined" id="menuicon2" onclick="Closemenu()">close</span>
@@ -68,18 +93,64 @@
     <div id="centeredelements">
 
         <div id="Headertext">
-            <h1>Checklist</h1>
-            <br>
-            <p id = "introtext"> Complete quests and personal tasks to recieve coins !</p>
-            <br>
         </div>
 
-        <button id="progressbar"></button>
+        <div id="progressbar">
+            <div id="innerbar"></div>
+        </div>
+
+        <div id="boxes">
+            <div class="Taskbox">
+                <h1>Checklist</h1>
+
+                <div id="checkboxes">
+                    <div class="checkitem">
+                        <input type="checkbox" id="check1" class="check">
+                        <div class="textbox">
+                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
+                            <button class="clear">X</button>
+                        </div>
+                    </div>
+                
+                    <div class="checkitem">
+                        <input type="checkbox" id="check2" class="check">
+                        <div class="textbox">
+                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
+                            <button class="clear">X</button>
+                        </div>
+                    </div>
+
+                    <div class="checkitem">
+                        <input type="checkbox" id="check1" class="check">
+                        <div class="textbox">
+                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
+                            <button class="clear">X</button>
+                        </div>
+                    </div>
+                
+                    <div class="checkitem">
+                        <input type="checkbox" id="check2" class="check">
+                        <div class="textbox">
+                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
+                            <button class="clear">X</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class ="Taskbox">
+                <h1>Challenges</h1>
+            </div>
+        </div>
+        
+    </div>
 
         <script> const page = "to-do"; </script>
         <script src="index.js"></script>
 
-    </div>
+
 
 </body>
 
