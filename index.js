@@ -24,23 +24,25 @@ let boughtitem = [true, true, false, false, false, false,]
 localStorage.setItem("Stars", "Own");
 localStorage.setItem("Ocean", "Own");
 
+const ThemeColours = new Map();
+
+//theme=key, accent=value 
+ThemeColours.set("#0a0f72","white");
+ThemeColours.set("white","#0a0f72");
+
 function Load(){
     let theme = localStorage.getItem("theme");
     let bg = localStorage.getItem("Background");
     let accent;
 
-    if (theme === null || bg === null ){
-        theme = "white"
-        accent = "black"
-        bg = "Stars"
-    }
-
-    if (theme == "white"){
-        accent = "black";
+    if (theme === null || bg === null || !ThemeColours.has(theme)){
+        theme = "white";
+        accent = "#0a0f72";
+        bg = "Stars";
     }
 
     else {
-        accent = "white"
+        accent = ThemeColours.get(theme);
     }
 
     document.getElementById("Headertext").style.color = theme;  
@@ -60,11 +62,11 @@ function Load(){
     }
 
     if (bg === "Stars"){ //bypass later by changing tag to filename - one line instead of ifs
-        document.body.style.backgroundImage = 'url(tempbg3.png)';
+        document.body.style.backgroundImage = 'url(Stars.png)';
     }
 
     else if (bg === "Ocean"){
-        document.body.style.backgroundImage = 'url(IMG_065.png)';
+        document.body.style.backgroundImage = 'url(Ocean.png)';
     }
     
 }
@@ -224,8 +226,8 @@ function BuyEquip(click_id){
             localStorage.setItem("theme", "white");
         }
 
-        else {
-            localStorage.setItem("theme", "black");
+        else if (click_id === "Ocean"){
+            localStorage.setItem("theme", "#0a0f72");
         }
         
         localStorage.setItem("Background", "hi");
@@ -236,7 +238,7 @@ function BuyEquip(click_id){
     Load();
 }
 
-
+/*
 function changeUIcolours(item_num){
     if (item_num == 2){
         document.body.style.backgroundImage = 'url(IMG_065.png)';
@@ -250,6 +252,7 @@ function changeUIcolours(item_num){
         document.getElementById("menuicon").style.color = 'white';
     }
 }
+*/
 
 function Closepopup(){
     popup.style.display = 'none';
