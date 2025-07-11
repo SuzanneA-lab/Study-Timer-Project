@@ -34,11 +34,13 @@
     <nav>
         <div id="HeaderIcons">
             <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+            <h1 id="Headertext">Timer</h1>
             <span class="material-symbols-outlined" id="menuiconright1" onclick="Openhelp()">help</span>
             <span class="material-symbols-outlined" id="menuiconright2" onclick="Openmenu()">settings</span>
             
             <div id="CoinCounter">
                 <img id="coinicon" src="Coinicon.png"></img>
+                <div id="numcoins">000</div>
             </div>
         </div>
 
@@ -90,16 +92,14 @@
     </nav>
 
 
-    <div id="centeredelements">
-
-        <div id="Headertext">
-        </div>
-
+<!--
         <div id="progressbar">
             <div id="innerbar"></div>
         </div>
 
         <div id="boxes">
+
+
             <div class="Taskbox">
                 <h1>Checklist</h1>
 
@@ -139,13 +139,21 @@
                 </div>
 
             </div>
-
-            <div class ="Taskbox">
-                <h1>Challenges</h1>
+        -->
+<div id="centeredelements2">
+            <div id ="challengesbox">
+                <div id="tasksbg">
+                <!--
+                <h1>Challenges</h1>-->
+                </div>
+                <div id="progressbarbg"></div>
             </div>
+</div>
+
+        <!--</div>
         </div>
+        -->
         
-    </div>
 
         <script> const page = "to-do"; </script>
         <script src="index.js"></script>
