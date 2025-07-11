@@ -13,12 +13,14 @@
 </head>
 
 <body>
-    <div id="popupbg">
-        <div id="popupwindow">
-            <span class="material-symbols-outlined" id="popupclose" onclick="Closepopup()">close</span>
-            <h1 id="popuptitle">Help</h1>
+    <div id="popupbghelp">
+        <div class="popupwindow">
+            <div class="popuptop">
+                <h1 class="popuptitle">Help</h1>
+                <span class="material-symbols-outlined" id="popupclose" onclick="Closehelp()">close</span>
+            </div>
 
-            <div id="popuptext">
+            <div class="popuptext">
                 <h3>What is this?</h3>
                 <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
                 <h3>How do I earn coins?</h3>
@@ -30,12 +32,33 @@
         </div>
     </div>
 
+    <div id="popupbgsettings">
+        <div class="popupwindow">
+            <div class="popuptop">
+                <h1 class="popuptitle">Settings</h1>
+                <span class="material-symbols-outlined" id="popupclose2" onclick="CloseSettings()">close</span>
+            </div>
+
+            <div class="popuptext">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius deserunt similique inventore rerum quam dolorem qui nulla porro in dolore! Expedita beatae in totam error officia fuga, porro officiis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque harum deleniti? Reprehenderit in quo dignissimos dolorem perspiciatis iste, eveniet laboriosam praesentium consectetur eaque delectus consequatur voluptatibus eum earum fugiat?</p>
+            </div>
+
+        </div>
+    </div>
+
+
     <nav>
-        <div id="ick">
+        <div id="HeaderIcons">
             <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
             <h1 id="Headertext">Timer</h1>
+            
+            <div id="CoinCounter">
+                <img id="coinicon" src="Coinicon.png"></img>
+                <div id="numcoins">000</div>
+            </div>
+            
             <span class="material-symbols-outlined" id="menuiconright1" onclick="Openhelp()">help</span>
-            <span class="material-symbols-outlined" id="menuiconright2" onclick="Openmenu()">settings</span>
+            <span class="material-symbols-outlined" id="menuiconright2" onclick="OpenSettings()">settings</span>
         </div>
 
         <ul class="menu">

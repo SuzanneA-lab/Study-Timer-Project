@@ -15,7 +15,19 @@
 
 <body>
     <nav>
-        <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+        <div id="HeaderIcons">
+            <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
+            <h1 id="Headertext">Shop</h1>
+            
+            <div id="CoinCounter">
+                <img id="coinicon" src="Coinicon.png"></img>
+                <div id="numcoins">000</div>
+            </div>
+            
+            <span class="material-symbols-outlined" id="menuiconright1" onclick="Openhelp()">help</span>
+            <span class="material-symbols-outlined" id="menuiconright2" onclick="OpenSettings()">settings</span>
+        </div>
+
         <ul class="menu">
         <div id="topmenu">
             <span class="material-symbols-outlined" id="menuicon2" onclick="Closemenu()">close</span>
@@ -62,12 +74,6 @@
 
         </ul>
     </nav>
-
-    <div id="Headertext">
-        <h1>Shop</h1>
-        <p id = "introtext"> Welcome to the shop ! purchase items with the coins you earn by completing tasks</p>
-
-    </div>
 
 <div id="centeredelements">
     <div id="items">

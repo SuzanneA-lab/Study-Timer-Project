@@ -2,7 +2,8 @@ const display = document.getElementById("clock")
 const buttons = document.getElementsByClassName("topbutton");
 const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
-const popup = document.getElementById("popupbg");
+const popuphelp = document.getElementById("popupbghelp");
+const popupsettings = document.getElementById("popupbgsettings");
 
 //All variables required for Timer functions
 
@@ -254,10 +255,18 @@ function changeUIcolours(item_num){
 }
 */
 
-function Closepopup(){
-    popup.style.display = 'none';
+function Closehelp(){
+    popuphelp.style.display = 'none';
 }
 
 function Openhelp(){
-    popup.style.display = 'flex';
+    popuphelp.style.display = 'flex';
+}
+
+function CloseSettings(){
+    popupsettings.style.display = 'none';
+}
+
+function OpenSettings(){
+    popupsettings.style.display = 'flex';
 }
