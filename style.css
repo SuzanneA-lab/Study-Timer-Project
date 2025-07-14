@@ -513,9 +513,19 @@ a{
 .taskbutton{
     background-color: #004aad; 
     color: white;
-    height: 17%;
+    height: 20%;
     width: 93%;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.coinicon{
+    width:63px;
+    padding-left: 20px;
+    padding-right: 100px;
+    padding-bottom: 13px;
 }
 
 #taskbuttonempty{
@@ -524,7 +534,10 @@ a{
     height: 10%;
     width: 93%;
     border-radius: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #boxes{
@@ -582,7 +595,7 @@ a{
     width: min-content;
 }
 
-#coinicon{
+#coinicontop{
     width:45px;
     padding-left: 15px;
     padding-bottom: 57%;
