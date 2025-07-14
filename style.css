@@ -391,7 +391,7 @@ a{
 #challengesbox{
     background-color: rgb(1, 13, 70);
     width: 950px;
-    height: 370px;
+    height: 380px;
     border-radius: 40px;
     margin-top: 30px;
     backdrop-filter: blur(5px);
@@ -504,6 +504,27 @@ a{
     left:0px;
     top:0px;
     border-radius: 40px 0px 0px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.taskbutton{
+    background-color: #004aad; 
+    color: white;
+    height: 17%;
+    width: 93%;
+    border-radius: 20px;
+}
+
+#taskbuttonempty{
+    background-color: #004aad; 
+    color: white;
+    height: 10%;
+    width: 93%;
+    border-radius: 20px;
+    text-align: center;
 }
 
 #boxes{
