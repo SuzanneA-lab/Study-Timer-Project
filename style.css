@@ -540,6 +540,11 @@ a{
     justify-content: center;
 }
 
+.progress{
+    position: absolute;
+    right: 50px;
+}
+
 #boxes{
     display: flex;
     flex-wrap: wrap;
