@@ -4,6 +4,7 @@ const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
 const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
+const coincount = document.getElementById("CoinCounter");
 
 //All variables required for Timer functions
 
@@ -47,6 +48,8 @@ function Load(){
     }
 
     document.getElementById("Headertext").style.color = theme;  
+    coincount.style.background = theme;
+    coincount.style.color = accent;
 
     if (page == "main"){
         for (i=0, len = icons.length; i < len; i++){

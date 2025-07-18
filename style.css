@@ -87,8 +87,10 @@ a{
     color: rgb(0, 0, 0);
     line-height: 48px;
     width: 160px;
-    font-size: 1em;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.1em;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
     border-radius: 40px;
     border-width: 0px;
     text-align: center;
@@ -123,13 +125,14 @@ a{
 
 #clock {
     background: rgba(255, 255, 255);
+    font-family: "UoqMunThenKhung", serif;
     border-radius: 40px;
     width: 550px;
     height: 185px;
-    font-size: 9rem;
+    font-size: 9.5rem;
     color: black;
     display: flex;
-    align-items: baseline;
+    align-items: center;
     justify-content: center;
 }
 
@@ -178,7 +181,7 @@ a{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items:center;
     padding:10px;
 }
 
@@ -212,7 +215,8 @@ a{
     flex-direction: column;
     align-items: center;
     padding-left: 15px;
-    font-size: 35px;
+    font-size: 45px;
+    font-family: "UoqMunThenKhung", serif;
 }
 
 #menuicon3{
@@ -618,6 +622,7 @@ a{
     border-radius: 40px;
     position: fixed;
     right: 190px;
+    font-family: "Outfit", sans-serif;
 }
 
 #numcoins{

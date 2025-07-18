@@ -21,7 +21,14 @@ const ThemeColours = new Map();
 ThemeColours.set("#0a0f72","white");
 ThemeColours.set("white","#0a0f72");
 
-const Studytask1 = { task: "Use the study timer for 10 minutes", tasknum: 10};
+function Task(task, tasknum) {
+  this.task = task;
+  this.tasknum = tasknum;
+}
+
+const Studytask1 = new Task("Use the study timer for 10 minutes", 10);
+
+const Studytask1asdasd = { task: "Use the study timer for 10 minutes", tasknum: 10};
 const Studytask2 = { task: "Use the study timer for 15 minutes", tasknum: 15};
 const Studytask3 = { task: "Use the study timer for 20 minutes", tasknum: 20};
 
@@ -39,10 +46,12 @@ const Breaktask1 = { task: "Use the break timer for 10 minutes", tasknum: 10};
 const Breaktask2 = { task: "Use the break timer for 15 minutes", tasknum: 15};
 const Breaktask3 = { task: "Use the break timer for 20 minutes", tasknum: 20};
 
-const Tasks = [Studytask1, Studytask2, Studytask3, Buytask1, Buytask2, 
+const Tasks = ["hsadi", "hisad","hsadi", "hisad","hsadi", "hisad","hsadi", "hisad","hsadi", "hisad","hisad","hisad","hisad","hisad",];
+
+/*[Studytask1, Studytask2, Studytask3, Buytask1, Buytask2, 
     Buytask3, Changetask1, Changetask2, Earntask1, Earntask2, Leveltask1, 
     Breaktask1, Breaktask2, Breaktask3];
-
+*/
 function Load(){
     let theme = localStorage.getItem("theme");
     let bg = localStorage.getItem("Background");
@@ -75,15 +84,15 @@ function Load(){
     }
 
     else if (page == "to-do"){
-        let num = Math.random() * (14 - 0) + 0;
+        let num = Math.random(14);
         
-        Task1 = Tasks[num];
-        Task2 = Tasks[num];
-        Task3 = Tasks[num];
+        let Task1 = Tasks[num];
+        let Task2 = Tasks[num];
+        let Task3 = Tasks[num];
 
         challenge1.textContent = Task1.task;
-        challenge2.textContent = Task2.task;
-        challenge3.textContent = Task3.task;
+        challenge2.textContent = 0;
+        challenge3.textContent = 0;
     }
 
     if (bg === "Stars"){ //bypass later by changing tag to filename - one line instead of ifs
