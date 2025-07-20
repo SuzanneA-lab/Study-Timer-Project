@@ -25,8 +25,8 @@ let autorun = true;
 
 let boughtitem = [true, true, false, false, false, false,]
 
-localStorage.setItem("Stars", "Own");
-localStorage.setItem("Ocean", "Own");
+localStorage.setItem("url(Stars.png)", "Own");
+localStorage.setItem("url(Ocean.png)", "Own");
 
 const ThemeColours = new Map();
 
@@ -42,7 +42,7 @@ function Load(){
     if (theme === null || bg === null || !ThemeColours.has(theme)){
         theme = "white";
         accent = "#0a0f72";
-        bg = "Stars";
+        bg = "url(Stars.png)";
     }
 
     else {
@@ -51,6 +51,7 @@ function Load(){
 
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
+    root.style.setProperty('--background', bg);
 
 /*
     let theme = localStorage.getItem("theme");
@@ -243,14 +244,14 @@ function Closemenu(){
 }
 
 function BuyEquip(click_id){
-    let status = localStorage.getItem(click_id)
+    let status = localStorage.getItem(click_id);
 
     if (status === "Own"){
-        if (click_id === "Stars"){
+        if (click_id === "url(Stars.png)"){
             localStorage.setItem("theme", "white");
         }
 
-        else if (click_id === "Ocean"){
+        else if (click_id === "url(Ocean.png)"){
             localStorage.setItem("theme", "#0a0f72");
         }
     }
