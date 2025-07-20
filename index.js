@@ -30,23 +30,20 @@ localStorage.setItem("url(Ocean.png)", "Own");
 
 const ThemeColours = new Map();
 
-//theme=key, accent=value 
+/*theme=key, accent=value 
 ThemeColours.set("#0a0f72","white");
 ThemeColours.set("white","#0a0f72");
+*/
 
 function Load(){
     let theme = localStorage.getItem("theme");
+    let accent = localStorage.getItem("accent");
     let bg = localStorage.getItem("Background");
-    let accent;
 
-    if (theme === null || bg === null || !ThemeColours.has(theme)){
+    if (theme === null || bg === null || accent == null){
         theme = "white";
         accent = "#0a0f72";
         bg = "url(Stars.png)";
-    }
-
-    else {
-        accent = ThemeColours.get(theme);
     }
 
     root.style.setProperty('--theme', theme);
@@ -243,17 +240,20 @@ function Closemenu(){
     sidebar.style.display = 'none';
 }
 
-function BuyEquip(click_id){
-    let status = localStorage.getItem(click_id);
+function Equip(click_id){
+    if (click_id === "url(Stars.png)"){
+        localStorage.setItem("theme", "white");
+        localStorage.setItem("accent", "#0a0f72");
+    }
 
-    if (status === "Own"){
-        if (click_id === "url(Stars.png)"){
-            localStorage.setItem("theme", "white");
-        }
+    else if (click_id === "url(Ocean.png)"){
+        localStorage.setItem("theme", "#000686");
+        localStorage.setItem("accent", "white");
+    }
 
-        else if (click_id === "url(Ocean.png)"){
-            localStorage.setItem("theme", "#0a0f72");
-        }
+    else if (click_id === "url(Chocolate.png)"){
+        localStorage.setItem("theme", "#fdf5f0");
+        localStorage.setItem("accent", "#5b2828");
     }
 
     localStorage.setItem("Background", click_id);

@@ -53,7 +53,7 @@ body {
 }
 
 .menu a:hover{
-    background-color: #e9e9ff;
+    background-color: #f2f2ff;
     color: rgb(9, 1, 44);
     transition: all 0.3s ease-in-out;
 }
@@ -644,7 +644,7 @@ a{
     width: 170px;
     height: 60px; 
     border-radius: 40px;
-    position: fixed;
+    position: absolute;
     right: 190px;
     font-family: "Outfit", sans-serif;
 }
