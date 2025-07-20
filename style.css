@@ -1,6 +1,7 @@
 :root {
     --theme: rgb(255, 255, 255);
-    --accent: rgb(7, 6, 87);
+    --accent: #0a0f72;
+    --background: url(Stars.png);
 }
 
 *{
@@ -10,7 +11,7 @@
 
 body { 
   min-height: 100vh;
-  background: url(tempbg3.png) no-repeat center center fixed; 
+  background: var(--background) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -87,8 +88,9 @@ a{
 }
 
 .topbutton{
-    background: #ffffff;
-    color: rgb(0, 0, 0);
+    background: var(--theme);
+    color: var(--accent);
+
     line-height: 48px;
     width: 160px;
     font-size: 1.1em;
@@ -96,7 +98,6 @@ a{
     font-optical-sizing: auto;
     font-weight: 500;
     border-radius: 40px;
-    border-width: 0px;
     text-align: center;
     display: inline-block;
     text-decoration: none;
@@ -119,6 +120,7 @@ a{
     transition: all 0.2s ease-in-out;
 }
 
+/*delete*/
 #settings button{
     font-size: 1rem;
     border-radius: 4px;
@@ -128,12 +130,14 @@ a{
     cursor: pointer;
 }
 
+/*delete*/
 #controls button{
     background: none;
     border: none;
     padding: 0;
 } 
 
+/*delete*/
 #display{
     font-size: 8rem;
     color: black;
@@ -141,18 +145,21 @@ a{
 }
 
 #clock {
-    background: rgba(255, 255, 255);
+    background: var(--theme);
+    color: var(--accent);
+
     font-family: "UoqMunThenKhung", serif;
     border-radius: 40px;
     width: 550px;
     height: 185px;
     font-size: 9.5rem;
-    color: black;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/*delete*/
 #introtext{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding-left: 3em;
@@ -172,7 +179,8 @@ a{
 }
 
 #reseticon{
-    color: white;
+    color: var(--theme);
+
     font-variation-settings:
     'FILL' 1,
     'wght' 700,
@@ -182,19 +190,19 @@ a{
 }
 
 #playicon{
-    color:white;
+    color: var(--theme);
 }
 
 #pauseicon{
-    color: white;
+    color: var(--theme);
 }
 
 #menuicon{
-    color: rgb(255, 255, 255);
     margin-bottom: 0px;
 }
 
 #HeaderIcons{
+    color: var(--theme);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -631,8 +639,8 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(240, 250, 253);
-    color: black;
+    background-color: var(--theme);
+    color: var(--accent);
     width: 170px;
     height: 60px; 
     border-radius: 40px;

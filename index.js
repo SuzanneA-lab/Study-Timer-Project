@@ -6,6 +6,8 @@ const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
 const coincount = document.getElementById("CoinCounter");
 
+const root = document.documentElement;
+
 //All variables required for Timer functions
 
 let work=1500000; //25 min interval
@@ -33,6 +35,23 @@ ThemeColours.set("#0a0f72","white");
 ThemeColours.set("white","#0a0f72");
 
 function Load(){
+    let theme = localStorage.getItem("theme");
+    let bg = localStorage.getItem("Background");
+    let accent;
+
+    if (theme === null || bg === null || !ThemeColours.has(theme)){
+        theme = "white";
+        accent = "#0a0f72";
+        bg = "Stars";
+    }
+
+    else {
+        accent = ThemeColours.get(theme);
+    }
+
+    root.style.setProperty('--theme', theme);
+    root.style.setProperty('--accent', accent);
+
 /*
     let theme = localStorage.getItem("theme");
     let bg = localStorage.getItem("Background");
@@ -234,9 +253,6 @@ function BuyEquip(click_id){
         else if (click_id === "Ocean"){
             localStorage.setItem("theme", "#0a0f72");
         }
-        
-        localStorage.setItem("Background", "hi");
-        Load();
     }
 
     localStorage.setItem("Background", click_id);
