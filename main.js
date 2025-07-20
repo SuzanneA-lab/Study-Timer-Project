@@ -7,6 +7,7 @@ const createWindow = () => {
     //minWidth: 739,
     //minHeight: 599,
     //frame: false
+    autoHideMenuBar: true
   })
 
   win.loadFile('index.html')

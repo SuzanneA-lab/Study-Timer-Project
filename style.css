@@ -1,8 +1,12 @@
+:root {
+    --theme: rgb(255, 255, 255);
+    --accent: rgb(7, 6, 87);
+}
+
 *{
     margin: 0;
     padding: 0;
 }
-
 
 body { 
   min-height: 100vh;
@@ -98,8 +102,21 @@ a{
     text-decoration: none;
     margin-right: 15px;
     margin-left: 15px;
-    margin-bottom: 2em;
+    margin-bottom: 30px;
     cursor: pointer;
+    
+    border-width: 2px;
+    border-style: double;
+    border-color: var(--theme);
+}
+
+.topbutton:hover{
+    background: var(--accent);
+    color: var(--theme);
+    border-width: 2px;
+    border-style: double;
+    border-color: var(--theme);
+    transition: all 0.2s ease-in-out;
 }
 
 #settings button{

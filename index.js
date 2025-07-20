@@ -33,6 +33,7 @@ ThemeColours.set("#0a0f72","white");
 ThemeColours.set("white","#0a0f72");
 
 function Load(){
+/*
     let theme = localStorage.getItem("theme");
     let bg = localStorage.getItem("Background");
     let accent;
@@ -72,7 +73,7 @@ function Load(){
     else if (bg === "Ocean"){
         document.body.style.backgroundImage = 'url(Ocean.png)';
     }
-    
+*/
 }
 
 function start(){
