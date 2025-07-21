@@ -9,6 +9,18 @@
     padding: 0;
 }
 
+#cover{
+    visibility: visible;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #2e2e2e;
+    z-index: 10;
+    transition: opacity 90000ms ease-out;
+}
+
 body { 
   min-height: 100vh;
   background: var(--background) no-repeat center center fixed; 
@@ -180,7 +192,6 @@ a{
 
 #reseticon{
     color: var(--theme);
-
     font-variation-settings:
     'FILL' 1,
     'wght' 700,
@@ -188,6 +199,7 @@ a{
     'opsz' 40;
     font-size: 70px;
 }
+
 
 #playicon{
     color: var(--theme);

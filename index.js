@@ -7,6 +7,7 @@ const popupsettings = document.getElementById("popupbgsettings");
 const coincount = document.getElementById("CoinCounter");
 
 const root = document.documentElement;
+const cover = document.getElementById('cover');
 
 //All variables required for Timer functions
 
@@ -34,6 +35,13 @@ const ThemeColours = new Map();
 ThemeColours.set("#0a0f72","white");
 ThemeColours.set("white","#0a0f72");
 */
+
+window.onload = Load();
+
+window.addEventListener("DOMContentLoaded", function(){
+    cover.remove()
+    //cover.style.visibility = "hidden";
+});
 
 function Load(){
     let theme = localStorage.getItem("theme");
@@ -118,6 +126,8 @@ function stop(){
 }
 
 function reset(){
+    let reset = document.getElementById("reseticon");
+
     if (isRunning){
         clearInterval(timer);
         setdisplay(current_setting);
