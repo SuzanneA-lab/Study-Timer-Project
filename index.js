@@ -1,10 +1,7 @@
 const display = document.getElementById("clock")
-const buttons = document.getElementsByClassName("topbutton");
-const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
 const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
-const coincount = document.getElementById("CoinCounter");
 
 const root = document.documentElement;
 const cover = document.getElementById('cover');
@@ -20,21 +17,8 @@ let remaining_time = current_setting;
 let timer = null;
 let isRunning = false;
 let time_passed = 0;
-let stored_time = 0;
 let study_sessions = 0;
 let autorun = true;
-
-let boughtitem = [true, true, false, false, false, false,]
-
-localStorage.setItem("url(Stars.png)", "Own");
-localStorage.setItem("url(Ocean.png)", "Own");
-
-const ThemeColours = new Map();
-
-/*theme=key, accent=value 
-ThemeColours.set("#0a0f72","white");
-ThemeColours.set("white","#0a0f72");
-*/
 
 window.onload = Load();
 
@@ -57,48 +41,6 @@ function Load(){
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
     root.style.setProperty('--background', bg);
-
-/*
-    let theme = localStorage.getItem("theme");
-    let bg = localStorage.getItem("Background");
-    let accent;
-
-    if (theme === null || bg === null || !ThemeColours.has(theme)){
-        theme = "white";
-        accent = "#0a0f72";
-        bg = "Stars";
-    }
-
-    else {
-        accent = ThemeColours.get(theme);
-    }
-
-    document.getElementById("Headertext").style.color = theme;  
-    coincount.style.background = theme;
-    coincount.style.color = accent;
-
-    if (page == "main"){
-        for (i=0, len = icons.length; i < len; i++){
-            icons[i].style.color = theme;
-        }
-
-        for (i=0, len = buttons.length; i < len; i++){
-            buttons[i].style.color = accent;
-            buttons[i].style.background = theme;
-        }
-
-        display.style.color = accent;
-        display.style.background = theme;
-    }
-
-    if (bg === "Stars"){ //bypass later by changing tag to filename - one line instead of ifs
-        document.body.style.backgroundImage = 'url(Stars.png)';
-    }
-
-    else if (bg === "Ocean"){
-        document.body.style.backgroundImage = 'url(Ocean.png)';
-    }
-*/
 }
 
 function start(){
@@ -269,22 +211,6 @@ function Equip(click_id){
     localStorage.setItem("Background", click_id);
     Load();
 }
-
-/*
-function changeUIcolours(item_num){
-    if (item_num == 2){
-        document.body.style.backgroundImage = 'url(IMG_065.png)';
-        document.getElementById("Headertext").style.color = 'black';  
-        document.getElementById("menuicon").style.color = 'black';
-    }
-
-    else {
-        document.body.style.backgroundImage = 'url(tempbg3.png)';
-        document.getElementById("Headertext").style.color = 'white';  
-        document.getElementById("menuicon").style.color = 'white';
-    }
-}
-*/
 
 function Closehelp(){
     popuphelp.style.display = 'none';
