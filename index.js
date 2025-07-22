@@ -14,7 +14,7 @@ const cover = document.getElementById('cover');
 window.onload = Load();
 
 window.addEventListener("DOMContentLoaded", function(){
-    cover.remove()
+    //cover.remove()
     //cover.style.visibility = "hidden";
 });
 
@@ -241,3 +241,26 @@ function Equip(click_id){
     Load();
 }
 
+//// Checklist code starts here
+//
+//
+//
+
+const challenge1 = document.getElementById("ctext1");
+const challenge2 = document.getElementById("ctext2");
+const challenge3 = document.getElementById("ctext3");
+
+const progress1 = document.getElementById("p1");
+const progress2 = document.getElementById("p2");
+const progress3 = document.getElementById("p3");
+
+function Task(enteredtask, enteredtasknum) {
+  this.task = enteredtask;
+  this.tasknum = enteredtasknum;
+}
+
+const Studytask1 = new Task("Use the study timer for 10 minutes", 10);
+
+function LoadChallenges(){
+    challenge1.textContent = "Studytask1.task";
+}

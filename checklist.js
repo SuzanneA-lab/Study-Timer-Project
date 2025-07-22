@@ -1,11 +1,14 @@
 
-
 const display = document.getElementById("clock")
 const buttons = document.getElementsByClassName("topbutton");
 const icons = document.getElementsByClassName("material-symbols-outlined");
 const sidebar = document.querySelector('.menu');
 const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
+const coincount = document.getElementById("CoinCounter");
+
+const root = document.documentElement;
+const cover = document.getElementById('cover');
 
 const challenge1 = document.getElementById("ctext1");
 const challenge2 = document.getElementById("ctext2");
@@ -90,7 +93,7 @@ function Load(){
         let Task2 = Tasks[num];
         let Task3 = Tasks[num];
 
-        challenge1.textContent = Task1.task;
+        challenge1.textContent = Task1.task();
         challenge2.textContent = 0;
         challenge3.textContent = 0;
     }
