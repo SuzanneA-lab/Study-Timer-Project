@@ -1,3 +1,8 @@
+//// Code for all pages
+//
+//
+//
+
 const display = document.getElementById("clock")
 const sidebar = document.querySelector('.menu');
 const popuphelp = document.getElementById("popupbghelp");
@@ -5,20 +10,6 @@ const popupsettings = document.getElementById("popupbgsettings");
 
 const root = document.documentElement;
 const cover = document.getElementById('cover');
-
-//All variables required for Timer functions
-
-let work=1500000; //25 min interval
-let short_break=300000; //5 min interval
-let long_break=10000;//=600000; //10 min interval (10 second placeholder currently being used for testing)
-let time; //start time
-let current_setting = work;
-let remaining_time = current_setting;
-let timer = null;
-let isRunning = false;
-let time_passed = 0;
-let study_sessions = 0;
-let autorun = true;
 
 window.onload = Load();
 
@@ -42,6 +33,47 @@ function Load(){
     root.style.setProperty('--accent', accent);
     root.style.setProperty('--background', bg);
 }
+
+function Openmenu(){
+    sidebar.style.display = 'flex';
+}
+
+function Closemenu(){
+    sidebar.style.display = 'none';
+}
+
+function Closehelp(){
+    popuphelp.style.display = 'none';
+}
+
+function Openhelp(){
+    popuphelp.style.display = 'flex';
+}
+
+function CloseSettings(){
+    popupsettings.style.display = 'none';
+}
+
+function OpenSettings(){
+    popupsettings.style.display = 'flex';
+}
+
+//// Timer code starts here
+//
+//
+// 
+
+let work=1500000; //25 min interval
+let short_break=300000; //5 min interval
+let long_break=10000;//=600000; //10 min interval (10 second placeholder currently being used for testing)
+let time; //start time
+let current_setting = work;
+let remaining_time = current_setting;
+let timer = null;
+let isRunning = false;
+let time_passed = 0;
+let study_sessions = 0;
+let autorun = true;
 
 function start(){
     if (!isRunning){
@@ -184,13 +216,10 @@ function setdisplay(current_setting){
     display.textContent = `${minutes}:${seconds}`;
 }
 
-function Openmenu(){
-    sidebar.style.display = 'flex';
-}
-
-function Closemenu(){
-    sidebar.style.display = 'none';
-}
+//// Shop code starts here
+//
+//
+//
 
 function Equip(click_id){
     if (click_id === "url(Stars.png)"){
@@ -212,18 +241,3 @@ function Equip(click_id){
     Load();
 }
 
-function Closehelp(){
-    popuphelp.style.display = 'none';
-}
-
-function Openhelp(){
-    popuphelp.style.display = 'flex';
-}
-
-function CloseSettings(){
-    popupsettings.style.display = 'none';
-}
-
-function OpenSettings(){
-    popupsettings.style.display = 'flex';
-}
