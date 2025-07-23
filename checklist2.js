@@ -36,15 +36,60 @@ const Breaktask1 = new Task( "Use the break timer for 10 minutes", 10);
 const Breaktask2 = new Task( "Use the break timer for 15 minutes", 15);
 const Breaktask3 = new Task( "Use the break timer for 20 minutes", 20);
 
+const tasks10 = [ Earntask1, Studytask1, Breaktask1, Changetask1];
+const tasks15 = [ Breaktask2, Buytask1, Changetask2, Studytask2, Earntask2];
+const tasks20 = [ Studytask3, Buytask2, Breaktask3, Leveltask1, Buytask3];
+
+//Currently being used for testing - delete later
+localStorage.removeItem("task10");
+localStorage.removeItem("task15");
+localStorage.removeItem("task20");
+
 //need to make this only choose new challenges on first open (local storage check of which checks have been done)
 function LoadChallenges(){
-    let num = Math.floor(Math.random() * 14);
-    tasks = [Studytask1, Studytask2];
-    guy = tasks[num];
+    //let num = Math.floor(Math.random() * 14);
     
-    challenge1.textContent = Studytask1.task;
-    challenge2.textContent = guy.task;
-    challenge3.textContent = tasks[1].task;
+    let current10 = localStorage.getItem("task10");
+    let progress10 = localStorage.getItem("progress10");
+
+    let current15 = localStorage.getItem("task15");
+    let progress15 = localStorage.getItem("progress15");
+
+    let current20 = localStorage.getItem("task20");
+    let progress20 = localStorage.getItem("progress20");
+
+    if (current10 == null || progress10 == null){
+        localStorage.setItem("task10", 0);
+        localStorage.setItem("progress10", 0);
+        
+        current10 = localStorage.getItem("task10");
+        progress10 = localStorage.getItem("progress10");
+    }
+
+    challenge1.textContent = tasks10[current10].task;
+    progress1.textContent =  progress10 + "/" + tasks10[current10].tasknum;
+
+    if (current15 == null || progress15 == null){
+        localStorage.setItem("task15", 0);
+        localStorage.setItem("progress15", 0);
+
+        current15 = localStorage.getItem("task15");
+        progress15 = localStorage.getItem("progress15");
+    }
+    
+    challenge2.textContent = tasks15[current15].task;
+    progress2.textContent =  progress15 + "/" + tasks15[current15].tasknum;
+
+    if (current20 == null || progress20 == null){
+        localStorage.setItem("task20", 0);
+        localStorage.setItem("progress20", 0);
+
+        current20 = localStorage.getItem("task20");
+        progress20 = localStorage.getItem("progress20");
+    }
+    
+    challenge3.textContent = tasks20[current20].task;
+    progress3.textContent =  progress20 + "/" + tasks20[current20].tasknum;
 }
 
 //// Code for all pages

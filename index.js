@@ -14,7 +14,7 @@ const cover = document.getElementById('cover');
 window.onload = Load();
 
 window.addEventListener("DOMContentLoaded", function(){
-    //cover.remove()
+    cover.remove()
     //cover.style.visibility = "hidden";
 });
 
