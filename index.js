@@ -75,6 +75,9 @@ let time_passed = 0;
 let study_sessions = 0;
 let autorun = true;
 
+localStorage.setItem("study_sessions",0);
+localStorage.setItem("break_sessions",0);
+
 function start(){
     if (!isRunning){
         time = Date.now() - time_passed;

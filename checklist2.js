@@ -10,14 +10,133 @@ const progress1 = document.getElementById("p1");
 const progress2 = document.getElementById("p2");
 const progress3 = document.getElementById("p3");
 
-function Task(enteredtask, enteredtasknum) {
-  this.task = enteredtask;
-  this.tasknum = enteredtasknum;
+let ProgressChecker = null;
+
+//abstract class
+
+class Task {
+    constructor(enteredtask, enteredtasknum) {
+        this.task = enteredtask;
+        this.tasknum = enteredtasknum;
+        this.numtaskdone = 0;
+    }
+
+    /*
+    UpdateProgress(){
+        throw new Error("Method 'UpdateProgress()' must be implemented");
+    }
+    */
 }
+
+class StudyTask extends Task {
+    constructor(enteredtask, enteredtasknum, enteredtasktype){
+        super(enteredtask, enteredtasknum);
+        this.tasktype = enteredtasktype;
+    }
+
+    UpdateProgress(){
+        console.log("working!")
+        this.numtaskdone = this.numtaskdone + 1;
+        /*
+        let TimerSessions = 0;
+
+        if (this.tasktype == "study"){
+            TimerSessions = localStorage.getItem("study_sessions");
+        }
+
+        else {
+            TimerSessions = localStorage.getItem("break_sessions");
+        }
+
+        if (numtaskdone != TimerSessions){
+            this.numtaskdone = this.numtaskdone + TimerSessions;
+            if (this.numtaskdone == this.tasknum){
+                clearInterval(ProgressChecker);
+            }
+        }
+        */
+    }
+}
+
+class TaskUpdater {
+    constructor(enteredTaskobj, enteredCoinrewards, enteredChallengename, enteredProgressname){
+        this.Taskobj = enteredTaskobj;
+        this.Coinrewards = enteredCoinrewards;
+        this.Challengename = enteredChallengename;
+        this.Progressname = enteredProgressname;
+    }
+
+    UpdateDisplay(){
+        this.Challengename.textContent = this.Taskobj.task;
+        this.Progressname.textContent = this.Taskobj.numtaskdone + "/" + this.Taskobj.tasknum;
+    }
+
+    CheckandUpdateTasks(){
+        this.Taskobj.UpdateProgress();
+        this.UpdateDisplay();
+
+        if (this.Taskobj.numtaskdone == this.Taskobj.tasknum){
+            clearInterval(ProgressChecker);
+        }
+    }
+
+    RunChallenge(){
+        this.UpdateDisplay();
+        ProgressChecker = setInterval(this.CheckandUpdateTasks.bind(this), 3000);
+    }
+}
+
+const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
+const ST2 = new StudyTask("Use the study timer for 15 minutes", 15, "study");
+const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study");
+
+const tasks10 = [ ST1 ];
+const tasks15 = [ ST2 ];
+const tasks20 = [ ST3 ];
+
+function TaskCheckandSet(taskcategory){
+    currentTask = localStorage.getItem(taskcategory);
+    
+    if (currentTask == null){
+        localStorage.setItem(taskcategory, 0);
+    }
+}
+
+function LoadChallenges(){
+    //checks if there are existing challenges stored, if not adds new ones
+
+    TaskCheckandSet("tasks10","progress10");
+    TaskCheckandSet("tasks15","progress15");
+    TaskCheckandSet("tasks20","progress20");
+
+    //creates variables to represent the indexes of task items within their respective lists
+    let current10 = localStorage.getItem("tasks10");
+    let current15 = localStorage.getItem("tasks15");
+    let current20 = localStorage.getItem("tasks20");
+
+    /*
+    challenge1.textContent = tasks10[current10].task;
+    progress1.textContent = tasks10[current10].numtaskdone + "/" + tasks10[current10].tasknum;
+
+    challenge2.textContent = tasks15[current15].task;
+    progress2.textContent = tasks15[current15].numtaskdone + "/" + tasks15[current15].tasknum;
+
+    challenge3.textContent = tasks20[current20].task;
+    progress3.textContent = tasks20[current20].numtaskdone + "/" + tasks20[current20].tasknum;
+    */
+
+    const Updater10 = new TaskUpdater(tasks10[current10], 10, challenge1, progress1);
+    const Updater15 = new TaskUpdater(tasks15[current15], 15, challenge2, progress2);
+    const Updater20 = new TaskUpdater(tasks20[current20], 20, challenge3, progress3);
+    
+    Updater10.RunChallenge();
+}
+
 
 //add new property to Tasks representing progress made in them (ex: 3 for 3/10) (?)
 //put the tasks currently being done in local storage with relevant info (?)
 
+/*
 const Studytask1 = new Task("Use the study timer for 10 minutes", 10);
 const Studytask2 = new Task("Use the study timer for 15 minutes", 15);
 const Studytask3 = new Task("Use the study timer for 20 minutes", 20);
@@ -40,11 +159,13 @@ const tasks10 = [ Earntask1, Studytask1, Breaktask1, Changetask1];
 const tasks15 = [ Breaktask2, Buytask1, Changetask2, Studytask2, Earntask2];
 const tasks20 = [ Studytask3, Buytask2, Breaktask3, Leveltask1, Buytask3];
 
+*/
 //Currently being used for testing - delete later
 localStorage.removeItem("task10");
 localStorage.removeItem("task15");
 localStorage.removeItem("task20");
 
+/*
 //need to make this only choose new challenges on first open (local storage check of which checks have been done)
 function LoadChallenges(){
     //let num = Math.floor(Math.random() * 14);
@@ -91,6 +212,7 @@ function LoadChallenges(){
     challenge3.textContent = tasks20[current20].task;
     progress3.textContent =  progress20 + "/" + tasks20[current20].tasknum;
 }
+*/
 
 //// Code for all pages
 //
