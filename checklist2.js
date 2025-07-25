@@ -92,7 +92,7 @@ class TaskUpdater {
 }
 
 const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
-const ST2 = new StudyTask("Use the study timer for 15 minutes", 15, "study");
+const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break");
 const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study");
 
 const tasks10 = [ ST1 ];
@@ -136,6 +136,9 @@ function LoadChallenges(){
     
     Updater10.CheckandUpdateTasks();
     Updater10.RunChallenge();
+    
+    Updater15.CheckandUpdateTasks();
+    Updater15.RunChallenge();
 }
 
 

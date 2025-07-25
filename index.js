@@ -185,9 +185,14 @@ function updateautorun(){
     if (seconds == 0){
         let num = 0;
 
-        if (localStorage.getItem("break_sessions") == null || localStorage.getItem("study_sessions")){
-            localStorage.setItem("study_sessions",0);
+        if (localStorage.getItem("break_sessions") == null){
             localStorage.setItem("break_sessions",0);
+            console.log(localStorage.getItem("null"));
+        }
+
+        if (localStorage.getItem("study_sessions") == null){
+            localStorage.setItem("study_sessions",0);
+            console.log(localStorage.getItem("null"));
         }
 
         if (current_setting != work){
