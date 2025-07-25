@@ -133,19 +133,30 @@ function update(){
 
     if (seconds == 0){
         let num = 0;
+
+        if (localStorage.getItem("break_sessions") == null){
+            localStorage.setItem("break_sessions",0);
+            console.log(localStorage.getItem("null"));
+        }
+
+        if (localStorage.getItem("study_sessions") == null){
+            localStorage.setItem("study_sessions",0);
+            console.log(localStorage.getItem("null"));
+        }
+
         if (current_setting != work){
-            num = localStorage.getItem("break_sessions");
-            localStorage.setItem("study_sessions",num+1);
+            num = parseInt(localStorage.getItem("break_sessions")) + 1;
+            localStorage.setItem("break_sessions",num);
         }
 
         else{
-            num = localStorage.getItem("study_sessions");
-            localStorage.setItem("study_sessions",num+1);
+            num = parseInt(localStorage.getItem("study_sessions")) + 1;
+            localStorage.setItem("study_sessions",num);
         }
-
+    
         console.log(localStorage.getItem("study_sessions"));
     }
-
+    
     minutes = String(minutes).padStart(2,"0");
     seconds = String(seconds).padStart(2,"0");
 
