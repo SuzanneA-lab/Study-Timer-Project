@@ -35,26 +35,31 @@ class StudyTask extends Task {
     }
 
     UpdateProgress(){
+        /*
         console.log("working!")
         this.numtaskdone = this.numtaskdone + 1;
-        /*
+        */
+
         let TimerSessions = 0;
 
         if (this.tasktype == "study"){
-            TimerSessions = localStorage.getItem("study_sessions");
+            TimerSessions = Math.ceil(localStorage.getItem("study_sessions")/10);
         }
 
         else {
-            TimerSessions = localStorage.getItem("break_sessions");
+            TimerSessions = Math.ceil(localStorage.getItem("break_sessions")/10);
         }
 
-        if (numtaskdone != TimerSessions){
+        if (TimerSessions == null){
+            this.numtaskdone = 0;
+        }
+
+        if (this.numtaskdone != TimerSessions){
             this.numtaskdone = this.numtaskdone + TimerSessions;
             if (this.numtaskdone == this.tasknum){
                 clearInterval(ProgressChecker);
             }
         }
-        */
     }
 }
 
@@ -82,7 +87,7 @@ class TaskUpdater {
 
     RunChallenge(){
         this.UpdateDisplay();
-        ProgressChecker = setInterval(this.CheckandUpdateTasks.bind(this), 3000);
+        ProgressChecker = setInterval(this.CheckandUpdateTasks.bind(this), 30000);
     }
 }
 
@@ -129,6 +134,7 @@ function LoadChallenges(){
     const Updater15 = new TaskUpdater(tasks15[current15], 15, challenge2, progress2);
     const Updater20 = new TaskUpdater(tasks20[current20], 20, challenge3, progress3);
     
+    Updater10.CheckandUpdateTasks();
     Updater10.RunChallenge();
 }
 

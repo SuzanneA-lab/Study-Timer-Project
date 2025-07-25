@@ -75,15 +75,12 @@ let time_passed = 0;
 let study_sessions = 0;
 let autorun = true;
 
-localStorage.setItem("study_sessions",0);
-localStorage.setItem("break_sessions",0);
-
 function start(){
     if (!isRunning){
         time = Date.now() - time_passed;
         
         if (autorun){
-            timer = setInterval(updateautorun, 10)
+            timer = setInterval(updateautorun, 100)
         }
 
         else{
@@ -129,8 +126,24 @@ function update(){
 
     if (minutes <= 0 & seconds <= 0){
         document.getElementById("ding").play();
-        study_sessions++;
+        //study_sessions++;
+
         clearInterval(timer);
+    }
+
+    if (seconds == 0){
+        let num = 0;
+        if (current_setting != work){
+            num = localStorage.getItem("break_sessions");
+            localStorage.setItem("study_sessions",num+1);
+        }
+
+        else{
+            num = localStorage.getItem("study_sessions");
+            localStorage.setItem("study_sessions",num+1);
+        }
+
+        console.log(localStorage.getItem("study_sessions"));
     }
 
     minutes = String(minutes).padStart(2,"0");
@@ -168,6 +181,28 @@ function updateautorun(){
             }
         }
     }
+
+    if (seconds == 0){
+        let num = 0;
+
+        if (localStorage.getItem("break_sessions") == null || localStorage.getItem("study_sessions")){
+            localStorage.setItem("study_sessions",0);
+            localStorage.setItem("break_sessions",0);
+        }
+
+        if (current_setting != work){
+            num = parseInt(localStorage.getItem("break_sessions")) + 1;
+            localStorage.setItem("break_sessions",num);
+        }
+
+        else{
+            num = parseInt(localStorage.getItem("study_sessions")) + 1;
+            localStorage.setItem("study_sessions",num);
+        }
+    
+        console.log(localStorage.getItem("study_sessions"));
+    }
+
 
     minutes = String(minutes).padStart(2,"0");
     seconds = String(seconds).padStart(2,"0");
