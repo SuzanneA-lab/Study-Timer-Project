@@ -9,6 +9,7 @@
     padding: 0;
 }
 
+/*
 #cover{
     visibility: visible;
     position: fixed;
@@ -20,6 +21,7 @@
     z-index: 10;
     transition: opacity 90000ms ease-out;
 }
+*/
 
 body { 
   min-height: 100vh;

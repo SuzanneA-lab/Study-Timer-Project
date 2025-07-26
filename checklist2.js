@@ -10,6 +10,8 @@ const progress1 = document.getElementById("p1");
 const progress2 = document.getElementById("p2");
 const progress3 = document.getElementById("p3");
 
+const coinnum = document.getElementById("");
+
 let ProgressChecker = null;
 
 //abstract class
@@ -39,31 +41,40 @@ class StudyTask extends Task {
         console.log("working!")
         this.numtaskdone = this.numtaskdone + 1;
         */
-
+        let time = 0;
         let TimerSessions = 0;
         let timeint = 0;
 
         if (this.tasktype == "study"){
-            timeint = parseInt(localStorage.getItem("study_sessions"));
-            TimerSessions = Math.ceil(timeint/10);
+            time = localStorage.getItem("study_sessions");
+            if (time == null){
+                TimerSessions = 0;
+            }
+        
+            else{
+                timeint = parseInt(time)
+                TimerSessions = Math.ceil(timeint/10);
+            }
         }
 
         else {
-            timeint = parseInt(localStorage.getItem("break_sessions"));
-            TimerSessions = Math.ceil(timeint/10);
-        }
-
-        if (timeint == null || TimerSessions == null){
-            this.numtaskdone = 0;
-            console.log("null");
+            time = localStorage.getItem("break_sessions");
+            if (time == null){
+                TimerSessions = 0;
+            }
+        
+            else{
+                timeint = parseInt(time)
+                TimerSessions = Math.ceil(timeint/10);
+            }
         }
 
         let tasksdone = this.numtaskdone;
-        console.log(this.numtaskdone, this.tasknum);
+        //console.log(this.numtaskdone, this.tasknum);
 
         if (this.numtaskdone != TimerSessions){
             this.numtaskdone = tasksdone + TimerSessions;
-            console.log(this.numtaskdone, this.tasknum);
+            console.log(this.numtaskdone, tasksdone);
         }
 
         /*
@@ -80,6 +91,7 @@ class TaskUpdater {
         this.Coinrewards = enteredCoinrewards;
         this.Challengename = enteredChallengename;
         this.Progressname = enteredProgressname;
+        this.Taskcomplete = false;
     }
 
     UpdateDisplay(){
@@ -108,13 +120,22 @@ class TaskUpdater {
     CompleteChallenge(){
         this.Progressname.style.borderStyle = "solid";
         this.Progressname.style.backgroundColor = "rgb(0,0,0, 1)";
-        this.Progressname.textContent = "hi";
+        this.Progressname.textContent = "✓";
+        this.Progressname.style.fontSize = "1.5em";
+        this.Progressname.style.fontWeight ="900";
+
+        this.Taskcomplete = true;
+        //this.Progressname.style.color = "black";
     }
 }
 
 const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
 const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break");
 const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study");
+
+let Updater10;
+let Updater15;
+let Updater20;
 
 const tasks10 = [ ST1 ];
 const tasks15 = [ ST2 ];
@@ -131,9 +152,9 @@ function TaskCheckandSet(taskcategory){
 function LoadChallenges(){
     //checks if there are existing challenges stored, if not adds new ones
 
-    TaskCheckandSet("tasks10","progress10");
-    TaskCheckandSet("tasks15","progress15");
-    TaskCheckandSet("tasks20","progress20");
+    TaskCheckandSet("tasks10");
+    TaskCheckandSet("tasks15");
+    TaskCheckandSet("tasks20");
 
     //creates variables to represent the indexes of task items within their respective lists
     let current10 = localStorage.getItem("tasks10");
@@ -151,16 +172,37 @@ function LoadChallenges(){
     progress3.textContent = tasks20[current20].numtaskdone + "/" + tasks20[current20].tasknum;
     */
 
-    const Updater10 = new TaskUpdater(tasks10[current10], 10, challenge1, progress1);
-    const Updater15 = new TaskUpdater(tasks15[current15], 15, challenge2, progress2);
-    const Updater20 = new TaskUpdater(tasks20[current20], 20, challenge3, progress3);
+    Updater10 = new TaskUpdater(tasks10[current10], 10, challenge1, progress1);
+    Updater15 = new TaskUpdater(tasks15[current15], 15, challenge2, progress2);
+    Updater20 = new TaskUpdater(tasks20[current20], 20, challenge3, progress3);
     
-    Updater10.CompleteChallenge();
     Updater10.CheckandUpdateTasks();
-    
     Updater15.CheckandUpdateTasks();
 }
 
+function GetReward(elementid){
+    let Updater;
+
+    if (elementid == "p1"){
+        Updater = Updater10;
+    }
+
+    if (elementid == "p2"){
+        Updater = Updater15;
+    }
+
+    if (elementid == "p3"){
+        Updater = Updater10;
+    }
+
+    if(Updater.Taskcomplete) {
+        let Reward = Updater10.Coinrewards;
+        let storedcoins = localStorage.getItem("coins");   
+        let totalcoins = Reward + storedcoins;
+
+        coindisplaynum.textContent = String(totalcoins).padStart(3,"0");
+    }
+}
 
 //add new property to Tasks representing progress made in them (ex: 3 for 3/10) (?)
 //put the tasks currently being done in local storage with relevant info (?)
@@ -255,6 +297,7 @@ const display = document.getElementById("clock")
 const sidebar = document.querySelector('.menu');
 const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
+const coindisplaynum = document.getElementById("numcoins");
 
 window.onload = Load();
 
@@ -267,16 +310,25 @@ function Load(){
     let theme = localStorage.getItem("theme");
     let accent = localStorage.getItem("accent");
     let bg = localStorage.getItem("Background");
+    let storedcoins = localStorage.getItem("coins");
 
-    if (theme === null || bg === null || accent == null){
+    if (theme === null || bg === null || accent == null || storedcoins == null){
         theme = "white";
         accent = "#0a0f72";
         bg = "url(Stars.png)";
+        storedcoins = 0;
+
+        localStorage.setItem("theme", "white");
+        localStorage.setItem("accent", "#0a0f72");
+        localStorage.setItem("Background", "url(Stars.png)");
+        localStorage.setItem("coins", 0);
     }
 
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
     root.style.setProperty('--background', bg);
+    
+    coindisplaynum.textContent = String(storedcoins).padStart(3,"0");
 
     LoadChallenges();
 }
