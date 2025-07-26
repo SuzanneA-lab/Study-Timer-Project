@@ -24,6 +24,12 @@ class Task {
     }
 
     /*
+    ResetProgress(){
+        this.numtaskdone = 0;
+        console.log("working")
+    }*/
+
+    /*
     UpdateProgress(){
         throw new Error("Method 'UpdateProgress()' must be implemented");
     }
@@ -83,6 +89,11 @@ class StudyTask extends Task {
         }
         */
     }
+
+    ResetProgress(){
+        this.numtaskdone = 0;
+        console.log("working")
+    }
 }
 
 class TaskUpdater {
@@ -127,17 +138,34 @@ class TaskUpdater {
         this.Taskcomplete = true;
         //this.Progressname.style.color = "black";
     }
+
+    /*
+    Startnewtask(tasklist){
+        
+    }
+    */
+
+    LoadNewTask(newTaskobj){
+        this.Taskobj.ResetProgress();
+
+        this.Taskobj = newTaskobj;
+        this.Taskcomplete = false;
+    }
 }
 
 const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
 const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break");
 const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study");
 
+const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study");
+const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break");
+const ST6 = new StudyTask("Use the study timer for 3 minutes", 3, "study");
+
 let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ ST1 ];
+const tasks10 = [ ST4, ST5, ST6 ];
 const tasks15 = [ ST2 ];
 const tasks20 = [ ST3 ];
 
@@ -180,27 +208,66 @@ function LoadChallenges(){
     Updater15.CheckandUpdateTasks();
 }
 
+function Load1Challenge(Updater, tasklistname){
+    TaskCheckandSet(tasklistname);
+
+    let current = localStorage.getItem("tasks10");
+
+    Updater.LoadNewTask(current);
+    Updater.UpdateDisplay();
+}
+
 function GetReward(elementid){
     let Updater;
+    let tasklist;
+    let tasklistname;
+    let taskindex;
 
     if (elementid == "p1"){
         Updater = Updater10;
+        tasklist = tasks10;
+        tasklistname = "tasks10";
+        taskindex = parseInt(localStorage.getItem("tasks10")) + 1;
     }
 
     if (elementid == "p2"){
         Updater = Updater15;
+        tasklist = tasks15;
+        tasklistname = "tasks15";
+        taskindex = parseInt(localStorage.getItem("tasks15")) + 1;
     }
 
     if (elementid == "p3"){
-        Updater = Updater10;
+        Updater = Updater20;
+        tasklist = tasks20;
+        tasklistname = "tasks20";
+        taskindex = parseInt(localStorage.getItem("tasks20")) + 1;
     }
 
-    if(Updater.Taskcomplete) {
+    if (Updater.Taskcomplete) {
         let Reward = Updater10.Coinrewards;
-        let storedcoins = localStorage.getItem("coins");   
+        let storedcoins = parseInt(localStorage.getItem("coins"));   
+        
         let totalcoins = Reward + storedcoins;
+        localStorage.setItem("coins", totalcoins);
 
         coindisplaynum.textContent = String(totalcoins).padStart(3,"0");
+        
+        if (tasklist.length == taskindex){
+            taskindex = 0;
+            /*for(let i = 0; i < tasklist.length; i++){
+                (tasklist[i]).ResetProgress();
+            }*/
+        }
+        
+        localStorage.setItem(tasklistname, taskindex);
+
+        Updater.Progressname.style.borderStyle = "none";
+        Updater.Progressname.style.backgroundColor = "rgb(0,0,0, 0)";
+        Updater.Progressname.style.fontSize = "large";
+        Updater.Progressname.style.fontWeight ="500";
+
+        LoadChallenges();
     }
 }
 
