@@ -41,25 +41,36 @@ class StudyTask extends Task {
         */
 
         let TimerSessions = 0;
+        let timeint = 0;
 
         if (this.tasktype == "study"){
-            TimerSessions = Math.ceil(localStorage.getItem("study_sessions")/10);
+            timeint = parseInt(localStorage.getItem("study_sessions"));
+            TimerSessions = Math.ceil(timeint/10);
         }
 
         else {
-            TimerSessions = Math.ceil(localStorage.getItem("break_sessions")/10);
+            timeint = parseInt(localStorage.getItem("break_sessions"));
+            TimerSessions = Math.ceil(timeint/10);
         }
 
-        if (TimerSessions == null){
+        if (timeint == null || TimerSessions == null){
             this.numtaskdone = 0;
+            console.log("null");
         }
+
+        let tasksdone = this.numtaskdone;
+        console.log(this.numtaskdone, this.tasknum);
 
         if (this.numtaskdone != TimerSessions){
-            this.numtaskdone = this.numtaskdone + TimerSessions;
-            if (this.numtaskdone == this.tasknum){
-                clearInterval(ProgressChecker);
-            }
+            this.numtaskdone = tasksdone + TimerSessions;
+            console.log(this.numtaskdone, this.tasknum);
         }
+
+        /*
+        if (this.numtaskdone >= this.tasknum){
+            console.log(this.numtaskdone, this.tasknum);
+        }
+        */
     }
 }
 
@@ -80,14 +91,24 @@ class TaskUpdater {
         this.Taskobj.UpdateProgress();
         this.UpdateDisplay();
 
-        if (this.Taskobj.numtaskdone == this.Taskobj.tasknum){
-            clearInterval(ProgressChecker);
+        if (this.Taskobj.numtaskdone >= this.Taskobj.tasknum){
+            if (ProgressChecker != null){
+                clearInterval(ProgressChecker);
+            }
+
+            this.CompleteChallenge();
         }
     }
 
     RunChallenge(){
         this.UpdateDisplay();
         ProgressChecker = setInterval(this.CheckandUpdateTasks.bind(this), 30000);
+    }
+
+    CompleteChallenge(){
+        this.Progressname.style.borderStyle = "solid";
+        this.Progressname.style.backgroundColor = "rgb(0,0,0, 1)";
+        this.Progressname.textContent = "hi";
     }
 }
 
@@ -134,11 +155,10 @@ function LoadChallenges(){
     const Updater15 = new TaskUpdater(tasks15[current15], 15, challenge2, progress2);
     const Updater20 = new TaskUpdater(tasks20[current20], 20, challenge3, progress3);
     
+    Updater10.CompleteChallenge();
     Updater10.CheckandUpdateTasks();
-    Updater10.RunChallenge();
     
     Updater15.CheckandUpdateTasks();
-    Updater15.RunChallenge();
 }
 
 
@@ -238,10 +258,10 @@ const popupsettings = document.getElementById("popupbgsettings");
 
 window.onload = Load();
 
-window.addEventListener("DOMContentLoaded", function(){
+window.addEventListener('DOMContentLoaded', Load());
     //cover.remove()
     //cover.style.visibility = "hidden";
-});
+//);
 
 function Load(){
     let theme = localStorage.getItem("theme");

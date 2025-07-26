@@ -155,6 +155,7 @@ function update(){
         }
     
         console.log(localStorage.getItem("study_sessions"));
+        console.log(localStorage.getItem("break_sessions"));
     }
     
     minutes = String(minutes).padStart(2,"0");
@@ -217,6 +218,7 @@ function updateautorun(){
         }
     
         console.log(localStorage.getItem("study_sessions"));
+        console.log(localStorage.getItem("break_sessions"));
     }
 
 
