@@ -27,7 +27,8 @@ class Task {
     ResetProgress(){
         this.numtaskdone = 0;
         console.log("working")
-    }*/
+    }
+    */
 
     /*
     UpdateProgress(){
@@ -91,6 +92,11 @@ class StudyTask extends Task {
     }
 
     ResetProgress(){
+        //setting TEMPORARY solution to completion error 
+        // - this code will not allow multiple timer challenges at the same time
+        localStorage.setItem("study_sessions", 0);
+        localStorage.setItem("break_sessions", 0);
+
         this.numtaskdone = 0;
         console.log("working")
     }
@@ -139,6 +145,27 @@ class TaskUpdater {
         //this.Progressname.style.color = "black";
     }
 
+
+    StartNewTask(enteredTaskobj, enteredCoinrewards){
+        if (this.Taskcomplete){
+            this.Taskcomplete = false;
+            this.Taskobj = enteredTaskobj;
+            this.Coinrewards = enteredCoinrewards;
+
+            this.Taskobj.ResetProgress();
+            this.UpdateDisplay();
+
+            this.Progressname.style.borderStyle = "none";
+            this.Progressname.style.backgroundColor = "rgb(0,0,0, 0)";
+            this.Progressname.style.fontSize = "large";
+            this.Progressname.style.fontWeight ="500";
+        }
+    }
+
+    ClaimRewards(newTaskobj){
+        this.Taskcomplete = false;
+    }
+    
     /*
     Startnewtask(tasklist){
         
@@ -218,6 +245,33 @@ function Load1Challenge(Updater, tasklistname){
 }
 
 function GetReward(elementid){
+    if (Updater10.Taskcomplete) {
+        //AHHHHHHHHHH tasks10[]
+
+        let Reward = Updater10.Coinrewards;
+        let storedcoins = parseInt(localStorage.getItem("coins"));   
+        
+        let totalcoins = Reward + storedcoins;
+        localStorage.setItem("coins", totalcoins);
+
+        coindisplaynum.textContent = String(totalcoins).padStart(3,"0");
+
+        let old10 = localStorage.getItem("tasks10");
+        let new10 = parseInt(old10) + 1;
+        let len = tasks10.length;
+
+        if ( new10 == len ){
+            new10 = 0;
+        }
+
+        localStorage.setItem("tasks10", new10);
+
+        Updater10.StartNewTask(tasks10[new10], 90);
+    }
+}
+
+/*
+function GetReward(elementid){
     let Updater;
     let tasklist;
     let tasklistname;
@@ -257,7 +311,7 @@ function GetReward(elementid){
             taskindex = 0;
             /*for(let i = 0; i < tasklist.length; i++){
                 (tasklist[i]).ResetProgress();
-            }*/
+            } //*
         }
         
         localStorage.setItem(tasklistname, taskindex);
@@ -270,6 +324,7 @@ function GetReward(elementid){
         LoadChallenges();
     }
 }
+*/
 
 //add new property to Tasks representing progress made in them (ex: 3 for 3/10) (?)
 //put the tasks currently being done in local storage with relevant info (?)
