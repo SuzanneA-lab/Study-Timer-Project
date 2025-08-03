@@ -115,7 +115,9 @@ class StudyTask extends Task {
 
     ResetProgress(){
         //setting TEMPORARY solution to completion error 
-        // - this code will not allow multiple timer challenges at the same time
+        //previous error remedied but now running 
+        //into issue where progress is carried over to new challenge when existing timer challenge of its kind is on screen
+
         if (this.tasktype == "study"){
             localStorage.setItem("study_sessions", 0);
         }

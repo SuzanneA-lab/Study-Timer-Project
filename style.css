@@ -716,3 +716,60 @@ a{
     align-items: center;
     justify-content: center;
 }
+
+/*shop page*/
+
+#itembg{
+    margin-top: 20px;
+
+    background-color: var(--theme);
+    border-radius: 30px;
+    width: 900px;
+    height: 400px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#itemdesc{
+    background-color: var(--accent);
+    width: 35%;
+    height: 67%;
+
+    position: absolute;
+    right: 5%;
+    top: 6%;
+
+    border-radius: 20px;
+}
+
+#arrows{
+    margin-top: 10px;
+    color: var(--theme);
+}
+
+.Purchasebutton{
+    background-color: var(--accent);
+    width: 90%;
+    height: 15%;
+
+    border-radius: 40px;
+    position: absolute;
+    bottom: 7%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#shopimg{
+    height: 67%;
+    position: absolute;
+    top: 6%;
+    left: 5%;
+
+    border-radius: 20px;
+}
