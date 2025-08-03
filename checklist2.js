@@ -51,9 +51,21 @@ class StudyTask extends Task {
         let time = 0;
         let TimerSessions = 0;
         let timeint = 0;
+        let tasksdone = this.numtaskdone;
 
         if (this.tasktype == "study"){
+            console.log("study", tasksdone, localStorage.getItem("study_sessions"));
+            
+            let temp = localStorage.getItem("study_sessions");
+            if (tasksdone !== 0 && temp == "0"){
+                localStorage.setItem("study_sessions", tasksdone*10);
+
+                console.log("registered: study, ", tasksdone, temp);
+            }
+
             time = localStorage.getItem("study_sessions");
+            console.log(time);
+
             if (time == null){
                 TimerSessions = 0;
             }
@@ -65,7 +77,18 @@ class StudyTask extends Task {
         }
 
         else {
+            console.log("break" , tasksdone, localStorage.getItem("break_sessions"));
+
+            let temp = localStorage.getItem("break_sessions");
+            if (tasksdone !== 0 && temp == "0"){
+                localStorage.setItem("break_sessions", tasksdone*10);
+
+                console.log("registered: break, ", tasksdone, temp);
+            }
+
             time = localStorage.getItem("break_sessions");
+            console.log(time);
+
             if (time == null){
                 TimerSessions = 0;
             }
@@ -76,12 +99,11 @@ class StudyTask extends Task {
             }
         }
 
-        let tasksdone = this.numtaskdone;
         //console.log(this.numtaskdone, this.tasknum);
 
-        if (this.numtaskdone != TimerSessions){
+        if (tasksdone != TimerSessions){
             this.numtaskdone = tasksdone + TimerSessions;
-            console.log(this.numtaskdone, tasksdone);
+            //console.log(this.numtaskdone, tasksdone);
         }
 
         /*
@@ -94,11 +116,16 @@ class StudyTask extends Task {
     ResetProgress(){
         //setting TEMPORARY solution to completion error 
         // - this code will not allow multiple timer challenges at the same time
-        localStorage.setItem("study_sessions", 0);
-        localStorage.setItem("break_sessions", 0);
+        if (this.tasktype == "study"){
+            localStorage.setItem("study_sessions", 0);
+        }
+        
+        else {
+            localStorage.setItem("break_sessions", 0);
+        }
 
         this.numtaskdone = 0;
-        console.log("working")
+        console.log("working");
     }
 }
 
@@ -244,6 +271,8 @@ function Load1Challenge(Updater, tasklistname){
     Updater.UpdateDisplay();
 }
 
+
+//Real
 function GetReward(elementid){
     if (Updater10.Taskcomplete) {
         //AHHHHHHHHHH tasks10[]
@@ -267,7 +296,14 @@ function GetReward(elementid){
         localStorage.setItem("tasks10", new10);
 
         Updater10.StartNewTask(tasks10[new10], 90);
+        Updatealltasks();
     }
+}
+
+function Updatealltasks(){
+    Updater10.CheckandUpdateTasks();
+    Updater15.CheckandUpdateTasks();
+    Updater20.CheckandUpdateTasks();
 }
 
 /*
