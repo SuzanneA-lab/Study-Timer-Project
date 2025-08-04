@@ -4,16 +4,52 @@
 
 <head>
     <title>Pomodoro Timer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display-block" />
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="starclear.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <body onload = "Load()">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@100..900&family=Playfair+Display:ital@0;1&family=UoqMunThenKhung&display=swap" rel="stylesheet">
 </head>
 
 <body>
+
+    <div id="popupbghelp">
+        <div class="popupwindow">
+            <div class="popuptop">
+                <h1 class="popuptitle">Help</h1>
+                <span class="material-symbols-outlined" id="popupclose" onclick="Closehelp()">close</span>
+            </div>
+
+            <div class="popuptext">
+                <h3>What is this?</h3>
+                <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
+                <h3>How do I earn coins?</h3>
+                <p>Earn coins by completing on the Tasks page, by either completing your own checklist items, or by completing (daily) challenges.</p>
+                <h3>What do I use coins for?</h3>
+                <p>Use coins to purchase additional themes, audio tracks and speakers on the shop page. Items you purchased will be saved the next time you open the app.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="popupbgsettings">
+        <div class="popupwindow">
+            <div class="popuptop">
+                <h1 class="popuptitle">Settings</h1>
+                <span class="material-symbols-outlined" id="popupclose2" onclick="CloseSettings()">close</span>
+            </div>
+
+            <div class="popuptext">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius deserunt similique inventore rerum quam dolorem qui nulla porro in dolore! Expedita beatae in totam error officia fuga, porro officiis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque harum deleniti? Reprehenderit in quo dignissimos dolorem perspiciatis iste, eveniet laboriosam praesentium consectetur eaque delectus consequatur voluptatibus eum earum fugiat?</p>
+            </div>
+
+        </div>
+    </div>
+    
     <nav>
         <div id="HeaderIcons">
             <span class="material-symbols-outlined" id="menuicon" onclick="Openmenu()">menu</span>
@@ -79,9 +115,12 @@
 
     <div id="itembg">
         <img src="tempbg3.png" id="shopimg">
-        <div id="itemdesc"></div>
+        <div id="itemdesc">
+            <h2 id = itemtitle>Starry Background</h2>
+            <p id = itemexp>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut facere, voluptatem velit omnis voluptatibus impedit! Dicta eius consectetur fugit voluptates libero veniam perferendis aspernatur dolorem atque voluptas, eos pariatur necessitatibus?</p>
+        </div>
         
-        <div class="Purchasebutton" id="url(Stars.png)" onclick="Equip(this.id)">Purchase</div>
+        <div class="Purchasebutton" id="url(Stars.png)" onclick="Equip(this.id)">Equip</div>
     </div>
 
     <div id="arrows">
@@ -160,7 +199,7 @@
 </div>
 
     <script> const page = "shop"; </script>
-    <script src="index.js"></script>
+    <script src="Shop.js"></script>
 
 </body>    
 

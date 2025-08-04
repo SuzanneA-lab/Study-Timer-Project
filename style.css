@@ -735,7 +735,8 @@ a{
 }
 
 #itemdesc{
-    background-color: var(--accent);
+    background-color: var(--accent); /* change to midtone */
+    color: var(--theme);
     width: 35%;
     height: 67%;
 
@@ -744,6 +745,20 @@ a{
     top: 6%;
 
     border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#itemtitle{
+    padding-top: 5%;
+    padding-left: 7%;
+    font-size: x-large;
+}
+
+#itemexp{
+    padding-top: 5%;
+    padding-left: 7%;
 }
 
 #arrows{
