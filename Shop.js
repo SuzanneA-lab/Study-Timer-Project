@@ -31,6 +31,21 @@ class ItemManager{
             interactbutton.textContent = ("Purchase for " + this.item.price + " coins");
         }
     }
+
+    DecideAction(){
+        if (this.item.owned){
+            this.item.Equip();
+        }
+
+        else {
+            let purchased = this.item.Purchase();
+
+            if (purchased){
+                //need to add popup window for purchasing
+            }
+            
+        }
+    }
 }
 
 class ShopItem{
@@ -74,7 +89,7 @@ class Background extends ShopItem{
         localStorage.setItem("theme", this.theme);
         localStorage.setItem("accent", this.accent);
         localStorage.setItem("midtone", this.midtone);
-        localStorage.setItem("Background", this.img);
+        localStorage.setItem("Background", "url(" + this.img + ")");
 
         Load();
     }
@@ -83,12 +98,12 @@ class Background extends ShopItem{
 //temp setup
 localStorage.setItem("Starry Background", true);
 localStorage.setItem("Ocean Background", false);
-localStorage.setItem("Choco Background", true);
+localStorage.setItem("Sweets Background", true);
 //
 
 const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "white", "#0a0f72","green");
-const Oceanbg = new Background("Ocean Background", 30, false, "ocean desc", "Ocean.png", "#000686", "white","yellow");
-const Chocobg = new Background("Chocolate Background", 40, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
+const Oceanbg = new Background("Ocean Background", 30, true, "ocean desc", "Ocean.png", "#000686", "white","yellow");
+const Chocobg = new Background("Sweets Background", 40, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
 
 let IM;
 
@@ -129,6 +144,10 @@ function SwitchPageFront(){
     }
 
     LoadShop();
+}
+
+function PurchaseorEquip(){
+    IM.DecideAction();
 }
 
 //// Code for all pages
