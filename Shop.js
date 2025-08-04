@@ -1,3 +1,136 @@
+//// Shop code starts here
+//
+//
+//
+
+const itemimg = document.getElementById("shopimg");
+const interactbutton = document.getElementById("url(Stars.png)"); //CHANGE LATER
+const itemtitle = document.getElementById("itemtitle");
+const itemdesc = document.getElementById("itemexp");
+
+class ItemManager{
+    constructor(item){
+        this.item = item;
+    }
+
+    SetNewItem(newitem){
+        this.item = newitem;
+        this.SetPage();
+    }
+
+    SetPage(){
+        itemimg.src = this.item.img;
+        itemtitle.textContent = this.item.name;
+        itemdesc.textContent = this.item.desc;
+
+        if (this.item.owned){
+            interactbutton.textContent = "Equip";
+        }
+
+        else{
+            interactbutton.textContent = ("Purchase for " + this.item.price + " coins");
+        }
+    }
+}
+
+class ShopItem{
+    constructor(name, price, owned, desc){
+        this.name = name;
+        this.price = price;
+        this.owned = owned;
+        this.desc = desc;
+    }
+
+    Purchase(){
+        let currentcointotal = parseInt(localStorage.getItem("coins"));
+        
+        if (currentcointotal >= this.price){
+            this.owned = true;
+            newcointotal = currentcointotal - this.price;
+            
+            localStorage.setItem("coins", newcointotal);
+            
+            coindisplaynum.textContent = newcointotal.padStart(3,"0");
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+}
+
+class Background extends ShopItem{
+    constructor(name, price, owned, desc, img, theme, accent, midtone){
+        super(name, price, owned, desc);
+
+        this.img = img;
+        this.theme = theme;
+        this.accent = accent;
+        this.midtone = midtone;
+    }
+
+    Equip(){
+        localStorage.setItem("theme", this.theme);
+        localStorage.setItem("accent", this.accent);
+        localStorage.setItem("midtone", this.midtone);
+        localStorage.setItem("Background", this.img);
+
+        Load();
+    }
+}
+
+//temp setup
+localStorage.setItem("Starry Background", true);
+localStorage.setItem("Ocean Background", false);
+localStorage.setItem("Choco Background", true);
+//
+
+const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "white", "#0a0f72","green");
+const Oceanbg = new Background("Ocean Background", 30, false, "ocean desc", "Ocean.png", "#000686", "white","yellow");
+const Chocobg = new Background("Chocolate Background", 40, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
+
+let IM;
+
+const Shoplist = [Starsbg, Oceanbg, Chocobg];
+let currentposition = 0;
+
+function LoadShop(){
+    if (currentposition >= Shoplist.length){
+        currentposition = 0;
+    }
+
+    Currentitem = Shoplist[currentposition]
+    IM = new ItemManager(Currentitem);
+    IM.SetPage();
+}
+
+//add function for checking purchased status of each item
+
+function SwitchPageBack(){
+    if (currentposition <= 0){
+        currentposition = Shoplist.length-1;
+    }
+
+    else {
+        currentposition = currentposition - 1;
+    }
+
+    LoadShop();
+}
+
+function SwitchPageFront(){
+    if (currentposition >= Shoplist.length){
+        currentposition = 0;
+    }
+
+    else {
+        currentposition = currentposition + 1;
+    }
+
+    LoadShop();
+}
+
 //// Code for all pages
 //
 //
@@ -42,6 +175,7 @@ function Load(){
     root.style.setProperty('--background', bg);
     
     coindisplaynum.textContent = storedcoins.padStart(3,"0");
+    LoadShop();
 }
 
 function Openmenu(){
@@ -95,75 +229,5 @@ function Equip(click_id){
 }
 */
 
-//// Shop code starts here
-//
-//
-//
 
-const itemimg = document.getElementById("shopimg");
-const interactbutton = document.getElementById("url(Stars.png)"); //CHANGE LATER
-const itemtitle = document.getElementById("itemtitle");
-const itemdesc = document.getElementById("itemexp");
-
-localStorage.setItem("Starry Background", true);
-localStorage.setItem("Ocean Background", false);
-localStorage.setItem("Choco Background", true);
-
-class ShopItem{
-    constructor(name, desc, price, owned){
-        this.name = name;
-        this.desc = desc;
-        this.price = price;
-        this.owned = owned;
-    }
-
-    Purchase(){
-        let currentcointotal = parseInt(localStorage.getItem("coins"));
-        
-        if (currentcointotal >= this.price){
-            this.owned = true;
-            newcointotal = currentcointotal - this.price;
-            
-            localStorage.setItem("coins", newcointotal);
-            
-            coindisplaynum.textContent = newcointotal.padStart(3,"0");
-            return true;
-        }
-
-        else {
-            return false;
-        }
-    }
-}
-
-class Background extends ShopItem{
-    constructor(name, desc, price, owned, img, theme, accent, midtone){
-        super(name, desc, price, owned);
-
-        this.img = img;
-        this.theme = theme;
-        this.accent = accent;
-        this.midtone = midtone;
-    }
-
-    Equip(){
-        localStorage.setItem("theme", this.theme);
-        localStorage.setItem("accent", this.accent);
-        localStorage.setItem("midtone", this.midtone);
-        localStorage.setItem("Background", this.img);
-
-        Load();
-    }
-}
-
-class ItemManager{
-    constructor(item){
-        this.item = item;
-    }
-
-    SetNewItem(newitem){
-        this.item = newitem;
-        //this.item.img = 
-    }
-}
 

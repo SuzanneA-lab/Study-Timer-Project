@@ -753,12 +753,19 @@ a{
 #itemtitle{
     padding-top: 5%;
     padding-left: 7%;
-    font-size: x-large;
+    font-size: 1.89em;
+
+    font-family: "Outfit", sans-serif;
+    font-weight: 550;
 }
 
 #itemexp{
     padding-top: 5%;
     padding-left: 7%;
+    padding-right: 7%;
+
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
 }
 
 #arrows{
@@ -778,6 +785,10 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 1.4em;
 }
 
 #shopimg{
