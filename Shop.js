@@ -73,6 +73,7 @@ function OpenSettings(){
 //
 //
 
+/*
 function Equip(click_id){
     if (click_id === "url(Stars.png)"){
         localStorage.setItem("theme", "white");
@@ -92,3 +93,77 @@ function Equip(click_id){
     localStorage.setItem("Background", click_id);
     Load();
 }
+*/
+
+//// Shop code starts here
+//
+//
+//
+
+const itemimg = document.getElementById("shopimg");
+const interactbutton = document.getElementById("url(Stars.png)"); //CHANGE LATER
+const itemtitle = document.getElementById("itemtitle");
+const itemdesc = document.getElementById("itemexp");
+
+localStorage.setItem("Starry Background", true);
+localStorage.setItem("Ocean Background", false);
+localStorage.setItem("Choco Background", true);
+
+class ShopItem{
+    constructor(name, desc, price, owned){
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.owned = owned;
+    }
+
+    Purchase(){
+        let currentcointotal = parseInt(localStorage.getItem("coins"));
+        
+        if (currentcointotal >= this.price){
+            this.owned = true;
+            newcointotal = currentcointotal - this.price;
+            
+            localStorage.setItem("coins", newcointotal);
+            
+            coindisplaynum.textContent = newcointotal.padStart(3,"0");
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+}
+
+class Background extends ShopItem{
+    constructor(name, desc, price, owned, img, theme, accent, midtone){
+        super(name, desc, price, owned);
+
+        this.img = img;
+        this.theme = theme;
+        this.accent = accent;
+        this.midtone = midtone;
+    }
+
+    Equip(){
+        localStorage.setItem("theme", this.theme);
+        localStorage.setItem("accent", this.accent);
+        localStorage.setItem("midtone", this.midtone);
+        localStorage.setItem("Background", this.img);
+
+        Load();
+    }
+}
+
+class ItemManager{
+    constructor(item){
+        this.item = item;
+    }
+
+    SetNewItem(newitem){
+        this.item = newitem;
+        //this.item.img = 
+    }
+}
+
