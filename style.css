@@ -724,8 +724,8 @@ a{
 
     background-color: var(--theme);
     border-radius: 30px;
-    width: 900px;
-    height: 400px;
+    width: 975px;
+    height: 420px;
     position: relative;
 
     display: flex;
@@ -741,10 +741,13 @@ a{
     height: 67%;
 
     position: absolute;
-    right: 5%;
+    right: 4%;
     top: 6%;
 
     border-radius: 20px;
+    border-style: solid;
+    border-color: var(--accent);
+    border-width: 5px;
 
     display: flex;
     flex-direction: column;
@@ -775,8 +778,8 @@ a{
 
 .Purchasebutton{
     background-color: var(--accent);
-    width: 90%;
-    height: 15%;
+    width: 92%;
+    height: 13%;
 
     border-radius: 40px;
     position: absolute;
@@ -797,7 +800,10 @@ a{
     height: 67%;
     position: absolute;
     top: 6%;
-    left: 5%;
+    left: 4%;
 
     border-radius: 20px;
+    border-style: solid;
+    border-color: var(--accent);
+    border-width: 5px;
 }
