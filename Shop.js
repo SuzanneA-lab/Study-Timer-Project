@@ -8,6 +8,9 @@ const interactbutton = document.getElementById("url(Stars.png)"); //CHANGE LATER
 const itemtitle = document.getElementById("itemtitle");
 const itemdesc = document.getElementById("itemexp");
 
+const popuppurchase = document.getElementById("popuppurchase");
+const popupprompt = document.getElementById("purchaseprompt");
+
 class ItemManager{
     constructor(item){
         this.item = item;
@@ -22,6 +25,12 @@ class ItemManager{
         itemimg.src = this.item.img;
         itemtitle.textContent = this.item.name;
         itemdesc.textContent = this.item.desc;
+/*
+        let itemname = this.item.name;
+        if (localStorage.getItem(itemname) == "true"){
+            this.item.owned = true;
+        }
+*/
 
         if (this.item.owned){
             interactbutton.textContent = "Equip";
@@ -38,12 +47,21 @@ class ItemManager{
         }
 
         else {
-            let purchased = this.item.Purchase();
+            popuppurchase.style.display = 'flex';
+            popupprompt.textContent = ("Purchase "+ this.item.name + " for " + this.item.price + " coins?");
+        }
+    }
 
-            if (purchased){
-                //need to add popup window for purchasing
-            }
-            
+    AttemptPurchase(){
+        let purchased = this.item.Purchase();
+        
+        if (purchased){
+            popuppurchase.style.display = 'none';
+            Load();
+        }
+
+        else{
+            popupprompt.textContent ("Not enough coins!");
         }
     }
 }
@@ -56,16 +74,21 @@ class ShopItem{
         this.desc = desc;
     }
 
+    SetasOwned(){
+        this.owned = true;
+    }
+
     Purchase(){
         let currentcointotal = parseInt(localStorage.getItem("coins"));
         
         if (currentcointotal >= this.price){
-            this.owned = true;
-            newcointotal = currentcointotal - this.price;
-            
+            this.SetasOwned;
+            localStorage.setItem(this.name, true);
+
+            let newcointotal = currentcointotal - this.price;
             localStorage.setItem("coins", newcointotal);
             
-            coindisplaynum.textContent = newcointotal.padStart(3,"0");
+            //coindisplaynum.textContent = newcointotal.padStart(3,"0");
             return true;
         }
 
@@ -95,15 +118,15 @@ class Background extends ShopItem{
     }
 }
 
-//temp setup
+/*temp setup
 localStorage.setItem("Starry Background", true);
-localStorage.setItem("Ocean Background", false);
-localStorage.setItem("Sweets Background", true);
-//
+localStorage.setItem("Ocean Background", true);
+localStorage.setItem("Sweets Background", false);
+*/
 
 const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "white", "#0a0f72","green");
-const Oceanbg = new Background("Ocean Background", 30, true, "ocean desc", "Ocean.png", "#000686", "white","yellow");
-const Chocobg = new Background("Sweets Background", 40, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
+const Oceanbg = new Background("Ocean Background", 1, false, "ocean desc", "Ocean.png", "#000686", "white","yellow");
+const Chocobg = new Background("Sweets Background", 2, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
 
 let IM;
 
@@ -111,11 +134,43 @@ const Shoplist = [Starsbg, Oceanbg, Chocobg];
 let currentposition = 0;
 
 function LoadShop(){
+    let shopitem;
+    let shopitemname;
+/*
+    for (let i = 0; i < Shoplist.length; i++){
+        shopitem = Shoplist[i];
+        shopitemname = shopitem.name;
+
+        if (localStorage.getItem(shopitemname) == "true"){
+            shopitem.SetasOwned();
+        }
+
+        //temp code just for testing - delete later
+        else{
+            localStorage.setItem(shopitemname, false);
+            shopitem.owned = false;
+        }
+    }
+*/
+
     if (currentposition >= Shoplist.length){
         currentposition = 0;
     }
 
-    Currentitem = Shoplist[currentposition]
+    let Currentitem = Shoplist[currentposition];
+    let Currentitemname = Currentitem.name;
+        
+    if (localStorage.getItem(Currentitemname) == "true"){
+        Currentitem.SetasOwned();
+        console.log(Currentitemname + " owned:" + localStorage.getItem(Currentitemname));
+    }
+
+    else {
+        localStorage.setItem(Currentitemname, false);
+        Currentitem.owned = false;
+        console.log(Currentitemname + " not owned:" + localStorage.getItem(Currentitemname));
+    }
+
     IM = new ItemManager(Currentitem);
     IM.SetPage();
 }
@@ -148,6 +203,14 @@ function SwitchPageFront(){
 
 function PurchaseorEquip(){
     IM.DecideAction();
+}
+
+function commitPurchase(){
+    IM.AttemptPurchase();
+}
+
+function abortPurchase(){
+    popuppurchase.style.display = 'none';
 }
 
 //// Code for all pages

@@ -293,6 +293,7 @@ function LoadChallenges(){
     
     Updater10.CheckandUpdateTasks();
     Updater15.CheckandUpdateTasks();
+    Updater20.CheckandUpdateTasks();
 }
 
 function Load1Challenge(Updater, tasklistname){
