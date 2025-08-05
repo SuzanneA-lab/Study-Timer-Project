@@ -85,6 +85,8 @@ let time_passed = 0;
 let study_sessions = 0;
 let autorun = true;
 
+let timetracker;
+
 function start(){
     if (!isRunning){
         time = Date.now() - time_passed;
@@ -93,17 +95,70 @@ function start(){
             timer = setInterval(updateautorun, 100)
         }
 
-        else{
-            timer = setInterval(update, 10)
+        else {
+            timer = setInterval(update, 100)
         }
+
+        timetracker = setInterval(minutetracker, 60000);
 
         isRunning = true;
     }
 }
 
+function minutetracker(){
+    let bs1 = localStorage.getItem("break_sessions1");
+    let bs2 = localStorage.getItem("break_sessions2");
+    let bs3 = localStorage.getItem("break_sessions3");
+
+    let ss1 = localStorage.getItem("study_sessions1");
+    let ss2 = localStorage.getItem("study_sessions2");
+    let ss3 = localStorage.getItem("study_sessions3");
+
+    console.log("minute tracker function activated");
+    console.log(bs2);
+
+    //if the break option is enabled
+    if (current_setting != work){
+        if (bs1 == null || bs2 == null || bs3 == null || isNaN(bs1) || isNaN(bs2) || isNaN(bs3)){
+            localStorage.setItem("break_sessions1", 1);
+            localStorage.setItem("break_sessions2", 1);
+            localStorage.setItem("break_sessions3", 1);
+
+            bs1 = localStorage.getItem("break_sessions1");
+            bs2 = localStorage.getItem("break_sessions2");
+            bs3 = localStorage.getItem("break_sessions3");
+        }
+
+        localStorage.setItem("break_sessions1", (parseInt(bs1)+1) );
+        localStorage.setItem("break_sessions2", (parseInt(bs2)+1) );
+        localStorage.setItem("break_sessions3", (parseInt(bs3)+1) );
+    }
+
+    //if the study option is enabled
+    else {
+        if (ss1 == null || ss2 == null || ss3 == null || isNaN(ss1) || isNaN(ss2) || isNaN(ss3)){
+            localStorage.setItem("study_sessions1", 1);
+            localStorage.setItem("study_sessions2", 1);
+            localStorage.setItem("study_sessions3", 1);
+
+            ss1 = localStorage.getItem("study_sessions1");
+            ss2 = localStorage.getItem("study_sessions2");
+            ss3 = localStorage.getItem("study_sessions3");
+        }
+
+        localStorage.setItem("study_sessions1", (parseInt(ss1)+1) );
+        localStorage.setItem("study_sessions2", (parseInt(ss2)+1) );
+        localStorage.setItem("study_sessions3", (parseInt(ss3)+1) );
+    }
+
+    console.log(bs2);
+}
+
 function stop(){
     if (isRunning){
         clearInterval(timer);
+        clearInterval(timetracker);
+
         time_passed = Date.now()-time;
         isRunning = false;
     }
@@ -114,6 +169,8 @@ function reset(){
 
     if (isRunning){
         clearInterval(timer);
+        clearInterval(timetracker);
+
         setdisplay(current_setting);
         time_passed = 0;
         isRunning = false;
@@ -139,8 +196,10 @@ function update(){
         //study_sessions++;
 
         clearInterval(timer);
+        clearInterval(timetracker);
     }
 
+    /*
     if (seconds == 0){
         let num = 0;
 
@@ -167,7 +226,8 @@ function update(){
         console.log(localStorage.getItem("study_sessions"));
         console.log(localStorage.getItem("break_sessions"));
     }
-    
+    */
+
     minutes = String(minutes).padStart(2,"0");
     seconds = String(seconds).padStart(2,"0");
 
@@ -204,6 +264,7 @@ function updateautorun(){
         }
     }
 
+    /*
     if (seconds == 0){
         let num = 0;
 
@@ -230,6 +291,7 @@ function updateautorun(){
         console.log(localStorage.getItem("study_sessions"));
         console.log(localStorage.getItem("break_sessions"));
     }
+    */
 
 
     minutes = String(minutes).padStart(2,"0");
@@ -243,6 +305,7 @@ function Study(){
     current_setting = work;
     if (isRunning){
         clearInterval(timer);
+        clearInterval(timetracker);
     }
 
     time_passed = 0;
@@ -254,6 +317,7 @@ function ShortB(){
     current_setting = short_break;
     if (isRunning){
         clearInterval(timer);
+        clearInterval(timetracker);
     }
 
     time_passed = 0;
@@ -265,6 +329,7 @@ function LongB(){
     current_setting = long_break;
     if (isRunning){
         clearInterval(timer);
+        clearInterval(timetracker);
     }
 
     time_passed = 0;

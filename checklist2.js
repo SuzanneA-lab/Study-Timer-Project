@@ -38,29 +38,59 @@ class Task {
 }
 
 class StudyTask extends Task {
-    constructor(enteredtask, enteredtasknum, enteredtasktype){
+    constructor(enteredtask, enteredtasknum, enteredtasktype, enteredchallengenum){
         super(enteredtask, enteredtasknum);
         this.tasktype = enteredtasktype;
+        this.challengenum = enteredchallengenum;
     }
 
     UpdateProgress(){
+        let storagelocation;
+        let TimerSessions;
+        let TimerSessionsint = 0;
+        let tasksdone = this.numtaskdone;
+
+        if (this.tasktype == "study"){
+            storagelocation = "study_sessions".concat(this.challengenum); 
+        }
+
+        else {
+            storagelocation = "break_sessions".concat(this.challengenum); 
+        }
+
+        console.log(storagelocation);
+        TimerSessions = localStorage.getItem(storagelocation);
+        console.log(TimerSessions);
+
+        if (TimerSessions == null){
+            TimerSessions = 0;
+        }
+
+        TimerSessionsint = parseInt(TimerSessions);
+
+        if (tasksdone != TimerSessionsint){
+            this.numtaskdone = tasksdone + TimerSessionsint;
+        }
+
+        /*
         /*
         console.log("working!")
         this.numtaskdone = this.numtaskdone + 1;
-        */
+        *
+
         let time = 0;
         let TimerSessions = 0;
         let timeint = 0;
         let tasksdone = this.numtaskdone;
 
         if (this.tasktype == "study"){
-            console.log("study", tasksdone, localStorage.getItem("study_sessions"));
+            //console.log("study", tasksdone, localStorage.getItem("study_sessions"));
             
             let temp = localStorage.getItem("study_sessions");
             if (tasksdone !== 0 && temp == "0"){
                 localStorage.setItem("study_sessions", tasksdone*10);
-
-                console.log("registered: study, ", tasksdone, temp);
+            
+                //console.log("registered: study, ", tasksdone, temp);
             }
 
             time = localStorage.getItem("study_sessions");
@@ -111,6 +141,7 @@ class StudyTask extends Task {
             console.log(this.numtaskdone, this.tasknum);
         }
         */
+       
     }
 
     ResetProgress(){
@@ -119,11 +150,11 @@ class StudyTask extends Task {
         //into issue where progress is carried over to new challenge when existing timer challenge of its kind is on screen
 
         if (this.tasktype == "study"){
-            localStorage.setItem("study_sessions", 0);
+            localStorage.setItem("study_sessions".concat(this.challengenum), 0);
         }
         
         else {
-            localStorage.setItem("break_sessions", 0);
+            localStorage.setItem("break_sessions".concat(this.challengenum), 0);
         }
 
         this.numtaskdone = 0;
@@ -210,19 +241,19 @@ class TaskUpdater {
 }
 
 const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
-const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break");
-const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study");
+const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break", 2);
+const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study", 3);
 
-const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study");
-const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break");
-const ST6 = new StudyTask("Use the study timer for 3 minutes", 3, "study");
+const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
+const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break", 1);
+const ST6 = new StudyTask("Use the study timer for 3 minutes", 3, "study", 1);
 
 let Updater10;
 let Updater15;
 let Updater20;
 
 const tasks10 = [ ST4, ST5, ST6 ];
-const tasks15 = [ ST2 ];
+const tasks15 = [ ST2, ST1 ];
 const tasks20 = [ ST3 ];
 
 function TaskCheckandSet(taskcategory){
