@@ -2,6 +2,9 @@
 //
 //
 //
+
+
+
 const challenge1 = document.getElementById("ctext1");
 const challenge2 = document.getElementById("ctext2");
 const challenge3 = document.getElementById("ctext3");
@@ -195,8 +198,15 @@ class TaskUpdater {
     }
 
     CompleteChallenge(){
+        let theme = localStorage.getItem("theme");
+        let accent = localStorage.getItem("accent");
+        let midtone = localStorage.getItem("midtone");
+
         this.Progressname.style.borderStyle = "solid";
-        this.Progressname.style.backgroundColor = "rgb(0,0,0, 1)";
+        this.Progressname.style.borderColor = theme;
+
+        this.Progressname.style.backgroundColor = midtone;
+        this.Progressname.style.color = theme;
         this.Progressname.textContent = "✓";
         this.Progressname.style.fontSize = "1.5em";
         this.Progressname.style.fontWeight ="900";
@@ -217,7 +227,8 @@ class TaskUpdater {
 
             this.Progressname.style.borderStyle = "none";
             this.Progressname.style.backgroundColor = "rgb(0,0,0, 0)";
-            this.Progressname.style.fontSize = "large";
+            this.Progressname.style.color = theme;
+            this.Progressname.style.fontSize = "1em";
             this.Progressname.style.fontWeight ="500";
         }
     }
@@ -482,6 +493,7 @@ function LoadChallenges(){
 //
 //
 
+//const root = document.documentElement;
 const root = document.documentElement;
 const cover = document.getElementById('cover');
 
