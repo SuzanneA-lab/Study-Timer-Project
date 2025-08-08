@@ -1,6 +1,7 @@
 :root {
     --theme: rgb(255, 255, 255);
     --accent: #0a0f72;
+    --midtone: #000686;
     --background: url(Stars.png);
 }
 
@@ -723,7 +724,12 @@ a{
     margin-top: 20px;
 
     background-color: var(--theme);
+    
     border-radius: 30px;
+    border-style: solid;
+    border-width: 5px;
+    border-color: var(--accent);
+
     width: 975px;
     height: 420px;
     position: relative;
@@ -737,7 +743,7 @@ a{
 #itemdesc{
     background-color: var(--accent); /* change to midtone */
     color: var(--theme);
-    width: 35%;
+    width: 37%;
     height: 67%;
 
     position: absolute;
@@ -747,7 +753,7 @@ a{
     border-radius: 20px;
     border-style: solid;
     border-color: var(--accent);
-    border-width: 5px;
+    border-width: 3px;
 
     display: flex;
     flex-direction: column;
@@ -805,7 +811,7 @@ a{
     border-radius: 20px;
     border-style: solid;
     border-color: var(--accent);
-    border-width: 5px;
+    border-width: 3px;
 }
 
 #popuppurchase{

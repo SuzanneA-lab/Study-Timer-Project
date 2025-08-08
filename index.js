@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", function(){
 function Load(){
     let theme = localStorage.getItem("theme");
     let accent = localStorage.getItem("accent");
+    let midtone = localStorage.getItem("midtone");
     let bg = localStorage.getItem("Background");
     let storedcoins = localStorage.getItem("coins");
 
@@ -39,6 +40,7 @@ function Load(){
 
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
+    root.style.setProperty('--midtone', midtone);
     root.style.setProperty('--background', bg);
     
     coindisplaynum.textContent = storedcoins.padStart(3,"0");
