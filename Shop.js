@@ -9,7 +9,10 @@ const itemtitle = document.getElementById("itemtitle");
 const itemdesc = document.getElementById("itemexp");
 
 const popuppurchase = document.getElementById("popuppurchase");
+const popupwindow = document.getElementById("purchasebox");
 const popupprompt = document.getElementById("purchaseprompt");
+
+const purchasebutton = document.getElementById("buybutton");
 
 class ItemManager{
     constructor(item){
@@ -48,6 +51,8 @@ class ItemManager{
 
         else {
             popuppurchase.style.display = 'flex';
+            purchasebutton.style.display = 'flex';
+            popupwindow.style.width = "850px";
             popupprompt.textContent = ("Purchase "+ this.item.name + " for " + this.item.price + " coins?");
         }
     }
@@ -61,7 +66,9 @@ class ItemManager{
         }
 
         else{
-            popupprompt.textContent ("Not enough coins!");
+            popupprompt.textContent = "Not enough coins!";
+            popupwindow.style.width = "425px";
+            purchasebutton.style.display = 'none';
         }
     }
 }
@@ -118,12 +125,15 @@ class Background extends ShopItem{
     }
 }
 
-/*temp setup
+//Users start out with starry bg unlocked
 localStorage.setItem("Starry Background", true);
+
+/*
 localStorage.setItem("Ocean Background", true);
 localStorage.setItem("Sweets Background", false);
 */
 
+// To create a new shop item create a new object of the appropriate type with all relevant info in variables
 const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "white", "#0a0f72","green");
 const Oceanbg = new Background("Ocean Background", 1, false, "ocean desc", "Ocean.png", "#000686", "white","yellow");
 const Chocobg = new Background("Sweets Background", 2, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","blue");
