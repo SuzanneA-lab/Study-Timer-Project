@@ -13,7 +13,7 @@ const progress1 = document.getElementById("p1");
 const progress2 = document.getElementById("p2");
 const progress3 = document.getElementById("p3");
 
-const coinnum = document.getElementById("");
+//const coinnum = document.getElementById("");
 
 let ProgressChecker = null;
 
@@ -292,8 +292,8 @@ function LoadChallenges(){
     //checks if there are existing challenges stored, if not adds new ones
 
     TaskCheckandSet("tasks10", tasks10.length);
-    TaskCheckandSet("tasks15", tasks10.length);
-    TaskCheckandSet("tasks20", tasks10.length);
+    TaskCheckandSet("tasks15", tasks15.length);
+    TaskCheckandSet("tasks20", tasks20.length);
 
     //creates variables to represent the indexes of task items within their respective lists
     let current10 = parseInt(localStorage.getItem("tasks10"));
@@ -330,7 +330,8 @@ function Load1Challenge(Updater, tasklistname){
 }
 
 
-//Real
+//delete later
+/*
 function GetReward10(){
     if (Updater10.Taskcomplete) {
         //AHHHHHHHHHH tasks10[]
@@ -353,10 +354,11 @@ function GetReward10(){
 
         localStorage.setItem("tasks10", new10);
 
-        Updater10.StartNewTask(tasks10[new10], 90);
+        Updater10.StartNewTask(tasks10[new10], 10);
         Updatealltasks();
     }
 }
+*/
 
 function GetReward(id){
     if (id == "p1"){
@@ -395,7 +397,7 @@ function GetReward(id){
 
     localStorage.setItem(tasklistname, new10);
 
-    Updater.StartNewTask(tasklist[new10], 90);
+    Updater.StartNewTask(tasklist[new10], Reward);
     Updatealltasks();
 }
 
