@@ -179,7 +179,7 @@ class TaskUpdater {
     }
 
     CheckandUpdateTasks(){
-        //this.Taskobj.UpdateProgress();
+        this.Taskobj.UpdateProgress();
         this.UpdateDisplay();
 
         if (this.Taskobj.numtaskdone >= this.Taskobj.tasknum){
@@ -276,14 +276,14 @@ let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ TT1, TT1, ST4];//[ ST4, ST5, ST6 ];
+const tasks10 = [ TT1, TT1];//[ ST4, ST5, ST6 ];
 const tasks15 = [ TT1, ST2, TT1];
 const tasks20 = [ TT1, TT1, TT1, ST3 ];
 
-function TaskCheckandSet(taskcategory){
+function TaskCheckandSet(taskcategory, listlength){
     currentTask = localStorage.getItem(taskcategory);
     
-    if (currentTask == null){
+    if (currentTask == null || currentTask >= listlength){
         localStorage.setItem(taskcategory, 0);
     }
 }
@@ -291,14 +291,14 @@ function TaskCheckandSet(taskcategory){
 function LoadChallenges(){
     //checks if there are existing challenges stored, if not adds new ones
 
-    TaskCheckandSet("tasks10");
-    TaskCheckandSet("tasks15");
-    TaskCheckandSet("tasks20");
+    TaskCheckandSet("tasks10", tasks10.length);
+    TaskCheckandSet("tasks15", tasks10.length);
+    TaskCheckandSet("tasks20", tasks10.length);
 
     //creates variables to represent the indexes of task items within their respective lists
-    let current10 = localStorage.getItem("tasks10");
-    let current15 = localStorage.getItem("tasks15");
-    let current20 = localStorage.getItem("tasks20");
+    let current10 = parseInt(localStorage.getItem("tasks10"));
+    let current15 = parseInt(localStorage.getItem("tasks15"));
+    let current20 = parseInt(localStorage.getItem("tasks20"));
 
     /*
     challenge1.textContent = tasks10[current10].task;
