@@ -26,18 +26,17 @@ class Task {
         this.numtaskdone = 0;
     }
 
-    /*
+    
     ResetProgress(){
         this.numtaskdone = 0;
         console.log("working")
     }
-    */
+    
 
-    /*
     UpdateProgress(){
-        throw new Error("Method 'UpdateProgress()' must be implemented");
+        //throw new Error("Method 'UpdateProgress()' must be implemented");
     }
-    */
+    
 }
 
 class StudyTask extends Task {
@@ -180,7 +179,7 @@ class TaskUpdater {
     }
 
     CheckandUpdateTasks(){
-        this.Taskobj.UpdateProgress();
+        //this.Taskobj.UpdateProgress();
         this.UpdateDisplay();
 
         if (this.Taskobj.numtaskdone >= this.Taskobj.tasknum){
@@ -201,16 +200,22 @@ class TaskUpdater {
         let theme = localStorage.getItem("theme");
         let accent = localStorage.getItem("accent");
         let midtone = localStorage.getItem("midtone");
-
+/*
         this.Progressname.style.borderStyle = "solid";
         this.Progressname.style.borderColor = theme;
 
         this.Progressname.style.backgroundColor = midtone;
         this.Progressname.style.color = theme;
+*/
         this.Progressname.textContent = "✓";
+        this.Progressname.classList.add('progresscomplete');
+
+/*
         this.Progressname.style.fontSize = "1.5em";
         this.Progressname.style.fontWeight ="900";
-
+        this.Progressname.style.cursor = "pointer";
+*/
+        
         this.Taskcomplete = true;
         //this.Progressname.style.color = "black";
     }
@@ -225,11 +230,16 @@ class TaskUpdater {
             this.Taskobj.ResetProgress();
             this.UpdateDisplay();
 
+            this.Progressname.classList.remove('progresscomplete');
+
+            /*
             this.Progressname.style.borderStyle = "none";
             this.Progressname.style.backgroundColor = "rgb(0,0,0, 0)";
             this.Progressname.style.color = theme;
             this.Progressname.style.fontSize = "1em";
-            this.Progressname.style.fontWeight ="500";
+            this.Progressname.style.fontWeight = "500";
+            this.Progressname.style.cursor = "auto";
+            */
         }
     }
 
@@ -251,7 +261,7 @@ class TaskUpdater {
     }
 }
 
-const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study");
+const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study", 1);
 const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break", 2);
 const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study", 3);
 
@@ -259,13 +269,16 @@ const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
 const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break", 1);
 const ST6 = new StudyTask("Use the study timer for 3 minutes", 3, "study", 1);
 
+//testing task
+const TT1 = new StudyTask("Tester", 0, "study", 1);
+
 let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ ST4, ST5, ST6 ];
-const tasks15 = [ ST2, ST1 ];
-const tasks20 = [ ST3 ];
+const tasks10 = [ TT1, TT1, ST4];//[ ST4, ST5, ST6 ];
+const tasks15 = [ TT1, ST2, TT1];
+const tasks20 = [ TT1, TT1, TT1, ST3 ];
 
 function TaskCheckandSet(taskcategory){
     currentTask = localStorage.getItem(taskcategory);
@@ -318,7 +331,7 @@ function Load1Challenge(Updater, tasklistname){
 
 
 //Real
-function GetReward(elementid){
+function GetReward10(){
     if (Updater10.Taskcomplete) {
         //AHHHHHHHHHH tasks10[]
 
@@ -343,6 +356,47 @@ function GetReward(elementid){
         Updater10.StartNewTask(tasks10[new10], 90);
         Updatealltasks();
     }
+}
+
+function GetReward(id){
+    if (id == "p1"){
+        Updater = Updater10;
+        tasklist = tasks10;
+        tasklistname = "tasks10"; 
+    }
+
+    else if (id == "p2"){
+        Updater = Updater15;
+        tasklist = tasks15;
+        tasklistname = "tasks15"; 
+    }
+
+    else {
+        Updater = Updater20;
+        tasklist = tasks20;
+        tasklistname = "tasks20"; 
+    }
+
+    let Reward = Updater.Coinrewards;
+    let storedcoins = parseInt(localStorage.getItem("coins"));   
+    
+    let totalcoins = Reward + storedcoins;
+    localStorage.setItem("coins", totalcoins);
+
+    coindisplaynum.textContent = String(totalcoins).padStart(3,"0");
+
+    let old10 = localStorage.getItem(tasklistname);
+    let new10 = parseInt(old10) + 1;
+    let len = tasklist.length;
+
+    if ( new10 == len ){
+        new10 = 0;
+    }
+
+    localStorage.setItem(tasklistname, new10);
+
+    Updater.StartNewTask(tasklist[new10], 90);
+    Updatealltasks();
 }
 
 function Updatealltasks(){
