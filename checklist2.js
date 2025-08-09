@@ -3,8 +3,6 @@
 //
 //
 
-
-
 const challenge1 = document.getElementById("ctext1");
 const challenge2 = document.getElementById("ctext2");
 const challenge3 = document.getElementById("ctext3");
