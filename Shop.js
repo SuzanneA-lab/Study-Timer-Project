@@ -142,7 +142,7 @@ localStorage.setItem("Sweets Background", false);
 */
 
 // To create a new shop item create a new object of the appropriate type with all relevant info in variables
-const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "#f0fafd", "#0a0f72","#3918b1ff");
+const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "#f0fafd", "#0a0f72","#060947");
 const Oceanbg = new Background("Ocean Background", 1, false, "ocean desc", "Ocean.png", "#000686", "#f0fafd","#caedfdff");
 const Chocobg = new Background("Sweets Background", 2, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","#200e0eff");
 

@@ -53,6 +53,18 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+
+    transition: all 2s ease-in-out;
+}
+
+#menucover{
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    width: calc(100vw - 250px);
+    background-color: color-mix(in srgb, var(--midtone) 30%, transparent);
+    z-index: 10;
+    display: none;
 }
 
 .menu li{

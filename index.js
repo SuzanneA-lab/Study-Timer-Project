@@ -48,10 +48,12 @@ function Load(){
 
 function Openmenu(){
     sidebar.style.display = 'flex';
+    document.getElementById("menucover").style.display = 'flex';
 }
 
 function Closemenu(){
     sidebar.style.display = 'none';
+    document.getElementById("menucover").style.display = 'none';
 }
 
 function Closehelp(){
