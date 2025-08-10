@@ -27,7 +27,7 @@ class Task {
     
     ResetProgress(){
         this.numtaskdone = 0;
-        console.log("working")
+        console.log("working Task version")
     }
     
 
@@ -71,84 +71,9 @@ class StudyTask extends Task {
         if (tasksdone != TimerSessionsint){
             this.numtaskdone = tasksdone + TimerSessionsint;
         }
-
-        /*
-        /*
-        console.log("working!")
-        this.numtaskdone = this.numtaskdone + 1;
-        *
-
-        let time = 0;
-        let TimerSessions = 0;
-        let timeint = 0;
-        let tasksdone = this.numtaskdone;
-
-        if (this.tasktype == "study"){
-            //console.log("study", tasksdone, localStorage.getItem("study_sessions"));
-            
-            let temp = localStorage.getItem("study_sessions");
-            if (tasksdone !== 0 && temp == "0"){
-                localStorage.setItem("study_sessions", tasksdone*10);
-            
-                //console.log("registered: study, ", tasksdone, temp);
-            }
-
-            time = localStorage.getItem("study_sessions");
-            console.log(time);
-
-            if (time == null){
-                TimerSessions = 0;
-            }
-        
-            else{
-                timeint = parseInt(time)
-                TimerSessions = Math.ceil(timeint/10);
-            }
-        }
-
-        else {
-            console.log("break" , tasksdone, localStorage.getItem("break_sessions"));
-
-            let temp = localStorage.getItem("break_sessions");
-            if (tasksdone !== 0 && temp == "0"){
-                localStorage.setItem("break_sessions", tasksdone*10);
-
-                console.log("registered: break, ", tasksdone, temp);
-            }
-
-            time = localStorage.getItem("break_sessions");
-            console.log(time);
-
-            if (time == null){
-                TimerSessions = 0;
-            }
-        
-            else{
-                timeint = parseInt(time)
-                TimerSessions = Math.ceil(timeint/10);
-            }
-        }
-
-        //console.log(this.numtaskdone, this.tasknum);
-
-        if (tasksdone != TimerSessions){
-            this.numtaskdone = tasksdone + TimerSessions;
-            //console.log(this.numtaskdone, tasksdone);
-        }
-
-        /*
-        if (this.numtaskdone >= this.tasknum){
-            console.log(this.numtaskdone, this.tasknum);
-        }
-        */
-       
     }
 
     ResetProgress(){
-        //setting TEMPORARY solution to completion error 
-        //previous error remedied but now running 
-        //into issue where progress is carried over to new challenge when existing timer challenge of its kind is on screen
-
         if (this.tasktype == "study"){
             localStorage.setItem("study_sessions".concat(this.challengenum), 0);
         }
@@ -157,8 +82,36 @@ class StudyTask extends Task {
             localStorage.setItem("break_sessions".concat(this.challengenum), 0);
         }
 
+        super.ResetProgress();
+
+        /*
         this.numtaskdone = 0;
         console.log("working");
+        */
+    }
+}
+
+class ChangeTask extends Task{
+    constructor(enteredtask, enteredtasknum, entereditemtype){
+        super(enteredtask, enteredtasknum);
+        this.itemtype = entereditemtype;
+        this.storagelocation = this.itemtype + "change";
+    }
+
+    UpdateProgress(){
+        //let storagelocation = this.itemtype + "change";
+        let numequips = 0;
+
+        if (localStorage.getItem(this.storagelocation) != null){
+            numequips = parseInt(localStorage.getItem(this.storagelocation));
+        }
+
+        this.numtaskdone = this.numtaskdone + numequips;
+    }
+
+    ResetProgress(){
+        localStorage.setItem(this.storagelocation, 0);
+        super.ResetProgress();
     }
 }
 
@@ -259,24 +212,29 @@ class TaskUpdater {
     }
 }
 
-const ST1 = new StudyTask("Use the study timer for 10 minutes", 10, "study", 1);
-const ST2 = new StudyTask("Use the break timer for 15 minutes", 15, "break", 2);
-const ST3 = new StudyTask("Use the study timer for 20 minutes", 20, "study", 3);
+const ST1 = new StudyTask("Use the Study Timer for 10 minutes", 10, "study", 1);
+const ST2 = new StudyTask("Use the Study Timer for 15 minutes", 15, "study", 2);
+const ST3 = new StudyTask("Use the Study Timer for 20 minutes", 20, "study", 3);
 
+const BR1 = new StudyTask("Use the Break Timer for 10 minutes", 10, "break", 1);
+const BR2 = new StudyTask("Use the Break Timer for 15 minutes", 15, "break", 2);
+const BR3 = new StudyTask("Use the Break Timer for 20 minutes", 20, "break", 3);
+
+const CB1 = new ChangeTask("Change the Background theme 1 time", 1, "background"); 
+
+//testing tasks
 const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
 const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break", 1);
 const ST6 = new StudyTask("Use the study timer for 3 minutes", 3, "study", 1);
-
-//testing task
 const TT1 = new StudyTask("Tester", 0, "study", 1);
 
 let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ TT1, TT1];//[ ST4, ST5, ST6 ];
+const tasks10 = [ TT1, ST4, CB1, TT1];//[ ST4, ST5, ST6 ];
 const tasks15 = [ TT1, ST2, TT1];
-const tasks20 = [ TT1, TT1, TT1, ST3 ];
+const tasks20 = [ TT1, TT1, TT1, ST3];
 
 function TaskCheckandSet(taskcategory, listlength){
     currentTask = localStorage.getItem(taskcategory);

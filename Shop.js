@@ -121,6 +121,14 @@ class Background extends ShopItem{
         localStorage.setItem("midtone", this.midtone);
         localStorage.setItem("Background", "url(" + this.img + ")");
 
+        //framework for challenge tracking
+        let numequips = localStorage.getItem("backgroundchange");
+        if (numequips == null){
+            numequips = 0;
+        }
+
+        localStorage.setItem("backgroundchange", numequips + 1);
+
         Load();
     }
 }

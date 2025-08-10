@@ -65,6 +65,7 @@ body {
     text-decoration: none;
     display: flex;
     align-items: center;
+    transition: all 0.2s ease-in-out;
 }
 
 .menu a:hover{
@@ -124,6 +125,7 @@ a{
     border-width: 2px;
     border-style: double;
     border-color: var(--theme);
+    transition: all 0.2s ease-in-out;
 }
 
 .topbutton:hover{
@@ -643,16 +645,28 @@ a{
     justify-content: center;
     align-items: center;
     
-    font-size: 1.5em;
-    font-weight: 900;
+    font-size: 1.8em;
+    font-weight: 1000;
 
     border-radius: 30%;
     border-width: 3px;
     border-style: solid;
+
+    color: var(--theme);
     border-color: var(--theme);
     background-color: var(--midtone);
 
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.progresscomplete:hover{
+    color: var(--accent);
+    border-color: var(--theme);
+    border-width: 0px;
+
+    background-color: var(--theme);
+    transition: all 0.2s ease-in-out;
 }
 
 #Rewardicon1{
@@ -769,7 +783,7 @@ a{
 }
 
 #itemdesc{
-    background-color: var(--accent); /* change to midtone */
+    background-color: var(--midtone); /* change to midtone */
     color: var(--theme);
     width: 37%;
     height: 67%;
@@ -780,7 +794,7 @@ a{
 
     border-radius: 20px;
     border-style: solid;
-    border-color: var(--accent);
+    border-color: var(--midtone);
     border-width: 3px;
 
     display: flex;
@@ -817,7 +831,7 @@ a{
 
     border-radius: 40px;
     position: absolute;
-    bottom: 7%;
+    bottom: 6%;
     
     display: flex;
     justify-content: center;
@@ -828,6 +842,21 @@ a{
     font-size: 1.4em;
 
     color: var(--theme);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.Purchasebutton:hover{
+    background-color: var(--midtone);
+    color: var(--theme);
+
+    border-color: var(--midtone);
+
+    border-style: solid;
+    border-width: 3px;
+    transition: all 0.2s ease-in-out; 
+
+    bottom: 5%;
 }
 
 #shopimg{
