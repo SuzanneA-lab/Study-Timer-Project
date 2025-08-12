@@ -46,14 +46,34 @@ function Load(){
     coindisplaynum.textContent = storedcoins.padStart(3,"0");
 }
 
+let menuopened = false;
+const menucover = document.getElementById("menucover");
+
 function Openmenu(){
+    menuopened = true;
     sidebar.style.display = 'flex';
-    document.getElementById("menucover").style.display = 'flex';
+    menucover.style.display = 'flex';
+
+    sidebar.style.animationName="menuslidein";
+    menucover.style.animationName="menuslidein";
 }
 
 function Closemenu(){
-    sidebar.style.display = 'none';
-    document.getElementById("menucover").style.display = 'none';
+    menuopened = false;
+    sidebar.style.animationName="menuslideout";
+    menucover.style.animationName="menuslideout";
+
+    sidebar.addEventListener( "animationend", function(){
+        if (!menuopened) {
+            sidebar.style.display = 'none';
+        }
+    });
+
+    menucover.addEventListener( "animationend", function(){
+        if (!menuopened) {
+            menucover.style.display = 'none';
+        }
+    });
 }
 
 function Closehelp(){

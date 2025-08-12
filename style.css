@@ -54,7 +54,19 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
 
-    transition: all 2s ease-in-out;
+    animation-name: menuslidein;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes menuslidein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes menuslideout {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
 
 #menucover{
@@ -65,6 +77,10 @@ body {
     background-color: color-mix(in srgb, var(--midtone) 30%, transparent);
     z-index: 10;
     display: none;
+
+    animation-name: menuslidein;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
 }
 
 .menu li{
@@ -267,6 +283,7 @@ a{
 
 #menuicon2{
     color: var(--theme);
+    padding-top: 10px;
 }
 
 #Headertext{
