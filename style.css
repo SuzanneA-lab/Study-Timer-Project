@@ -229,6 +229,11 @@ a{
     margin-right: 5px;
 }
 
+@keyframes iconshrink{
+    from {scale: 1;}
+    to {scale: 0.75;}
+}
+
 #reseticon{
     color: var(--theme);
     font-variation-settings:
@@ -237,19 +242,40 @@ a{
     'GRAD' -200,
     'opsz' 40;
     font-size: 70px;
+    transition: all 0.2s ease-in-out;
 }
-
 
 #playicon{
     color: var(--theme);
+    transition: all 0.2s ease-in-out;
 }
 
 #pauseicon{
     color: var(--theme);
+    transition: all 0.2s ease-in-out;
+}
+
+#reseticon:hover{
+    scale:0.9;
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
+#playicon:hover{
+    scale:0.9;
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
+#pauseicon:hover{
+    scale:0.9;
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
 }
 
 #menuicon{
     margin-bottom: 0px;
+    transition: all 0.2s ease-in-out;
 }
 
 #HeaderIcons{
@@ -270,6 +296,7 @@ a{
     align-self: flex-end;
     margin-left: auto;
     margin-right: 12px;
+    transition: all 0.2s ease-in-out;
 }
 
 #menuiconright2{
@@ -279,11 +306,33 @@ a{
         'GRAD' -200,
         'opsz' 40;
     align-self: flex-end;
+    transition: all 0.2s ease-in-out;
+}
+
+#menuicon:hover{
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
+#menuiconright1:hover{
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
+#menuiconright2:hover{
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
 }
 
 #menuicon2{
     color: var(--theme);
     padding-top: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+#menuicon2:hover{
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
 }
 
 #Headertext{
@@ -412,7 +461,7 @@ a{
 
 .popupwindow{
     position: fixed;
-    background-color: color-mix(in srgb, var(--theme) 80%, transparent);;
+    background-color: color-mix(in srgb, var(--theme) 90%, transparent);;
     height: 400px;
     width: 650px;
     border-radius: 40px;
