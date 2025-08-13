@@ -157,18 +157,20 @@ a{
     cursor: pointer;
     
     border-width: 2px;
-    border-style: double;
+    border-style: solid;
     border-color: var(--theme);
     transition: all 0.2s ease-in-out;
 }
 
 .topbutton:hover{
+    background: var(--accent) !important; 
+    color: var(--theme) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+#studybutton{
     background: var(--accent);
     color: var(--theme);
-    border-width: 2px;
-    border-style: double;
-    border-color: var(--theme);
-    transition: all 0.2s ease-in-out;
 }
 
 /*delete*/

@@ -335,6 +335,9 @@ function updateautorun(){
     display.textContent = `${minutes}:${seconds}`;
 }
 
+const studyb = document.getElementById("studybutton");
+const shortbb = document.getElementById("shortbreakbutton");
+const longbb = document.getElementById("longbreakbutton");
 
 function Study(){
     current_setting = work;
@@ -345,7 +348,16 @@ function Study(){
 
     time_passed = 0;
     isRunning = false;
-    setdisplay(current_setting)
+    setdisplay(current_setting);
+
+    studyb.style.backgroundColor = 'var(--accent)';
+    studyb.style.color = 'var(--theme)';
+
+    shortbb.style.backgroundColor = 'var(--theme)';
+    shortbb.style.color = 'var(--accent)';
+
+    longbb.style.backgroundColor = 'var(--theme)';
+    longbb.style.color = 'var(--accent)';
 }
 
 function ShortB(){
@@ -358,6 +370,15 @@ function ShortB(){
     time_passed = 0;
     isRunning = false;
     setdisplay(current_setting)
+
+    shortbb.style.backgroundColor = 'var(--accent)';
+    shortbb.style.color = 'var(--theme)';
+
+    studyb.style.backgroundColor = 'var(--theme)';
+    studyb.style.color = 'var(--accent)';
+
+    longbb.style.backgroundColor = 'var(--theme)';
+    longbb.style.color = 'var(--accent)';
 }
 
 function LongB(){
@@ -370,6 +391,15 @@ function LongB(){
     time_passed = 0;
     isRunning = false;
     setdisplay(current_setting)
+
+    longbb.style.backgroundColor = 'var(--accent)';
+    longbb.style.color = 'var(--theme)';
+
+    studyb.style.backgroundColor = 'var(--theme)';
+    studyb.style.color = 'var(--accent)';
+
+    shortbb.style.backgroundColor = 'var(--theme)';
+    shortbb.style.color = 'var(--accent)';
 }
 
 function setdisplay(current_setting){
