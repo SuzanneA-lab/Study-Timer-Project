@@ -76,11 +76,22 @@ function Closemenu(){
     });
 }
 
+let helpopened = false;
+
 function Closehelp(){
-    popuphelp.style.display = 'none';
+    helpopened = false;
+    popuphelp.style.animationName = 'menuslideout';
+
+    popuphelp.addEventListener( "animationend", function(){
+        if (!helpopened) {
+            popuphelp.style.display = 'none';
+        }
+    });
 }
 
 function Openhelp(){
+    helpopened = true;
+    popuphelp.style.animationName = 'menuslidein';
     popuphelp.style.display = 'flex';
 }
 
