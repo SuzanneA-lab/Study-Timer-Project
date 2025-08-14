@@ -480,7 +480,7 @@ a{
     transform: translateY(0%);
 
     animation-name: popuptransition;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-iteration-count: 1;
 }
 
@@ -878,7 +878,7 @@ a{
     border-color: var(--accent);
 
     width: 975px;
-    height: 420px;
+    height: 400px;
     position: relative;
 
     display: flex;
@@ -890,7 +890,7 @@ a{
 #itemdesc{
     background-color: var(--midtone); /* change to midtone */
     color: var(--theme);
-    width: 37%;
+    width: 39%;
     height: 67%;
 
     position: absolute;
@@ -929,10 +929,30 @@ a{
     color: var(--theme);
 }
 
+#arrowfront{
+    transition: all 0.2s ease-in-out;
+}
+
+#arrowback{
+    transition: all 0.2s ease-in-out;
+}
+
+#arrowfront:hover{
+    scale:0.9;
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
+#arrowback:hover{
+    scale:0.9;
+    color: color-mix(in srgb, var(--theme) 90%, var(--accent) 50%);
+    transition: all 0.2s ease-in-out;
+}
+
 .Purchasebutton{
     background-color: var(--accent);
     width: 92%;
-    height: 13%;
+    height: 14%;
 
     border-radius: 40px;
     position: absolute;
@@ -954,14 +974,9 @@ a{
 .Purchasebutton:hover{
     background-color: var(--midtone);
     color: var(--theme);
+    scale: 0.97;
 
-    border-color: var(--midtone);
-
-    border-style: solid;
-    border-width: 3px;
     transition: all 0.2s ease-in-out; 
-
-    bottom: 5%;
 }
 
 #shopimg{
@@ -972,7 +987,7 @@ a{
 
     border-radius: 20px;
     border-style: solid;
-    border-color: var(--accent);
+    border-color: var(--midtone);
     border-width: 3px;
 }
 

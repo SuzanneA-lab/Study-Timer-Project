@@ -27,7 +27,6 @@ class Task {
     
     ResetProgress(){
         this.numtaskdone = 0;
-        console.log("working Task version")
     }
     
 
@@ -58,9 +57,9 @@ class StudyTask extends Task {
             storagelocation = "break_sessions".concat(this.challengenum); 
         }
 
-        console.log(storagelocation);
+        //console.log(storagelocation);
         TimerSessions = localStorage.getItem(storagelocation);
-        console.log(TimerSessions);
+        //console.log(TimerSessions);
 
         if (TimerSessions == null){
             TimerSessions = 0;
@@ -119,8 +118,10 @@ class EarnTask extends Task{
     constructor(enteredtask, enteredtasknum){
         super(enteredtask, enteredtasknum);
         
-        let initialcointotal = localStorage.getItem("coins");
-        localStorage.setItem("initialcoins", initialcointotal);
+        if (localStorage.getItem("initialcoins") == null){
+            let initialcointotal = localStorage.getItem("coins");
+            localStorage.setItem("initialcoins", initialcointotal);
+        }
     }
 
     UpdateProgress(){
@@ -142,6 +143,43 @@ class EarnTask extends Task{
         let initialcointotal = localStorage.getItem("coins");
         localStorage.setItem("initialcoins", initialcointotal);
         
+        super.ResetProgress();  
+    }
+}
+
+//idk why this wont work bruh :(
+//maybe try making all objects create themselves on first opening only????
+
+class BuyTask extends Task{
+    constructor(enteredtask, enteredtasknum){
+        super(enteredtask, enteredtasknum);
+        
+        if (localStorage.getItem("initialcoins2") == null){
+             let initialcointotal = localStorage.getItem("coins");
+            localStorage.setItem("initialcoins2", initialcointotal);       
+        }
+    }
+
+    UpdateProgress(){
+        let oldcointotal = parseInt(localStorage.getItem("initialcoins2"));
+        let newcointotal = parseInt(localStorage.getItem("coins"));
+        let amountspent = 0;
+
+        if (oldcointotal > newcointotal){
+            amountspent = oldcointotal - newcointotal;
+            this.numtaskdone = this.numtaskdone + amountspent;
+        }
+
+        else if (oldcointotal < newcointotal){
+            localStorage.setItem("initialcoins2", newcointotal);
+        }
+    }
+
+    ResetProgress(){
+        let initialcointotal = localStorage.getItem("coins");
+        localStorage.setItem("initialcoins2", initialcointotal);
+        console.log("reset trigger");
+
         super.ResetProgress();  
     }
 }
@@ -253,7 +291,11 @@ const BR3 = new StudyTask("Use the Break Timer for 20 minutes", 20, "break", 3);
 
 const CB1 = new ChangeTask("Change the Background theme 1 time", 1, "background"); 
 
-const ET1 = new EarnTask("Earn 15 coins by completing a challenge", 15);
+const ET1 = new EarnTask("Earn 10 coins by completing a challenge", 10);
+const ET2 = new EarnTask("Earn 20 coins by completing a challenge", 20);
+
+const BT1 = new BuyTask("Spend 1 coin in the shop", 1);
+const BT2 = new BuyTask("Spend 3 coins in the shop", 3);
 
 //testing tasks
 const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
@@ -265,8 +307,8 @@ let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ TT1, ST4, CB1, TT1];//[ ST4, ST5, ST6 ];
-const tasks15 = [ TT1, ST2, ET1, TT1];
+const tasks10 = [ TT1, BT2, ST4, CB1, TT1];//[ ST4, ST5, ST6 ];
+const tasks15 = [ ET1, TT1, ST2, ET1, TT1];
 const tasks20 = [ TT1, TT1, TT1, ST3];
 
 function TaskCheckandSet(taskcategory, listlength){
@@ -550,7 +592,7 @@ const coindisplaynum = document.getElementById("numcoins");
 
 window.onload = Load();
 
-window.addEventListener('DOMContentLoaded', Load());
+//window.addEventListener('DOMContentLoaded', Load());
     //cover.remove()
     //cover.style.visibility = "hidden";
 //);
