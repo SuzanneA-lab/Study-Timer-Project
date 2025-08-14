@@ -30,7 +30,7 @@ function Load(){
         theme = "white";
         accent = "#0a0f72";
         bg = "url(Stars.png)";
-        storedcoins = 0;
+        storedcoins = "0";
 
         localStorage.setItem("theme", "white");
         localStorage.setItem("accent", "#0a0f72");

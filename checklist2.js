@@ -115,6 +115,37 @@ class ChangeTask extends Task{
     }
 }
 
+class EarnTask extends Task{
+    constructor(enteredtask, enteredtasknum){
+        super(enteredtask, enteredtasknum);
+        
+        let initialcointotal = localStorage.getItem("coins");
+        localStorage.setItem("initialcoins", initialcointotal);
+    }
+
+    UpdateProgress(){
+        let oldcointotal = parseInt(localStorage.getItem("initialcoins"));
+        let newcointotal = parseInt(localStorage.getItem("coins"));
+        let amountearned = 0;
+
+        if (oldcointotal < newcointotal){
+            amountearned = newcointotal - oldcointotal;
+            this.numtaskdone = this.numtaskdone + amountearned;
+        }
+
+        else if (oldcointotal > newcointotal){
+            localStorage.setItem("initialcoins", newcointotal);
+        }
+    }
+
+    ResetProgress(){
+        let initialcointotal = localStorage.getItem("coins");
+        localStorage.setItem("initialcoins", initialcointotal);
+        
+        super.ResetProgress();  
+    }
+}
+
 class TaskUpdater {
     constructor(enteredTaskobj, enteredCoinrewards, enteredChallengename, enteredProgressname){
         this.Taskobj = enteredTaskobj;
@@ -222,6 +253,8 @@ const BR3 = new StudyTask("Use the Break Timer for 20 minutes", 20, "break", 3);
 
 const CB1 = new ChangeTask("Change the Background theme 1 time", 1, "background"); 
 
+const ET1 = new EarnTask("Earn 15 coins by completing a challenge", 15);
+
 //testing tasks
 const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
 const ST5 = new StudyTask("Use the break timer for 2 minutes", 2, "break", 1);
@@ -233,7 +266,7 @@ let Updater15;
 let Updater20;
 
 const tasks10 = [ TT1, ST4, CB1, TT1];//[ ST4, ST5, ST6 ];
-const tasks15 = [ TT1, ST2, TT1];
+const tasks15 = [ TT1, ST2, ET1, TT1];
 const tasks20 = [ TT1, TT1, TT1, ST3];
 
 function TaskCheckandSet(taskcategory, listlength){
@@ -533,7 +566,7 @@ function Load(){
         theme = "white";
         accent = "#0a0f72";
         bg = "url(Stars.png)";
-        storedcoins = 0;
+        storedcoins = "0";
 
         localStorage.setItem("theme", "white");
         localStorage.setItem("accent", "#0a0f72");
