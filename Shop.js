@@ -106,7 +106,7 @@ class ShopItem{
 }
 
 class Background extends ShopItem{
-    constructor(name, price, owned, desc, img, theme, accent, midtone){
+    constructor(name, price, owned, img, theme, accent, midtone, desc){
         super(name, price, owned, desc);
 
         this.img = img;
@@ -142,13 +142,14 @@ localStorage.setItem("Sweets Background", false);
 */
 
 // To create a new shop item create a new object of the appropriate type with all relevant info in variables
-const Starsbg = new Background("Starry Background", 20, true, "stars desc", "Stars.png", "#f0fafd", "#0a0f72","#060947");
-const Oceanbg = new Background("Ocean Background", 1, false, "ocean desc", "Ocean.png", "#000686", "rgba(232, 250, 255, 1)","#caedfdff");
-const Chocobg = new Background("Sweets Background", 2, true, "choco desc", "Chocolate.png", "#fdf5f0", "#5b2828","#200e0eff");
+const Starsbg = new Background("Starry Background", 20, true, "Stars.png", "#f0fafd", "#0a0f72","#060947", "A simplistic starry background to start your studying journey with! \n Spend your workdays gazing at a calming night sky background with shining white accents.");
+const Oceanbg = new Background("Ocean Background", 1, false, "Ocean.png", "#000686", "rgba(232, 250, 255, 1)","#caedfdff", "A mesmerizing ocean scene that features a fleet of jellyfish bathed in a calming light. Using this background is sure to bring out your inner mermaid!");
+const Chocobg = new Background("Sweets Background", 2, false, "Chocolate.png", "#fdf5f0", "#5b2828","#200e0eff", "A delicious looking array of sweets in a classical box of chocolates, each one drawn with love and care. Indulge your sweet tooth by purchasing this scrumptious background!");
+const Paperbg = new Background("Paper Background", 1, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
 
 let IM;
 
-const Shoplist = [Starsbg, Oceanbg, Chocobg];
+const Shoplist = [Starsbg,  Paperbg, Oceanbg, Chocobg,];
 let currentposition = 0;
 
 function LoadShop(){

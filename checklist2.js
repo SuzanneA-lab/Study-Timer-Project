@@ -307,9 +307,9 @@ let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ TT1, BT2, ST4, CB1, TT1];//[ ST4, ST5, ST6 ];
-const tasks15 = [ ET1, TT1, ST2, ET1, TT1];
-const tasks20 = [ TT1, TT1, TT1, ST3];
+const tasks10 = [ST1,BR1,CB1];//[ TT1, BT2, ST4, CB1, TT1];
+const tasks15 = [ST2,BR2,ET1];//[ ET1, TT1, ST2, ET1, TT1];
+const tasks20 = [ST3,BR3,ET2];//[ TT1, TT1, TT1, ST3];
 
 function TaskCheckandSet(taskcategory, listlength){
     currentTask = localStorage.getItem(taskcategory);
