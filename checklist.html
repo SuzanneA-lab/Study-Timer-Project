@@ -30,27 +30,122 @@
                 <h3>What is this?</h3>
                 <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
                 <h3>How do I earn coins?</h3>
-                <p>Earn coins by completing on the Tasks page, by either completing your own checklist items, or by completing (daily) challenges.</p>
+                <p>Earn coins by completing challenges on the Tasks page!</p>
                 <h3>What do I use coins for?</h3>
-                <p>Use coins to purchase additional themes, audio tracks and speakers on the shop page. Items you purchased will be saved the next time you open the app.</p>
+                <p>Use coins to purchase additional background themes to suit your mood on the shop page! Items you've purchased will be saved the next time you open the app.</p>
             </div>
 
         </div>
     </div>
 
     <div id="popupbgsettings">
-        <div class="popupwindow">
+        <div class="popupwindow" id="settingwindow">
             <div class="popuptop">
                 <h1 class="popuptitle">Settings</h1>
                 <span class="material-symbols-outlined" id="popupclose2" onclick="CloseSettings()">close</span>
             </div>
 
+            <div id="settingspopupcontent">
+                <div class="setting" id="SFX">
+                    <h3 class="settingtitle">Sound effects</h3>
+
+                    <label class="switch">
+                        <input type="checkbox" id="sfxswitch">
+                        <span class="slider round"></span>
+                    </label>
+
+                </div>
+
+                <div class="setting" id="Autorun">
+                    <h3 class="settingtitle">Timer autorun</h3>
+
+                    <label class="switch">
+                        <input type="checkbox" id="autoswitch">
+                        <span class="slider round"></span>
+                    </label>
+
+                </div>
+
+                    
+                    <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
+
+                <div class="setting" id="TimerLength">
+
+
+                    <div id="StudyLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Study</h3>
+                        
+                        <input 
+                            id="Slengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
+                        </input>
+                    </div>  
+
+                    <div id="SbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Short Break</h3>
+                        
+                        <input 
+                            id="SBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                        </input>
+                    </div>  
+
+                    <div id="LbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Long Break</h3>
+                        <input 
+                            id="LBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                        </input>
+                    </div>  
+                </div>
+                
+<!--
+                <div class="setting" id="setting3">
+                    <h3 class="settingtitle">Study length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+                </div>
+
+                <div class="setting" id="setting4">
+                    <h3 class="settingtitle">Long Break length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="10" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+                </div>
+
+                <div class="setting" id="setting5">
+                    <h3 class="settingtitle">Short Break length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="5" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+-->
+                </div>
+
+                </div>
+            </div>
+
+            <!--
             <div class="popuptext">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius deserunt similique inventore rerum quam dolorem qui nulla porro in dolore! Expedita beatae in totam error officia fuga, porro officiis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque harum deleniti? Reprehenderit in quo dignissimos dolorem perspiciatis iste, eveniet laboriosam praesentium consectetur eaque delectus consequatur voluptatibus eum earum fugiat?</p>
             </div>
+            -->
 
         </div>
     </div>
+
 
     <nav>
         <div id="HeaderIcons">

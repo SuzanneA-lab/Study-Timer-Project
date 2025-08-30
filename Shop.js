@@ -150,7 +150,7 @@ const Pinkbg = new Background("Pink Background", 1, false, "Pink.png", "#FFF0F9"
 
 let IM;
 
-const Shoplist = [Starsbg,  Paperbg, Oceanbg, Chocobg, Pinkbg];
+const Shoplist = [Starsbg, Pinkbg, Paperbg, Oceanbg, Chocobg];
 let currentposition = 0;
 
 function LoadShop(){
@@ -244,8 +244,18 @@ const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
 const coindisplaynum = document.getElementById("numcoins");
 
+const studylengthtextbox = document.getElementById("Slengthtextbox");
+const Sbreaklengthtextbox = document.getElementById("SBlengthtextbox");
+const Lbreaklengthtextbox = document.getElementById("LBlengthtextbox");
+
+const SfxSwitch = document.getElementById("sfxswitch");
+const AutoSwitch = document.getElementById("autoswitch"); 
+
 const root = document.documentElement;
 const cover = document.getElementById('cover');
+
+let soundon = true;
+let autorun = true;
 
 window.onload = Load();
 
@@ -259,25 +269,60 @@ function Load(){
     let accent = localStorage.getItem("accent");
     let midtone = localStorage.getItem("midtone");
     let bg = localStorage.getItem("Background");
+    
     let storedcoins = localStorage.getItem("coins");
+    
+    let sfxsetting = localStorage.getItem("SFX");
+    let autorunsetting = localStorage.getItem("Autorun");
+    
+    let studylength = localStorage.getItem("Studylen"); 
+    let longbreaklength = localStorage.getItem("Lbreaklen");
+    let shortbreaklength = localStorage.getItem("Sbreaklen");
 
-    if (theme === null || bg === null || accent == null || storedcoins == null){
+    if (theme === null || bg === null || accent == null || storedcoins == null || sfxsetting == null || studylength == null || longbreaklength == null || shortbreaklength == null){
         theme = "white";
         accent = "#0a0f72";
-        //must add a midtone default setting
+        midtone = "#060947";
         bg = "url(Stars.png)";
         storedcoins = "0";
+        sfxsetting == "true";
+        autorunsetting = "true";
+        
+        studylength = "25";
+        longbreaklength = "10";
+        shortbreaklength = "5";
 
         localStorage.setItem("theme", "white");
         localStorage.setItem("accent", "#0a0f72");
+        localStorage.setItem("midtone", "#060947");
         localStorage.setItem("Background", "url(Stars.png)");
+
         localStorage.setItem("coins", 0);
+
+        localStorage.setItem("SFX", true);
+        localStorage.setItem("Autorun", true);
+
+        localStorage.setItem("Studylen", "25");
+        localStorage.setItem("Lbreaklen", "10");
+        localStorage.setItem("Sbreaklen", "5");
     }
 
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
     root.style.setProperty('--midtone', midtone);
     root.style.setProperty('--background', bg);
+
+    if (sfxsetting == "false"){
+        SfxSwitch.checked = true;
+    }
+
+    if (autorunsetting == "false"){
+        AutoSwitch.checked = true;
+    }
+
+    studylengthtextbox.value = studylength;
+    Sbreaklengthtextbox.value = shortbreaklength;
+    Lbreaklengthtextbox.value = longbreaklength;
     
     coindisplaynum.textContent = storedcoins.padStart(3,"0");
     LoadShop();
@@ -313,21 +358,138 @@ function Closemenu(){
     });
 }
 
+let helpopened = false;
+let settingsopened = false;
+
 function Closehelp(){
-    popuphelp.style.display = 'none';
+    helpopened = false;
+    popuphelp.style.animationName = 'menuslideout';
+
+    popuphelp.addEventListener( "animationend", function(){
+        if (!helpopened) {
+            popuphelp.style.display = 'none';
+        }
+    });
 }
 
 function Openhelp(){
+    helpopened = true;
+    popuphelp.style.animationName = 'menuslidein';
     popuphelp.style.display = 'flex';
 }
 
 function CloseSettings(){
-    popupsettings.style.display = 'none';
+    settingsopened = false;
+    popupsettings.style.animationName = 'menuslideout';
+
+    popupsettings.addEventListener( "animationend", function(){
+        if (!settingsopened) {
+            popupsettings.style.display = 'none';
+        }
+    });
+
+    console.log(studylengthtextbox.value);
+    console.log(localStorage.getItem("Studylen"));
+
+    let studynum = studylengthtextbox.value;
+    let Sbreaknum = Sbreaklengthtextbox.value;
+    let Lbreaknum = Lbreaklengthtextbox.value; 
+    
+    if (studynum != localStorage.getItem("Studylen")) {
+        if (!isNaN(studynum) && studynum != "0" && studynum != "00" && studynum != "e" && studynum != "++"  && studynum != "+-"  && studynum != "-+"  && studynum != "--" && studynum != null && studynum != ""){
+            localStorage.setItem("Studylen", studylengthtextbox.value);
+
+            console.log("passes tests");
+            
+        }
+
+        else{
+            studylengthtextbox.value = "25";  
+            localStorage.setItem("Studylen", "25"); 
+        }
+
+        console.log(studynum);
+
+        LoadTimer();
+        Study();
+    }
+
+    if (Sbreaknum != localStorage.getItem("Sbreaklen")) {
+        if (!isNaN(Sbreaknum) && Sbreaknum != "0" && Sbreaknum != "00" && Sbreaknum != "e" && Sbreaknum != "++"  && Sbreaknum != "+-"  && Sbreaknum != "-+"  && Sbreaknum != "--" && Sbreaknum != null && Sbreaknum != ""){
+            localStorage.setItem("Sbreaklen", Sbreaklengthtextbox.value);
+        }
+
+        else{
+            Sbreaklengthtextbox.value = "5";  
+            localStorage.setItem("Sbreaklen", "5"); 
+        }
+
+        LoadTimer();
+        Study();
+    }
+
+    if (Lbreaknum != localStorage.getItem("Lbreaklen")) {
+        if (!isNaN(Lbreaknum) && Lbreaknum != "0" && Lbreaknum != "00" && Lbreaknum != "e" && Lbreaknum != "++"  && Lbreaknum != "+-"  && Lbreaknum != "-+" && Lbreaknum != "--" && Lbreaknum != null && Lbreaknum != ""){
+            localStorage.setItem("Lbreaklen", Lbreaklengthtextbox.value);
+        }
+
+        else{
+            Lbreaklengthtextbox.value = "10";  
+            localStorage.setItem("Lbreaklen", "10"); 
+        }
+
+        LoadTimer();
+        Study();
+    }
+
 }
 
 function OpenSettings(){
+    settingsopened = true;
+    popupsettings.style.animationName = 'menuslidein';
     popupsettings.style.display = 'flex';
 }
+
+//function changeSFXsetting(){
+    SfxSwitch.addEventListener('change', () => {
+        console.log("changed sfx settimg");
+
+        if (SfxSwitch.checked){
+            console.log("sound off");
+            localStorage.setItem("SFX", false);
+
+            soundon = false;
+        }
+
+        else{
+            console.log("sound on")
+            localStorage.setItem("SFX", true);
+
+            soundon = true;  
+        }
+    })
+//}
+
+//function changeAutorunsetting(){
+    AutoSwitch.addEventListener('change', () => {
+        if (AutoSwitch.checked){
+            localStorage.setItem("Autorun", false);
+
+            autorun = false;
+            stop();
+        }
+
+        else{
+            localStorage.setItem("Autorun", true);
+
+            autorun = true;
+            stop();
+        }
+    })
+//}
+
+
+
 
 //// Shop code starts here
 //

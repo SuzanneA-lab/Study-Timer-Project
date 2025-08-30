@@ -35,13 +35,14 @@ function LoadTimer(){
     let longBlenint = parseInt(localStorage.getItem("Lbreaklen"));
     let shortBlenint = parseInt(localStorage.getItem("Sbreaklen"));
 
-    console.log(studylenint, longBlenint, shortBlenint);
+    //console.log(studylenint, longBlenint, shortBlenint);
 
     work = studylenint*60000;
     short_break = shortBlenint*60000;
     long_break = longBlenint*60000;
 
-    console.log(work, short_break, long_break);
+    //console.log(work, short_break, long_break);
+    Study();
 }
 
 function start(){
