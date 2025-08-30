@@ -40,40 +40,97 @@
     </div>
 
     <div id="popupbgsettings">
-        <div class="popupwindow">
+        <div class="popupwindow" id="settingwindow">
             <div class="popuptop">
                 <h1 class="popuptitle">Settings</h1>
                 <span class="material-symbols-outlined" id="popupclose2" onclick="CloseSettings()">close</span>
             </div>
 
             <div id="settingspopupcontent">
-                <div class="setting" id="setting1">
+                <div class="setting" id="SFX">
                     <h3 class="settingtitle">Sound effects</h3>
 
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" id="sfxswitch">
                         <span class="slider round"></span>
                     </label>
 
                 </div>
 
-                <div class="setting" id="setting1">
+                <div class="setting" id="Autorun">
                     <h3 class="settingtitle">Timer autorun</h3>
 
                     <label class="switch">
-                        <input type="checkbox">
+                        <input type="checkbox" id="autoswitch">
                         <span class="slider round"></span>
                     </label>
 
                 </div>
 
-                <div class="setting" id="setting1">
-                    <h3 class="settingtitle">Skibidi rizz</h3>
+                    
+                    <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
 
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
+                <div class="setting" id="TimerLength">
+
+
+                    <div id="StudyLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Study</h3>
+                        
+                        <input 
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                        </input>
+                    </div>  
+
+                    <div id="SbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Short Break</h3>
+                        
+                        <input 
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                        </input>
+                    </div>  
+
+                    <div id="LbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Long Break</h3>
+                        <input 
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                        </input>
+                    </div>  
+                </div>
+                
+<!--
+                <div class="setting" id="setting3">
+                    <h3 class="settingtitle">Study length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+                </div>
+
+                <div class="setting" id="setting4">
+                    <h3 class="settingtitle">Long Break length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="10" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+                </div>
+
+                <div class="setting" id="setting5">
+                    <h3 class="settingtitle">Short Break length</h3>
+
+                    <input 
+                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                    class="UserInputMins" type="number" value="5" max="99" min="1" maxlength="2" pattern="[0-9]*">
+                    </input>
+
+-->
+                </div>
 
                 </div>
             </div>
@@ -204,7 +261,7 @@
 </div>
 
     <audio id="ding">
-        <source src = "PerituneMaterial_Harvest2.mp3">
+        <source src = "TimerAlertSFX.mp3">
     </audio>
 
     <script> const page = "main"; </script>

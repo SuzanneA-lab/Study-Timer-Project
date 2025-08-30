@@ -9,8 +9,14 @@ const popuphelp = document.getElementById("popupbghelp");
 const popupsettings = document.getElementById("popupbgsettings");
 const coindisplaynum = document.getElementById("numcoins");
 
+const SfxSwitch = document.getElementById("sfxswitch");
+const AutoSwitch = document.getElementById("autoswitch"); 
+
 const root = document.documentElement;
 const cover = document.getElementById('cover');
+
+let soundon = true;
+let autorun = true;
 
 window.onload = Load();
 
@@ -25,25 +31,44 @@ function Load(){
     let midtone = localStorage.getItem("midtone");
     let bg = localStorage.getItem("Background");
     let storedcoins = localStorage.getItem("coins");
+    let sfxsetting = localStorage.getItem("SFX");
+    let autorunsetting = localStorage.getItem("Autorun");
 
     if (theme === null || bg === null || accent == null || storedcoins == null){
         theme = "white";
         accent = "#0a0f72";
+        midtone = "#060947";
         bg = "url(Stars.png)";
         storedcoins = "0";
+        sfxsetting == "true";
+        autorunsetting = "true";
 
         localStorage.setItem("theme", "white");
         localStorage.setItem("accent", "#0a0f72");
+        localStorage.setItem("midtone", "#060947");
         localStorage.setItem("Background", "url(Stars.png)");
+
         localStorage.setItem("coins", 0);
+
+        localStorage.setItem("SFX", true);
+        localStorage.setItem("Autorun", true);
     }
 
     root.style.setProperty('--theme', theme);
     root.style.setProperty('--accent', accent);
     root.style.setProperty('--midtone', midtone);
     root.style.setProperty('--background', bg);
+
+    if (sfxsetting == "false"){
+        SfxSwitch.checked = true;
+    }
+
+    if (autorunsetting == "false"){
+        AutoSwitch.checked = true;
+    }
     
     coindisplaynum.textContent = storedcoins.padStart(3,"0");
+    LoadTimer();
 }
 
 let menuopened = false;
@@ -103,6 +128,45 @@ function OpenSettings(){
     popupsettings.style.display = 'flex';
 }
 
+//function changeSFXsetting(){
+    SfxSwitch.addEventListener('change', () => {
+        console.log("changed sfx settimg");
+
+        if (SfxSwitch.checked){
+            console.log("sound off");
+            localStorage.setItem("SFX", false);
+
+            soundon = false;
+        }
+
+        else{
+            console.log("sound on")
+            localStorage.setItem("SFX", true);
+
+            soundon = true;  
+        }
+    })
+//}
+
+//function changeAutorunsetting(){
+    AutoSwitch.addEventListener('change', () => {
+        if (AutoSwitch.checked){
+            localStorage.setItem("Autorun", false);
+
+            autorun = false;
+            stop();
+        }
+
+        else{
+            localStorage.setItem("Autorun", true);
+
+            autorun = true;
+            stop();
+        }
+    })
+//}
+
+
 //// Timer code starts here
 //
 //
@@ -118,9 +182,24 @@ let timer = null;
 let isRunning = false;
 let time_passed = 0;
 let study_sessions = 0;
+
+/*
+let soundon = true;
 let autorun = true;
+*/
 
 let timetracker;
+document.getElementById("ding").volume = 0.7;
+
+function LoadTimer(){
+    if (localStorage.getItem("SFX") == "false"){
+        soundon = false;
+    }
+
+    if (localStorage.getItem("Autorun") == "false"){
+        autorun = false;
+    }
+}
 
 function start(){
     if (!isRunning){
@@ -227,8 +306,9 @@ function update(){
     let seconds = Math.floor(remaining_time / 1000 % 60); 
 
     if (minutes <= 0 & seconds <= 0){
-        document.getElementById("ding").play();
-        //study_sessions++;
+        if (soundon == true){
+            document.getElementById("ding").play();
+        }
 
         clearInterval(timer);
         clearInterval(timetracker);
@@ -278,7 +358,10 @@ function updateautorun(){
     let seconds = Math.floor(remaining_time / 1000 % 60); 
 
     if (minutes <= 0 & seconds <= 0){
-        document.getElementById("ding").play();
+        if (soundon == true){
+            document.getElementById("ding").play();
+        }
+
         study_sessions++;
 
         if (current_setting != work){

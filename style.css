@@ -20,7 +20,7 @@
     left: 0;
     background-color: #2e2e2e;
     z-index: 10;
-    transition: opacity 90000ms ease-out;
+    transition: opacity 5s ease-out;
 }
 */
 
@@ -291,6 +291,7 @@ a{
     justify-content: center;
     align-items:center;
     padding:10px;
+    padding-bottom: 0px;
 }
 
 #menuiconright1{
@@ -883,6 +884,7 @@ a{
 
     width: 975px;
     height: 400px;
+    min-height: 400px;
     position: relative;
 
     display: flex;
@@ -1066,12 +1068,16 @@ a{
 }
 
 /*settings code*/
+#settingwindow{
+    height: 400px;
+}
+
 #settingspopupcontent{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    margin-top: -60px;
+    margin-top: 0px;
 }
 
 .setting{
@@ -1079,17 +1085,64 @@ a{
     flex-direction: row;
 
     align-items: center;
+    justify-content: space-evenly;
     margin-bottom: 20px;
 }
 
 .settingtitle{
     font-size: 1.75em;
+
     margin-bottom: 5px;
 
     margin-left: 25px;
 
     font-family: "Outfit", sans-serif;
-    font-weight: 450;
+    font-weight: 420;
+}
+
+#headerlength{
+    margin-top: 5px;
+}
+
+#TimerLength{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    margin-top: 10px;
+    
+    margin-left: 25px;
+    padding-right: 20px;
+    
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.settingsubtitle{
+    font-size: 1.2em;
+    margin-bottom: 10px;
+
+    font-family: "Outfit", sans-serif;
+    font-weight: 420;
+}
+
+.UserInputMins{
+  width: 100px;
+  height: 29px;
+  padding: 5px;
+  font-size: 1.2em;
+  font-family: "Outfit", sans-serif;
+  font-weight: 420;
+  border-radius: 7px;
+}
+
+.lengthsetting{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-right: 60px;
 }
 
 /* The switch - the box around the slider */
