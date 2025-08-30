@@ -1,172 +1,3 @@
-//// Code for all pages
-//
-//
-//
-
-const display = document.getElementById("clock")
-const sidebar = document.querySelector('.menu');
-const popuphelp = document.getElementById("popupbghelp");
-const popupsettings = document.getElementById("popupbgsettings");
-const coindisplaynum = document.getElementById("numcoins");
-
-const SfxSwitch = document.getElementById("sfxswitch");
-const AutoSwitch = document.getElementById("autoswitch"); 
-
-const root = document.documentElement;
-const cover = document.getElementById('cover');
-
-let soundon = true;
-let autorun = true;
-
-window.onload = Load();
-
-window.addEventListener("DOMContentLoaded", function(){
-    //cover.remove()
-    //cover.style.visibility = "hidden";
-});
-
-function Load(){
-    let theme = localStorage.getItem("theme");
-    let accent = localStorage.getItem("accent");
-    let midtone = localStorage.getItem("midtone");
-    let bg = localStorage.getItem("Background");
-    let storedcoins = localStorage.getItem("coins");
-    let sfxsetting = localStorage.getItem("SFX");
-    let autorunsetting = localStorage.getItem("Autorun");
-
-    if (theme === null || bg === null || accent == null || storedcoins == null){
-        theme = "white";
-        accent = "#0a0f72";
-        midtone = "#060947";
-        bg = "url(Stars.png)";
-        storedcoins = "0";
-        sfxsetting == "true";
-        autorunsetting = "true";
-
-        localStorage.setItem("theme", "white");
-        localStorage.setItem("accent", "#0a0f72");
-        localStorage.setItem("midtone", "#060947");
-        localStorage.setItem("Background", "url(Stars.png)");
-
-        localStorage.setItem("coins", 0);
-
-        localStorage.setItem("SFX", true);
-        localStorage.setItem("Autorun", true);
-    }
-
-    root.style.setProperty('--theme', theme);
-    root.style.setProperty('--accent', accent);
-    root.style.setProperty('--midtone', midtone);
-    root.style.setProperty('--background', bg);
-
-    if (sfxsetting == "false"){
-        SfxSwitch.checked = true;
-    }
-
-    if (autorunsetting == "false"){
-        AutoSwitch.checked = true;
-    }
-    
-    coindisplaynum.textContent = storedcoins.padStart(3,"0");
-    LoadTimer();
-}
-
-let menuopened = false;
-const menucover = document.getElementById("menucover");
-
-function Openmenu(){
-    menuopened = true;
-    sidebar.style.display = 'flex';
-    menucover.style.display = 'flex';
-
-    sidebar.style.animationName="menuslidein";
-    menucover.style.animationName="menuslidein";
-}
-
-function Closemenu(){
-    menuopened = false;
-    sidebar.style.animationName="menuslideout";
-    menucover.style.animationName="menuslideout";
-
-    sidebar.addEventListener( "animationend", function(){
-        if (!menuopened) {
-            sidebar.style.display = 'none';
-        }
-    });
-
-    menucover.addEventListener( "animationend", function(){
-        if (!menuopened) {
-            menucover.style.display = 'none';
-        }
-    });
-}
-
-let helpopened = false;
-
-function Closehelp(){
-    helpopened = false;
-    popuphelp.style.animationName = 'menuslideout';
-
-    popuphelp.addEventListener( "animationend", function(){
-        if (!helpopened) {
-            popuphelp.style.display = 'none';
-        }
-    });
-}
-
-function Openhelp(){
-    helpopened = true;
-    popuphelp.style.animationName = 'menuslidein';
-    popuphelp.style.display = 'flex';
-}
-
-function CloseSettings(){
-    popupsettings.style.display = 'none';
-}
-
-function OpenSettings(){
-    popupsettings.style.display = 'flex';
-}
-
-//function changeSFXsetting(){
-    SfxSwitch.addEventListener('change', () => {
-        console.log("changed sfx settimg");
-
-        if (SfxSwitch.checked){
-            console.log("sound off");
-            localStorage.setItem("SFX", false);
-
-            soundon = false;
-        }
-
-        else{
-            console.log("sound on")
-            localStorage.setItem("SFX", true);
-
-            soundon = true;  
-        }
-    })
-//}
-
-//function changeAutorunsetting(){
-    AutoSwitch.addEventListener('change', () => {
-        if (AutoSwitch.checked){
-            localStorage.setItem("Autorun", false);
-
-            autorun = false;
-            stop();
-        }
-
-        else{
-            localStorage.setItem("Autorun", true);
-
-            autorun = true;
-            stop();
-        }
-    })
-//}
-
-
 //// Timer code starts here
 //
 //
@@ -199,6 +30,18 @@ function LoadTimer(){
     if (localStorage.getItem("Autorun") == "false"){
         autorun = false;
     }
+
+    let studylenint = parseInt(localStorage.getItem("Studylen"));
+    let longBlenint = parseInt(localStorage.getItem("Lbreaklen"));
+    let shortBlenint = parseInt(localStorage.getItem("Sbreaklen"));
+
+    console.log(studylenint, longBlenint, shortBlenint);
+
+    work = studylenint*60000;
+    short_break = shortBlenint*60000;
+    long_break = longBlenint*60000;
+
+    console.log(work, short_break, long_break);
 }
 
 function start(){
@@ -302,7 +145,7 @@ function update(){
     time_passed = newtime-time;
     remaining_time = current_setting - time_passed;
 
-    let minutes = Math.floor(remaining_time / (1000*60) % 60);
+    let minutes = Math.floor(remaining_time / (1000*60));
     let seconds = Math.floor(remaining_time / 1000 % 60); 
 
     if (minutes <= 0 & seconds <= 0){
@@ -354,7 +197,7 @@ function updateautorun(){
     time_passed = newtime-time;
     remaining_time = current_setting - time_passed;
 
-    let minutes = Math.floor(remaining_time / (1000*60) % 60);
+    let minutes = Math.floor(remaining_time / (1000*60));
     let seconds = Math.floor(remaining_time / 1000 % 60); 
 
     if (minutes <= 0 & seconds <= 0){
@@ -486,7 +329,7 @@ function LongB(){
 }
 
 function setdisplay(current_setting){
-    let minutes = Math.floor(current_setting / (1000*60) % 60);
+    let minutes = Math.floor(current_setting / (1000*60));
     let seconds = Math.floor(current_setting / 1000 % 60); 
 
     minutes = String(minutes).padStart(2,"0");
@@ -543,3 +386,260 @@ const Studytask1 = new Task("Use the study timer for 10 minutes", 10);
 function LoadChallenges(){
     challenge1.textContent = "Studytask1.task";
 }
+
+//// Code for all pages
+//
+//
+//
+
+const display = document.getElementById("clock")
+const sidebar = document.querySelector('.menu');
+const popuphelp = document.getElementById("popupbghelp");
+const popupsettings = document.getElementById("popupbgsettings");
+const coindisplaynum = document.getElementById("numcoins");
+
+const studylengthtextbox = document.getElementById("Slengthtextbox");
+const Sbreaklengthtextbox = document.getElementById("SBlengthtextbox");
+const Lbreaklengthtextbox = document.getElementById("LBlengthtextbox");
+
+const SfxSwitch = document.getElementById("sfxswitch");
+const AutoSwitch = document.getElementById("autoswitch"); 
+
+const root = document.documentElement;
+const cover = document.getElementById('cover');
+
+let soundon = true;
+let autorun = true;
+
+window.onload = Load();
+
+window.addEventListener("DOMContentLoaded", function(){
+    //cover.remove()
+    //cover.style.visibility = "hidden";
+});
+
+function Load(){
+    let theme = localStorage.getItem("theme");
+    let accent = localStorage.getItem("accent");
+    let midtone = localStorage.getItem("midtone");
+    let bg = localStorage.getItem("Background");
+    
+    let storedcoins = localStorage.getItem("coins");
+    
+    let sfxsetting = localStorage.getItem("SFX");
+    let autorunsetting = localStorage.getItem("Autorun");
+    
+    let studylength = localStorage.getItem("Studylen"); 
+    let longbreaklength = localStorage.getItem("Lbreaklen");
+    let shortbreaklength = localStorage.getItem("Sbreaklen");
+
+    if (theme === null || bg === null || accent == null || storedcoins == null || sfxsetting == null || studylength == null || longbreaklength == null || shortbreaklength == null){
+        theme = "white";
+        accent = "#0a0f72";
+        midtone = "#060947";
+        bg = "url(Stars.png)";
+        storedcoins = "0";
+        sfxsetting == "true";
+        autorunsetting = "true";
+        
+        studylength = "25";
+        longbreaklength = "10";
+        shortbreaklength = "5";
+
+        localStorage.setItem("theme", "white");
+        localStorage.setItem("accent", "#0a0f72");
+        localStorage.setItem("midtone", "#060947");
+        localStorage.setItem("Background", "url(Stars.png)");
+
+        localStorage.setItem("coins", 0);
+
+        localStorage.setItem("SFX", true);
+        localStorage.setItem("Autorun", true);
+
+        localStorage.setItem("Studylen", "25");
+        localStorage.setItem("Lbreaklen", "10");
+        localStorage.setItem("Sbreaklen", "5");
+    }
+
+    root.style.setProperty('--theme', theme);
+    root.style.setProperty('--accent', accent);
+    root.style.setProperty('--midtone', midtone);
+    root.style.setProperty('--background', bg);
+
+    if (sfxsetting == "false"){
+        SfxSwitch.checked = true;
+    }
+
+    if (autorunsetting == "false"){
+        AutoSwitch.checked = true;
+    }
+
+    studylengthtextbox.value = studylength;
+    Sbreaklengthtextbox.value = shortbreaklength;
+    Lbreaklengthtextbox.value = longbreaklength;
+    
+    coindisplaynum.textContent = storedcoins.padStart(3,"0");
+    LoadTimer();
+}
+
+let menuopened = false;
+const menucover = document.getElementById("menucover");
+
+function Openmenu(){
+    menuopened = true;
+    sidebar.style.display = 'flex';
+    menucover.style.display = 'flex';
+
+    sidebar.style.animationName="menuslidein";
+    menucover.style.animationName="menuslidein";
+}
+
+function Closemenu(){
+    menuopened = false;
+    sidebar.style.animationName="menuslideout";
+    menucover.style.animationName="menuslideout";
+
+    sidebar.addEventListener( "animationend", function(){
+        if (!menuopened) {
+            sidebar.style.display = 'none';
+        }
+    });
+
+    menucover.addEventListener( "animationend", function(){
+        if (!menuopened) {
+            menucover.style.display = 'none';
+        }
+    });
+}
+
+let helpopened = false;
+let settingsopened = false;
+
+function Closehelp(){
+    helpopened = false;
+    popuphelp.style.animationName = 'menuslideout';
+
+    popuphelp.addEventListener( "animationend", function(){
+        if (!helpopened) {
+            popuphelp.style.display = 'none';
+        }
+    });
+}
+
+function Openhelp(){
+    helpopened = true;
+    popuphelp.style.animationName = 'menuslidein';
+    popuphelp.style.display = 'flex';
+}
+
+function CloseSettings(){
+    settingsopened = false;
+    popupsettings.style.animationName = 'menuslideout';
+
+    popupsettings.addEventListener( "animationend", function(){
+        if (!settingsopened) {
+            popupsettings.style.display = 'none';
+        }
+    });
+
+    console.log(studylengthtextbox.value);
+    console.log(localStorage.getItem("Studylen"));
+
+    let studynum = studylengthtextbox.value;
+    let Sbreaknum = Sbreaklengthtextbox.value;
+    let Lbreaknum = Lbreaklengthtextbox.value; 
+    
+    if (studynum != localStorage.getItem("Studylen")) {
+        if (!isNaN(studynum) && studynum != "0" && studynum != "00" && studynum != "e" && studynum != "++"  && studynum != "+-"  && studynum != "-+"  && studynum != "--" && studynum != null && studynum != ""){
+            localStorage.setItem("Studylen", studylengthtextbox.value);
+
+            console.log("passes tests");
+            
+        }
+
+        else{
+            studylengthtextbox.value = "25";  
+            localStorage.setItem("Studylen", "25"); 
+        }
+
+        console.log(studynum);
+
+        LoadTimer();
+        Study();
+    }
+
+    if (Sbreaknum != localStorage.getItem("Sbreaklen")) {
+        if (!isNaN(Sbreaknum) && Sbreaknum != "0" && Sbreaknum != "00" && Sbreaknum != "e" && Sbreaknum != "++"  && Sbreaknum != "+-"  && Sbreaknum != "-+"  && Sbreaknum != "--" && Sbreaknum != null && Sbreaknum != ""){
+            localStorage.setItem("Sbreaklen", Sbreaklengthtextbox.value);
+        }
+
+        else{
+            Sbreaklengthtextbox.value = "5";  
+            localStorage.setItem("Sbreaklen", "5"); 
+        }
+
+        LoadTimer();
+        Study();
+    }
+
+    if (Lbreaknum != localStorage.getItem("Lbreaklen")) {
+        if (!isNaN(Lbreaknum) && Lbreaknum != "0" && Lbreaknum != "00" && Lbreaknum != "e" && Lbreaknum != "++"  && Lbreaknum != "+-"  && Lbreaknum != "-+" && Lbreaknum != "--" && Lbreaknum != null && Lbreaknum != ""){
+            localStorage.setItem("Lbreaklen", Lbreaklengthtextbox.value);
+        }
+
+        else{
+            Lbreaklengthtextbox.value = "10";  
+            localStorage.setItem("Lbreaklen", "10"); 
+        }
+
+        LoadTimer();
+        Study();
+    }
+
+}
+
+function OpenSettings(){
+    settingsopened = true;
+    popupsettings.style.animationName = 'menuslidein';
+    popupsettings.style.display = 'flex';
+}
+
+//function changeSFXsetting(){
+    SfxSwitch.addEventListener('change', () => {
+        console.log("changed sfx settimg");
+
+        if (SfxSwitch.checked){
+            console.log("sound off");
+            localStorage.setItem("SFX", false);
+
+            soundon = false;
+        }
+
+        else{
+            console.log("sound on")
+            localStorage.setItem("SFX", true);
+
+            soundon = true;  
+        }
+    })
+//}
+
+//function changeAutorunsetting(){
+    AutoSwitch.addEventListener('change', () => {
+        if (AutoSwitch.checked){
+            localStorage.setItem("Autorun", false);
+
+            autorun = false;
+            stop();
+        }
+
+        else{
+            localStorage.setItem("Autorun", true);
+
+            autorun = true;
+            stop();
+        }
+    })
+//}
+
+
