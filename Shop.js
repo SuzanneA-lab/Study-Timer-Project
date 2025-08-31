@@ -116,20 +116,22 @@ class Background extends ShopItem{
     }
 
     Equip(){
-        localStorage.setItem("theme", this.theme);
-        localStorage.setItem("accent", this.accent);
-        localStorage.setItem("midtone", this.midtone);
-        localStorage.setItem("Background", "url(" + this.img + ")");
+        if(localStorage.getItem("theme") != this.theme){   
+            localStorage.setItem("theme", this.theme);
+            localStorage.setItem("accent", this.accent);
+            localStorage.setItem("midtone", this.midtone);
+            localStorage.setItem("Background", "url(" + this.img + ")");
 
-        //framework for challenge tracking
-        let numequips = localStorage.getItem("backgroundchange");
-        if (numequips == null){
-            numequips = 0;
+            //framework for challenge tracking
+            let numequips = localStorage.getItem("backgroundchange");
+            if (numequips == null){
+                numequips = 0;
+            }
+
+            localStorage.setItem("backgroundchange", numequips + 1);
+
+            Load();
         }
-
-        localStorage.setItem("backgroundchange", numequips + 1);
-
-        Load();
     }
 }
 
@@ -147,6 +149,8 @@ const Oceanbg = new Background("Ocean Background", 100, false, "Ocean.png", "#00
 const Chocobg = new Background("Sweets Background", 125, false, "Chocolate.png", "#fdede3ff", "#5b2828","#200e0eff", "A delicious looking array of sweets in a classical box of chocolates, each one drawn with love and care. Indulge your sweet tooth by purchasing this scrumptious background!");
 const Paperbg = new Background("Paper Background", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
 const Pinkbg = new Background("Pink Background", 50, false, "Pink.png", "#FFF0F9", "#d32062ff", "#97034dff", "desc")
+
+const testbg = new Background("Paper Backgound", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
 
 let IM;
 

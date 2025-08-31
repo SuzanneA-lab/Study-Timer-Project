@@ -469,7 +469,7 @@ a{
 
 .popupwindow{
     position: fixed;
-    background-color: color-mix(in srgb, var(--theme) 90%, transparent);;
+    background-color: color-mix(in srgb, var(--theme) 90%, transparent);
     height: 400px;
     width: 650px;
     border-radius: 40px;
@@ -1028,13 +1028,13 @@ a{
 
 #purchasebox{
     position: absolute;
-    background-color: rgb(255, 255, 255, 0.85);
+    background-color: color-mix(in srgb, var(--theme) 95%, transparent);
     height: 200px;
     width: 850px;
     border-radius: 40px;
     box-shadow: -10px 0 10px rgba(0,0,0,0.1);
     backdrop-filter: blur(54px);
-    color: black;
+    color: var(--accent);
     margin-bottom: 90px;
 
     display: flex;
@@ -1048,7 +1048,7 @@ a{
 }
 
 .pwbutton{
-    background-color: white;
+    background-color: var(--theme);
     border-style: solid;
     width: 170px;
     height: 40px;
@@ -1063,10 +1063,10 @@ a{
 }
 
 .pwbutton:hover{
-    background: black;
-    color: white;
+    background: var(--accent);
+    color: var(--theme);
     border-width: 3px;
-    border-color: var(--theme);
+    border-color: var(--accent);
     transition: all 0.2s ease-in-out;
 }
 
