@@ -272,6 +272,7 @@ class TaskUpdater {
         
     }
     */
+   /*
 
     LoadNewTask(newTaskobj){
         this.Taskobj.ResetProgress();
@@ -279,6 +280,7 @@ class TaskUpdater {
         this.Taskobj = newTaskobj;
         this.Taskcomplete = false;
     }
+        */
 }
 
 const ST1 = new StudyTask("Use the Study Timer for 10 minutes", 10, "study", 1);
@@ -291,11 +293,11 @@ const BR3 = new StudyTask("Use the Break Timer for 20 minutes", 20, "break", 3);
 
 const CB1 = new ChangeTask("Change the Background theme 1 time", 1, "background"); 
 
-const ET1 = new EarnTask("Earn 10 coins by completing a challenge", 10);
-const ET2 = new EarnTask("Earn 20 coins by completing a challenge", 20);
+const ET1 = new EarnTask("Earn 10 coins by completing challenges", 10);
+const ET2 = new EarnTask("Earn 20 coins by completing challenges", 20);
 
-const BT1 = new BuyTask("Spend 1 coin in the shop", 1);
-const BT2 = new BuyTask("Spend 3 coins in the shop", 3);
+const BT1 = new BuyTask("Purchase 1 item in the shop", 1);
+const BT2 = new BuyTask("Spend at least 75 coins in the shop", 75);
 
 //testing tasks
 const ST4 = new StudyTask("Use the study timer for 1 minute", 1, "study", 1);
@@ -307,14 +309,14 @@ let Updater10;
 let Updater15;
 let Updater20;
 
-const tasks10 = [ST1,BR1,CB1];//[ TT1, BT2, ST4, CB1, TT1];
-const tasks15 = [ST2,BR2,ET1];//[ ET1, TT1, ST2, ET1, TT1];
-const tasks20 = [ST3,BR3,ET2];//[ TT1, TT1, TT1, ST3];
+const tasks10 = [BR1,ST1,CB1];//[ TT1, BT2, ST4, CB1, TT1];
+const tasks15 = [ST2,ET1,BR2,BT1];//[ ET1, TT1, ST2, ET1, TT1];
+const tasks20 = [ET2,BR3,ST3,ET2,BT2];//[ TT1, TT1, TT1, ST3];
 
 function TaskCheckandSet(taskcategory, listlength){
     currentTask = localStorage.getItem(taskcategory);
     
-    if (currentTask == null || currentTask >= listlength){
+    if (currentTask == null || parseInt(currentTask) >= listlength){
         localStorage.setItem(taskcategory, 0);
     }
 }
@@ -351,6 +353,7 @@ function LoadChallenges(){
     Updater20.CheckandUpdateTasks();
 }
 
+/*
 function Load1Challenge(Updater, tasklistname){
     TaskCheckandSet(tasklistname);
 
@@ -359,7 +362,7 @@ function Load1Challenge(Updater, tasklistname){
     Updater.LoadNewTask(current);
     Updater.UpdateDisplay();
 }
-
+*/
 
 //delete later
 /*
@@ -436,6 +439,46 @@ function Updatealltasks(){
     Updater10.CheckandUpdateTasks();
     Updater15.CheckandUpdateTasks();
     Updater20.CheckandUpdateTasks();
+}
+
+function TaskSkip(){
+    let oldtaskindex1 = parseInt(localStorage.getItem("tasks10")); 
+    let oldtaskindex2 = parseInt(localStorage.getItem("tasks15")); 
+    let oldtaskindex3 = parseInt(localStorage.getItem("tasks20"));
+    
+    let newtaskindex1 = SetNextTask("tasks10", tasks10.length);
+    let newtaskindex2 = SetNextTask("tasks15", tasks15.length);
+    let newtaskindex3 = SetNextTask("tasks20", tasks20.length);
+
+    let newtask1 = tasks10[newtaskindex1];
+    let newtask2 = tasks15[newtaskindex2];
+    let newtask3 = tasks20[newtaskindex3];
+
+    Updater10.Taskcomplete = true;
+    Updater10.StartNewTask(newtask1, newtask1.Reward);
+
+    Updater15.Taskcomplete = true;
+    Updater15.StartNewTask(newtask2, newtask2.Reward);
+
+    Updater20.Taskcomplete = true;
+    Updater20.StartNewTask(newtask3, newtask3.Reward);
+}
+
+function SetNextTask(taskcategory, listlength){
+    currentTask = parseInt(localStorage.getItem(taskcategory));
+    let newindex = 0;
+    
+    if (currentTask == null || isNaN(currentTask) || currentTask >= listlength-1){
+        console.log(currentTask, listlength);
+        localStorage.setItem(taskcategory, 0);
+    }
+
+    else {
+        localStorage.setItem(taskcategory, currentTask+1);
+        newindex = currentTask+1;
+    }
+
+    return newindex;
 }
 
 /*

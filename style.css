@@ -104,6 +104,7 @@ body {
     color: var(--theme);
     font-family: "Outfit", sans-serif;
     font-size: 1.2em;
+    cursor: pointer;
 }
 
 .menu a:hover{
@@ -707,7 +708,7 @@ a{
 }
 
 #taskbuttonempty{
-    background-color: var(--accent); 
+    background-color: var(--midtone); 
     color: var(--theme);
     height: 10%;
     width: 93%;
@@ -716,6 +717,22 @@ a{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    font-family: "Outfit", sans-serif;
+    font-weight: 400;
+    font-size: 0.5em;
+}
+
+#taskbuttonempty:hover{
+    scale: 0.95;
+    background-color: var(--accent);
+}
+
+#refreshicon{
+    scale:0.5;
 }
 
 /*
