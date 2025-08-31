@@ -796,8 +796,7 @@ function CloseSettings(){
 
         console.log(studynum);
 
-        LoadTimer();
-        Study();
+
     }
 
     if (Sbreaknum != localStorage.getItem("Sbreaklen")) {
@@ -810,8 +809,7 @@ function CloseSettings(){
             localStorage.setItem("Sbreaklen", "5"); 
         }
 
-        LoadTimer();
-        Study();
+
     }
 
     if (Lbreaknum != localStorage.getItem("Lbreaklen")) {
@@ -824,8 +822,7 @@ function CloseSettings(){
             localStorage.setItem("Lbreaklen", "10"); 
         }
 
-        LoadTimer();
-        Study();
+
     }
 
 }
@@ -865,7 +862,6 @@ function OpenSettings(){
 
             AutoSwitch.ariaChecked = true;
             autorun = false;
-            stop();
         }
 
         else{
@@ -873,7 +869,6 @@ function OpenSettings(){
 
             AutoSwitch.ariaChecked = true;
             autorun = true;
-            stop();
         }
     })
 //}
