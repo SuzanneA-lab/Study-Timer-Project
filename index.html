@@ -51,57 +51,55 @@
                     <h3 class="settingtitle">Sound effects</h3>
 
                     <label class="switch">
-                        <input type="checkbox" id="sfxswitch">
+                        <input type="checkbox" id="sfxswitch" type="switch" aria-label="sliding switch 1" role="Turns soundeffects off" aria-checked="false">
                         <span class="slider round"></span>
                     </label>
 
                 </div>
 
-                <div class="setting" id="Autorun">
-                    <h3 class="settingtitle">Timer autorun</h3>
+            <div class="setting" id="Autorun">
+                <h3 class="settingtitle">Timer autorun</h3>
 
-                    <label class="switch">
-                        <input type="checkbox" id="autoswitch">
-                        <span class="slider round"></span>
-                    </label>
+                <label class="switch">
+                    <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
+                    <span class="slider round"></span>
+                </label>
 
-                </div>
+            </div>
 
                     
-                    <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
+            <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
 
-                <div class="setting" id="TimerLength">
+            <div class="setting" id="TimerLength">
+                <div id="StudyLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Study</h3>
+                    
+                    <input 
+                        id="Slengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
+                    </input>
+                </div>  
 
+                <div id="SbreakLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Short Break</h3>
+                    
+                    <input 
+                        id="SBlengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                    </input>
+                </div>  
 
-                    <div id="StudyLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Study</h3>
-                        
-                        <input 
-                            id="Slengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
-                        </input>
-                    </div>  
-
-                    <div id="SbreakLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Short Break</h3>
-                        
-                        <input 
-                            id="SBlengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                        </input>
-                    </div>  
-
-                    <div id="LbreakLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Long Break</h3>
-                        <input 
-                            id="LBlengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                        </input>
-                    </div>  
-                </div>
+                <div id="LbreakLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Long Break</h3>
+                    <input 
+                        id="LBlengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                    </input>
+                </div>  
+            </div>
                 
 <!--
                 <div class="setting" id="setting3">

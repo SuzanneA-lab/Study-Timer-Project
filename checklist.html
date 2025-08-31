@@ -50,57 +50,55 @@
                     <h3 class="settingtitle">Sound effects</h3>
 
                     <label class="switch">
-                        <input type="checkbox" id="sfxswitch">
+                        <input type="checkbox" id="sfxswitch" type="switch" aria-label="sliding switch 1" role="Turns soundeffects off" aria-checked="false">
                         <span class="slider round"></span>
                     </label>
 
                 </div>
 
-                <div class="setting" id="Autorun">
-                    <h3 class="settingtitle">Timer autorun</h3>
+            <div class="setting" id="Autorun">
+                <h3 class="settingtitle">Timer autorun</h3>
 
-                    <label class="switch">
-                        <input type="checkbox" id="autoswitch">
-                        <span class="slider round"></span>
-                    </label>
+                <label class="switch">
+                    <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
+                    <span class="slider round"></span>
+                </label>
 
-                </div>
+            </div>
 
                     
-                    <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
+            <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
 
-                <div class="setting" id="TimerLength">
+            <div class="setting" id="TimerLength">
+                <div id="StudyLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Study</h3>
+                    
+                    <input 
+                        id="Slengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
+                    </input>
+                </div>  
 
+                <div id="SbreakLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Short Break</h3>
+                    
+                    <input 
+                        id="SBlengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                    </input>
+                </div>  
 
-                    <div id="StudyLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Study</h3>
-                        
-                        <input 
-                            id="Slengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
-                        </input>
-                    </div>  
-
-                    <div id="SbreakLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Short Break</h3>
-                        
-                        <input 
-                            id="SBlengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                        </input>
-                    </div>  
-
-                    <div id="LbreakLength" class="lengthsetting">
-                        <h3 class="settingsubtitle">Long Break</h3>
-                        <input 
-                            id="LBlengthtextbox"
-                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                        </input>
-                    </div>  
-                </div>
+                <div id="LbreakLength" class="lengthsetting">
+                    <h3 class="settingsubtitle">Long Break</h3>
+                    <input 
+                        id="LBlengthtextbox"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                    </input>
+                </div>  
+            </div>
                 
 <!--
                 <div class="setting" id="setting3">
@@ -262,7 +260,7 @@
             <div id ="challengesbox">
                 <div id="tasksbg">
                     <div class="taskbutton" id="taskbutton1"> 
-                        <img class="coinicon" src="10coinicon.png"></img> 
+                        <img class="coinicon" src="10coinicon.png" alt="Golden coin icon with the number '10' in the corner"></img> 
                         <p class="challengetext" id="ctext1"> hi </p> 
                         
                         <div class="progress" id="p1" onclick="GetReward(this.id)">                      
@@ -272,7 +270,7 @@
                     </div>
 
                     <div class="taskbutton" id="taskbutton2">
-                        <img class="coinicon" src="15coinicon.png"></img> 
+                        <img class="coinicon" src="15coinicon.png" alt="Golden coin icon with the number '15' in the corner"></img> 
                         <p class="challengetext" id="ctext2" > hi </p>
                             
                         <div class="progress" id="p2" onclick="GetReward(this.id)">
@@ -282,7 +280,7 @@
                     </div>
 
                     <div class="taskbutton" id="taskbutton3"> 
-                        <img class="coinicon" src="20coinicon.png"></img> 
+                        <img class="coinicon" src="20coinicon.png" alt="Golden coin icon with the number '20' in the corner"></img> 
                         <p class="challengetext" id="ctext3" > hi </p>
                         
                         <div class="progress" id="p3" onclick="GetReward(this.id)">
@@ -292,7 +290,7 @@
                     </div>
                     
                     <div id="taskbuttonempty" onclick="TaskSkip()">
-                        <span class="material-symbols-outlined" id="refreshicon">fast_forward</span>
+                        <span class="material-symbols-outlined" id="refreshicon" type="button" aria-label="skip-icon" role="Swap out the current challenges with new ones">fast_forward</span>
                         </div>
                     </div>
 <!--

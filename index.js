@@ -613,6 +613,7 @@ function OpenSettings(){
             console.log("sound off");
             localStorage.setItem("SFX", false);
 
+            SfxSwitch.ariaChecked = true;
             soundon = false;
         }
 
@@ -620,6 +621,7 @@ function OpenSettings(){
             console.log("sound on")
             localStorage.setItem("SFX", true);
 
+            SfxSwitch.ariaChecked = true;
             soundon = true;  
         }
     })
@@ -630,6 +632,7 @@ function OpenSettings(){
         if (AutoSwitch.checked){
             localStorage.setItem("Autorun", false);
 
+            AutoSwitch.ariaChecked = true;
             autorun = false;
             stop();
         }
@@ -637,6 +640,7 @@ function OpenSettings(){
         else{
             localStorage.setItem("Autorun", true);
 
+            AutoSwitch.ariaChecked = true;
             autorun = true;
             stop();
         }
