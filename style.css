@@ -27,11 +27,6 @@
     animation-iteration-count: 1;
 }
 
-@keyframes coverslide {
-    from {transform: translateY(0px);}
-    to {transform: translateY(100vh);}
-}
-
 body { 
   min-height: 100vh;
   background: var(--background) no-repeat center center fixed; 

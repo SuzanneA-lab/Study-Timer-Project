@@ -14,11 +14,6 @@ let isRunning = false;
 let time_passed = 0;
 let study_sessions = 0;
 
-/*
-let soundon = true;
-let autorun = true;
-*/
-
 let timetracker;
 document.getElementById("ding").volume = 0.7;
 
@@ -35,13 +30,10 @@ function LoadTimer(){
     let longBlenint = parseInt(localStorage.getItem("Lbreaklen"));
     let shortBlenint = parseInt(localStorage.getItem("Sbreaklen"));
 
-    //console.log(studylenint, longBlenint, shortBlenint);
-
     work = studylenint*60000;
     short_break = shortBlenint*60000;
     long_break = longBlenint*60000;
 
-    //console.log(work, short_break, long_break);
     Study();
 }
 
@@ -109,7 +101,6 @@ function minutetracker(){
         localStorage.setItem("study_sessions3", (parseInt(ss3)+1) );
     }
 
-    console.log(bs2);
 }
 
 function stop(){
@@ -158,35 +149,6 @@ function update(){
         clearInterval(timetracker);
     }
 
-    /*
-    if (seconds == 0){
-        let num = 0;
-
-        if (localStorage.getItem("break_sessions") == null){
-            localStorage.setItem("break_sessions",0);
-            console.log(localStorage.getItem("null"));
-        }
-
-        if (localStorage.getItem("study_sessions") == null){
-            localStorage.setItem("study_sessions",0);
-            console.log(localStorage.getItem("null"));
-        }
-
-        if (current_setting != work){
-            num = parseInt(localStorage.getItem("break_sessions")) + 1;
-            localStorage.setItem("break_sessions",num);
-        }
-
-        else{
-            num = parseInt(localStorage.getItem("study_sessions")) + 1;
-            localStorage.setItem("study_sessions",num);
-        }
-    
-        console.log(localStorage.getItem("study_sessions"));
-        console.log(localStorage.getItem("break_sessions"));
-    }
-    */
-
     minutes = String(minutes).padStart(2,"0");
     seconds = String(seconds).padStart(2,"0");
 
@@ -225,36 +187,6 @@ function updateautorun(){
             }
         }
     }
-
-    /*
-    if (seconds == 0){
-        let num = 0;
-
-        if (localStorage.getItem("break_sessions") == null){
-            localStorage.setItem("break_sessions",0);
-            console.log(localStorage.getItem("null"));
-        }
-
-        if (localStorage.getItem("study_sessions") == null){
-            localStorage.setItem("study_sessions",0);
-            console.log(localStorage.getItem("null"));
-        }
-
-        if (current_setting != work){
-            num = parseInt(localStorage.getItem("break_sessions")) + 1;
-            localStorage.setItem("break_sessions",num);
-        }
-
-        else{
-            num = parseInt(localStorage.getItem("study_sessions")) + 1;
-            localStorage.setItem("study_sessions",num);
-        }
-    
-        console.log(localStorage.getItem("study_sessions"));
-        console.log(localStorage.getItem("break_sessions"));
-    }
-    */
-
 
     minutes = String(minutes).padStart(2,"0");
     seconds = String(seconds).padStart(2,"0");
@@ -339,54 +271,6 @@ function setdisplay(current_setting){
     display.textContent = `${minutes}:${seconds}`;
 }
 
-//// Shop code starts here
-//
-//
-//
-
-function Equip(click_id){
-    if (click_id === "url(Stars.png)"){
-        localStorage.setItem("theme", "white");
-        localStorage.setItem("accent", "#0a0f72");
-    }
-
-    else if (click_id === "url(Ocean.png)"){
-        localStorage.setItem("theme", "#000686");
-        localStorage.setItem("accent", "white");
-    }
-
-    else if (click_id === "url(Chocolate.png)"){
-        localStorage.setItem("theme", "#fdf5f0");
-        localStorage.setItem("accent", "#5b2828");
-    }
-
-    localStorage.setItem("Background", click_id);
-    Load();
-}
-
-//// Checklist code starts here
-//
-//
-//
-
-const challenge1 = document.getElementById("ctext1");
-const challenge2 = document.getElementById("ctext2");
-const challenge3 = document.getElementById("ctext3");
-
-const progress1 = document.getElementById("p1");
-const progress2 = document.getElementById("p2");
-const progress3 = document.getElementById("p3");
-
-function Task(enteredtask, enteredtasknum) {
-  this.task = enteredtask;
-  this.tasknum = enteredtasknum;
-}
-
-const Studytask1 = new Task("Use the study timer for 10 minutes", 10);
-
-function LoadChallenges(){
-    challenge1.textContent = "Studytask1.task";
-}
 
 //// Code for all pages
 //
@@ -606,46 +490,44 @@ function OpenSettings(){
     popupsettings.style.display = 'flex';
 }
 
-//function changeSFXsetting(){
-    SfxSwitch.addEventListener('change', () => {
-        console.log("changed sfx settimg");
+SfxSwitch.addEventListener('change', () => {
+    console.log("changed sfx settimg");
 
-        if (SfxSwitch.checked){
-            console.log("sound off");
-            localStorage.setItem("SFX", false);
+    if (SfxSwitch.checked){
+        console.log("sound off");
+        localStorage.setItem("SFX", false);
 
-            SfxSwitch.ariaChecked = true;
-            soundon = false;
-        }
+        SfxSwitch.ariaChecked = true;
+        soundon = false;
+    }
 
-        else{
-            console.log("sound on")
-            localStorage.setItem("SFX", true);
+    else{
+        console.log("sound on")
+        localStorage.setItem("SFX", true);
 
-            SfxSwitch.ariaChecked = true;
-            soundon = true;  
-        }
-    })
-//}
+        SfxSwitch.ariaChecked = true;
+        soundon = true;  
+    }
+})
 
-//function changeAutorunsetting(){
-    AutoSwitch.addEventListener('change', () => {
-        if (AutoSwitch.checked){
-            localStorage.setItem("Autorun", false);
 
-            AutoSwitch.ariaChecked = true;
-            autorun = false;
-            stop();
-        }
+AutoSwitch.addEventListener('change', () => {
+    if (AutoSwitch.checked){
+        localStorage.setItem("Autorun", false);
 
-        else{
-            localStorage.setItem("Autorun", true);
+        AutoSwitch.ariaChecked = true;
+        autorun = false;
+        stop();
+    }
 
-            AutoSwitch.ariaChecked = true;
-            autorun = true;
-            stop();
-        }
-    })
-//}
+    else{
+        localStorage.setItem("Autorun", true);
+
+        AutoSwitch.ariaChecked = true;
+        autorun = true;
+        stop();
+    }
+})
+
 
 
