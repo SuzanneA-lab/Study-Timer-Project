@@ -2,7 +2,6 @@
 
 <html>
 
-
 <head>
     <title>Pomodoro Timer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -57,94 +56,54 @@
 
                 </div>
 
-            <div class="setting" id="Autorun">
-                <h3 class="settingtitle">Timer autorun</h3>
+                <div class="setting" id="Autorun">
+                    <h3 class="settingtitle">Timer autorun</h3>
 
-                <label class="switch">
-                    <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
-                    <span class="slider round"></span>
-                </label>
+                    <label class="switch">
+                        <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
+                        <span class="slider round"></span>
+                    </label>
 
-            </div>
+                </div>
+                        
+                <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
 
-                    
-            <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
+                <div class="setting" id="TimerLength">
+                    <div id="StudyLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Study</h3>
+                        
+                        <input 
+                            id="Slengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
+                        </input>
+                    </div>  
 
-            <div class="setting" id="TimerLength">
-                <div id="StudyLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Study</h3>
-                    
-                    <input 
-                        id="Slengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
-                    </input>
-                </div>  
+                    <div id="SbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Short Break</h3>
+                        
+                        <input 
+                            id="SBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                        </input>
+                    </div>  
 
-                <div id="SbreakLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Short Break</h3>
-                    
-                    <input 
-                        id="SBlengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
-                    </input>
-                </div>  
+                    <div id="LbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Long Break</h3>
+                        <input 
+                            id="LBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                        </input>
+                    </div>  
 
-                <div id="LbreakLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Long Break</h3>
-                    <input 
-                        id="LBlengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
-                    </input>
-                </div>  
-            </div>
+                </div>
                 
-<!--
-                <div class="setting" id="setting3">
-                    <h3 class="settingtitle">Study length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
-                </div>
-
-                <div class="setting" id="setting4">
-                    <h3 class="settingtitle">Long Break length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="10" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
-                </div>
-
-                <div class="setting" id="setting5">
-                    <h3 class="settingtitle">Short Break length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="5" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
--->
-                </div>
-
-                </div>
             </div>
-
-            <!--
-            <div class="popuptext">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius deserunt similique inventore rerum quam dolorem qui nulla porro in dolore! Expedita beatae in totam error officia fuga, porro officiis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque harum deleniti? Reprehenderit in quo dignissimos dolorem perspiciatis iste, eveniet laboriosam praesentium consectetur eaque delectus consequatur voluptatibus eum earum fugiat?</p>
-            </div>
-            -->
 
         </div>
     </div>
-
 
     <nav>
         <div id="HeaderIcons">
@@ -207,56 +166,6 @@
         </ul>
     </nav>
 
-
-<!--
-        <div id="progressbar">
-            <div id="innerbar"></div>
-        </div>
-
-        <div id="boxes">
-
-
-            <div class="Taskbox">
-                <h1>Checklist</h1>
-
-                <div id="checkboxes">
-                    <div class="checkitem">
-                        <input type="checkbox" id="check1" class="check">
-                        <div class="textbox">
-                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
-                            <button class="clear">X</button>
-                        </div>
-                    </div>
-                
-                    <div class="checkitem">
-                        <input type="checkbox" id="check2" class="check">
-                        <div class="textbox">
-                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
-                            <button class="clear">X</button>
-                        </div>
-                    </div>
-
-                    <div class="checkitem">
-                        <input type="checkbox" id="check1" class="check">
-                        <div class="textbox">
-                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
-                            <button class="clear">X</button>
-                        </div>
-                    </div>
-                
-                    <div class="checkitem">
-                        <input type="checkbox" id="check2" class="check">
-                        <div class="textbox">
-                            <input type="text" id="text1" name="fname" class="text" placeholder="To-do list item...">
-                            <button class="clear">X</button>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-        -->
-
 <div id="centeredelements">
             <div id ="challengesbox">
                 <div id="tasksbg">
@@ -294,52 +203,8 @@
                         <span class="material-symbols-outlined" id="refreshicon" type="button" aria-label="skip-icon" role="Swap out the current challenges with new ones">fast_forward</span>
                         </div>
                     </div>
-<!--
-                <div id="progressbarbg">
-                    <div id="pblabels">
-                        <div class="milestonereward">
-                            <h1 class="pbmilestone" id="milestone4">Level 2</h1>
-                            <h3 class="pbreward" id="reward4">Sublime scholar</h3>
-                        </div>  
-
-                        <div class="milestonereward">
-                            <h1 class="pbmilestone" id="milestone3">3 Tasks</h1>
-                            <h3 class="pbreward" id="reward3">Reward: 20 coins</h3>
-                        </div> 
-                        
-                        <div class="milestonereward">
-                            <h1 class="pbmilestone" id="milestone2">2 Tasks</h1>
-                            <h3 class="pbreward" id="reward2">Reward: 20 coins</h3>
-                        </div>  
-
-                        <div class="milestonereward">
-                            <h1 class="pbmilestone" id="milestone1">1 Task</h1>
-                            <h3 class="pbreward" id="reward1">Reward: 20 coins</h3>
-                        </div>  
-                    </div>
-                    
-                    <div id="pbcontainer">
-                        <div id="pbline">
-                            <div id = "pbcirclecontainer">
-                                <div class="pbcircle" id="circle4"></div>
-                                <div class="pbcircle" id="circle3"></div>
-                                <div class="pbcircle" id="circle2"></div>
-                                <div class="pbcircle" id="circle1"></div>
-                            </div>
-                            <div id="pbinnerbar"></div>
-                        </div>
-                    </div>
-
-                </div>
--->
             </div>
 </div>
-
-        <!--</div>
-        </div>
-        -->
-        
-
         <script> const page = "to-do"; </script>
         <script src="checklist2.js"></script>
 

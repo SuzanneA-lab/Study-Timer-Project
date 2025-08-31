@@ -56,90 +56,51 @@
 
                 </div>
 
-            <div class="setting" id="Autorun">
-                <h3 class="settingtitle">Timer autorun</h3>
+                <div class="setting" id="Autorun">
+                    <h3 class="settingtitle">Timer autorun</h3>
 
-                <label class="switch">
-                    <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
-                    <span class="slider round"></span>
-                </label>
+                    <label class="switch">
+                        <input type="checkbox" id="autoswitch" type="switch" aria-label="sliding switch 2" role="Turns timer autorun off" aria-checked="false">
+                        <span class="slider round"></span>
+                    </label>
 
-            </div>
+                </div>
+                        
+                <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
 
-                    
-            <h3 class="settingtitle" id="headerlength">Timer Length</h3>                
+                <div class="setting" id="TimerLength">
+                    <div id="StudyLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Study</h3>
+                        
+                        <input 
+                            id="Slengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
+                        </input>
+                    </div>  
 
-            <div class="setting" id="TimerLength">
-                <div id="StudyLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Study</h3>
-                    
-                    <input 
-                        id="Slengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" >
-                    </input>
-                </div>  
+                    <div id="SbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Short Break</h3>
+                        
+                        <input 
+                            id="SBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                        </input>
+                    </div>  
 
-                <div id="SbreakLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Short Break</h3>
-                    
-                    <input 
-                        id="SBlengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
-                    </input>
-                </div>  
+                    <div id="LbreakLength" class="lengthsetting">
+                        <h3 class="settingsubtitle">Long Break</h3>
+                        <input 
+                            id="LBlengthtextbox"
+                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
+                            class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
+                        </input>
+                    </div>  
 
-                <div id="LbreakLength" class="lengthsetting">
-                    <h3 class="settingsubtitle">Long Break</h3>
-                    <input 
-                        id="LBlengthtextbox"
-                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                        class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2">
-                    </input>
-                </div>  
-            </div>
+                </div>
                 
-<!--
-                <div class="setting" id="setting3">
-                    <h3 class="settingtitle">Study length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="25" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
-                </div>
-
-                <div class="setting" id="setting4">
-                    <h3 class="settingtitle">Long Break length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="10" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
-                </div>
-
-                <div class="setting" id="setting5">
-                    <h3 class="settingtitle">Short Break length</h3>
-
-                    <input 
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"    
-                    class="UserInputMins" type="number" value="5" max="99" min="1" maxlength="2" pattern="[0-9]*">
-                    </input>
-
--->
-                </div>
-
-                </div>
             </div>
-
-            <!--
-            <div class="popuptext">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius deserunt similique inventore rerum quam dolorem qui nulla porro in dolore! Expedita beatae in totam error officia fuga, porro officiis ratione. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint doloremque harum deleniti? Reprehenderit in quo dignissimos dolorem perspiciatis iste, eveniet laboriosam praesentium consectetur eaque delectus consequatur voluptatibus eum earum fugiat?</p>
-            </div>
-            -->
 
         </div>
     </div>
@@ -231,81 +192,11 @@
         <span class="material-symbols-outlined" onclick="SwitchPageFront()" id="arrowfront" type="button" aria-label="Forwards-arrow-icon" role="View the shop item on the right"> line_end_arrow_notch </span>
     </div>
 
-    <!--
-    <div id="items">
-        <button class="buttonitem" id="url(Stars.png)" onclick="Equip(this.id)">
-            <img src="tempbg3.png" id="shop image">
-            buy
-        </button>
-
-        <button class="buttonitem" id="url(Ocean.png)" onclick="Equip(this.id)">
-            <img src="IMG_065.png" id="shop image">
-            buy
-        </button>
-
-        <button class="buttonitem" id="url(Chocolate.png)" onclick="Equip(this.id)">
-            <img src="Chocolate.png" id="shop image">
-            buy
-        </button>
-
-        <button class="buttonitem" id="4" onclick="Equip(this.id)">
-            <img src="tempbg2.png" id="shop image">
-            buy
-        </button>
-
-        <button class="buttonitem" id="5" onclick="Equip(this.id)">
-            <img src="tempbg2.png" id="shop image">
-            buy
-        </button>
-
-        <button class="buttonitem" id="6" onclick="Equip(this.id)">
-            <img src="tempbg2.png" id="shop image">
-            buy
-        </button>
-    </div>
-    -->
-
-    <!--
-        <div id="items">
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-
-            <div class="buttonitem">
-            <img src="tempbg2.png" id="shop image">
-            <button class="shopbutton" onclick="Study()">buy</button>
-            </div>
-        </div>
-    -->
-
 </div>
 
     <script> const page = "shop"; </script>
     <script src="Shop.js"></script>
 
 </body>    
-
-
 
 </html>
