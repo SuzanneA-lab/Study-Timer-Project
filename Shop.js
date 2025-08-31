@@ -28,12 +28,6 @@ class ItemManager{
         itemimg.src = this.item.img;
         itemtitle.textContent = this.item.name;
         itemdesc.textContent = this.item.desc;
-/*
-        let itemname = this.item.name;
-        if (localStorage.getItem(itemname) == "true"){
-            this.item.owned = true;
-        }
-*/
 
         if (this.item.owned){
             interactbutton.textContent = "Equip";
@@ -95,7 +89,6 @@ class ShopItem{
             let newcointotal = currentcointotal - this.price;
             localStorage.setItem("coins", newcointotal);
             
-            //coindisplaynum.textContent = newcointotal.padStart(3,"0");
             return true;
         }
 
@@ -138,19 +131,12 @@ class Background extends ShopItem{
 //Users start out with starry bg unlocked
 localStorage.setItem("Starry Background", true);
 
-/*
-localStorage.setItem("Ocean Background", true);
-localStorage.setItem("Sweets Background", false);
-*/
-
 // To create a new shop item create a new object of the appropriate type with all relevant info in variables
 const Starsbg = new Background("Starry Background", 1, true, "Stars.png", "#f0fafd", "#0a0f72","#060947", "A simplistic starry background to start your studying journey with! Spend your workdays gazing at a calming night sky background covered in shining white stars.");
 const Oceanbg = new Background("Ocean Background", 100, false, "Ocean.png", "#000686", "rgba(232, 250, 255, 1)","#caedfdff", "A mesmerizing ocean scene that features a fleet of jellyfish bathed in a calming light. Using this background is sure to bring out your inner mermaid!");
 const Chocobg = new Background("Sweets Background", 125, false, "Chocolate.png", "#fdede3ff", "#5b2828","#200e0eff", "This classic box of chocolates features a delicious looking array of sweets, each with it's own unique charm! Indulge your sweet tooth by purchasing this scrumptious background!");
 const Paperbg = new Background("Paper Background", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and motivating background.");
 const Pinkbg = new Background("Pink Background", 50, false, "Pink.png", "#FFF0F9", "#d32062ff", "#97034dff", "This simple pink floral background is sure to add a fun pop of colour to your study space! Embrace a calmer work environment through this item's laidback blended style.")
-
-const testbg = new Background("Paper Backgound", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
 
 let IM;
 
@@ -160,22 +146,6 @@ let currentposition = 0;
 function LoadShop(){
     let shopitem;
     let shopitemname;
-/*
-    for (let i = 0; i < Shoplist.length; i++){
-        shopitem = Shoplist[i];
-        shopitemname = shopitem.name;
-
-        if (localStorage.getItem(shopitemname) == "true"){
-            shopitem.SetasOwned();
-        }
-
-        //temp code just for testing - delete later
-        else{
-            localStorage.setItem(shopitemname, false);
-            shopitem.owned = false;
-        }
-    }
-*/
 
     if (currentposition >= Shoplist.length){
         currentposition = 0;
@@ -186,13 +156,11 @@ function LoadShop(){
         
     if (localStorage.getItem(Currentitemname) == "true"){
         Currentitem.SetasOwned();
-        console.log(Currentitemname + " owned:" + localStorage.getItem(Currentitemname));
     }
 
     else {
         localStorage.setItem(Currentitemname, false);
         Currentitem.owned = false;
-        console.log(Currentitemname + " not owned:" + localStorage.getItem(Currentitemname));
     }
 
     IM = new ItemManager(Currentitem);
@@ -393,9 +361,6 @@ function CloseSettings(){
         }
     });
 
-    console.log(studylengthtextbox.value);
-    console.log(localStorage.getItem("Studylen"));
-
     let studynum = studylengthtextbox.value;
     let Sbreaknum = Sbreaklengthtextbox.value;
     let Lbreaknum = Lbreaklengthtextbox.value; 
@@ -403,18 +368,12 @@ function CloseSettings(){
     if (studynum != localStorage.getItem("Studylen")) {
         if (!isNaN(studynum) && studynum != "0" && studynum != "00" && studynum != "e" && studynum != "++"  && studynum != "+-"  && studynum != "-+"  && studynum != "--" && studynum != null && studynum != ""){
             localStorage.setItem("Studylen", studylengthtextbox.value);
-
-            console.log("passes tests");
-            
         }
 
         else{
             studylengthtextbox.value = "25";  
             localStorage.setItem("Studylen", "25"); 
         }
-
-        console.log(studynum);
-
     }
 
     if (Sbreaknum != localStorage.getItem("Sbreaklen")) {
@@ -426,7 +385,6 @@ function CloseSettings(){
             Sbreaklengthtextbox.value = "5";  
             localStorage.setItem("Sbreaklen", "5"); 
         }
-
     }
 
     if (Lbreaknum != localStorage.getItem("Lbreaklen")) {
@@ -438,7 +396,6 @@ function CloseSettings(){
             Lbreaklengthtextbox.value = "10";  
             localStorage.setItem("Lbreaklen", "10"); 
         }
-
     }
 
 }
@@ -449,75 +406,38 @@ function OpenSettings(){
     popupsettings.style.display = 'flex';
 }
 
-//function changeSFXsetting(){
-    SfxSwitch.addEventListener('change', () => {
-        console.log("changed sfx settimg");
 
-        if (SfxSwitch.checked){
-            console.log("sound off");
-            localStorage.setItem("SFX", false);
+SfxSwitch.addEventListener('change', () => {
+    if (SfxSwitch.checked){
+        localStorage.setItem("SFX", false);
 
-            SfxSwitch.ariaChecked = true;
-            soundon = false;
-        }
-
-        else{
-            console.log("sound on")
-            localStorage.setItem("SFX", true);
-
-            SfxSwitch.ariaChecked = true;
-            soundon = true;  
-        }
-    })
-//}
-
-//function changeAutorunsetting(){
-    AutoSwitch.addEventListener('change', () => {
-        if (AutoSwitch.checked){
-            localStorage.setItem("Autorun", false);
-
-            AutoSwitch.ariaChecked = true;
-            autorun = false;
-        }
-
-        else{
-            localStorage.setItem("Autorun", true);
-
-            AutoSwitch.ariaChecked = true;
-            autorun = true;
-        }
-    })
-//}
-
-
-
-
-//// Shop code starts here
-//
-//
-//
-
-/*
-function Equip(click_id){
-    if (click_id === "url(Stars.png)"){
-        localStorage.setItem("theme", "white");
-        localStorage.setItem("accent", "#0a0f72");
+        SfxSwitch.ariaChecked = true;
+        soundon = false;
     }
 
-    else if (click_id === "url(Ocean.png)"){
-        localStorage.setItem("theme", "#000686");
-        localStorage.setItem("accent", "white");
+    else{
+        localStorage.setItem("SFX", true);
+
+        SfxSwitch.ariaChecked = true;
+        soundon = true;  
+    }
+})
+
+
+AutoSwitch.addEventListener('change', () => {
+    if (AutoSwitch.checked){
+        localStorage.setItem("Autorun", false);
+
+        AutoSwitch.ariaChecked = true;
+        autorun = false;
     }
 
-    else if (click_id === "url(Chocolate.png)"){
-        localStorage.setItem("theme", "#fdf5f0");
-        localStorage.setItem("accent", "#5b2828");
+    else{
+        localStorage.setItem("Autorun", true);
+
+        AutoSwitch.ariaChecked = true;
+        autorun = true;
     }
-
-    localStorage.setItem("Background", click_id);
-    Load();
-}
-*/
-
+})
 
 
