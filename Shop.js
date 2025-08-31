@@ -144,11 +144,11 @@ localStorage.setItem("Sweets Background", false);
 */
 
 // To create a new shop item create a new object of the appropriate type with all relevant info in variables
-const Starsbg = new Background("Starry Background", 1, true, "Stars.png", "#f0fafd", "#0a0f72","#060947", "A simplistic starry background to start your studying journey with! Spend your workdays gazing at a calming night sky background with shining white accents.");
+const Starsbg = new Background("Starry Background", 1, true, "Stars.png", "#f0fafd", "#0a0f72","#060947", "A simplistic starry background to start your studying journey with! Spend your workdays gazing at a calming night sky background covered in shining white stars.");
 const Oceanbg = new Background("Ocean Background", 100, false, "Ocean.png", "#000686", "rgba(232, 250, 255, 1)","#caedfdff", "A mesmerizing ocean scene that features a fleet of jellyfish bathed in a calming light. Using this background is sure to bring out your inner mermaid!");
-const Chocobg = new Background("Sweets Background", 125, false, "Chocolate.png", "#fdede3ff", "#5b2828","#200e0eff", "A delicious looking array of sweets in a classical box of chocolates, each one drawn with love and care. Indulge your sweet tooth by purchasing this scrumptious background!");
-const Paperbg = new Background("Paper Background", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
-const Pinkbg = new Background("Pink Background", 50, false, "Pink.png", "#FFF0F9", "#d32062ff", "#97034dff", "desc")
+const Chocobg = new Background("Sweets Background", 125, false, "Chocolate.png", "#fdede3ff", "#5b2828","#200e0eff", "This classic box of chocolates features a delicious looking array of sweets, each with it's own unique charm! Indulge your sweet tooth by purchasing this scrumptious background!");
+const Paperbg = new Background("Paper Background", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and motivating background.");
+const Pinkbg = new Background("Pink Background", 50, false, "Pink.png", "#FFF0F9", "#d32062ff", "#97034dff", "This simple pink floral background is sure to add a fun pop of colour to your study space! Embrace a calmer work environment through this item's laidback blended style.")
 
 const testbg = new Background("Paper Backgound", 75, false, "Paper.png", "#633c02ff",  "#fdf3d8ff", "#ffd68aff", "Gazing at this messy workspace covered in aged pages is sure to fire you up for studying! Channel your inner academic with this warm and calming background.");
 
