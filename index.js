@@ -415,8 +415,9 @@ let autorun = true;
 window.onload = Load();
 
 window.addEventListener("DOMContentLoaded", function(){
-    //cover.remove()
-    //cover.style.visibility = "hidden";
+    cover.addEventListener( "animationend", function(){
+        cover.style.visibility = "hidden";
+    });
 });
 
 function Load(){

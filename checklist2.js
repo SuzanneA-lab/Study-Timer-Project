@@ -645,10 +645,11 @@ let autorun = true;
 
 window.onload = Load();
 
-//window.addEventListener('DOMContentLoaded', Load());
-    //cover.remove()
-    //cover.style.visibility = "hidden";
-//);
+window.addEventListener("DOMContentLoaded", function(){
+    cover.addEventListener( "animationend", function(){
+        cover.style.visibility = "hidden";
+    });
+});
 
 function Load(){
     let theme = localStorage.getItem("theme");
