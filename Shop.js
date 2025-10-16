@@ -231,10 +231,16 @@ let autorun = true;
 
 window.onload = Load();
 
+let loaded = false;
+
 window.addEventListener("DOMContentLoaded", function(){
-    cover.addEventListener( "animationend", function(){
-        cover.style.visibility = "hidden";
-    });
+    loaded = true;
+
+    if (loaded){
+        cover.addEventListener( "animationend", function(){
+            cover.style.visibility = "hidden";
+        });
+    }
 });
 
 function Load(){
