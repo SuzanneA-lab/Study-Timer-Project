@@ -13,7 +13,7 @@ The help window accessed from the question mark icon in the top right gives a br
 
 ## Installation instructions
 
-Download the installer (named TaskTimer-#.#.#_Installer) in the repository, then click it to install the app on your computer. The app should now be accessible by searching on the taskbar. Currently, only windows 64-bit installation option is provided with plans for more to be added in the future. The app can be uninstalled by navigating to the apps and features section of windows settings and selecting uninstall. 
+Download the zip file in the newest release of the project, extract it, and click on the installer in the folder (named TaskTimer-#.#.#_Installer). This will install the app on your computer and it should now be accessible by searching on the taskbar. Currently, only a windows 64-bit installation option is provided with plans for more to be added in the future. The app can be uninstalled by navigating to the apps and features section of windows settings and selecting uninstall. 
 
 ## Development history 
 
