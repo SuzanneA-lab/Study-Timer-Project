@@ -592,7 +592,7 @@ SfxSwitch.addEventListener('change', () => {
     else{
         localStorage.setItem("SFX", true);
 
-        SfxSwitch.ariaChecked = true;
+        SfxSwitch.ariaChecked = false;
         soundon = true;  
     }
 })
@@ -608,7 +608,7 @@ AutoSwitch.addEventListener('change', () => {
     else{
         localStorage.setItem("Autorun", true);
 
-        AutoSwitch.ariaChecked = true;
+        AutoSwitch.ariaChecked = false;
         autorun = true;
     }
 })
