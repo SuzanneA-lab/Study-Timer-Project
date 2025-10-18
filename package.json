@@ -1,7 +1,7 @@
 {
-  "name": "TinyTimer",
+  "name": "TaskTimer",
   "version": "1.0.0",
-  "description": "yooo",
+  "description": "TaskTimer",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",

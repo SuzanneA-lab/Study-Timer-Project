@@ -713,8 +713,8 @@ a{
 #taskbuttonempty{
     background-color: var(--midtone); 
     color: var(--theme);
-    height: 10%;
-    width: 93%;
+    height: 100%;
+    width: 55%;
     border-radius: 20px;
     display: flex;
     flex-direction: row;
@@ -730,7 +730,7 @@ a{
 }
 
 #taskbuttonempty:hover{
-    scale: 0.95;
+    scale: 0.97;
     background-color: var(--accent);
 }
 
@@ -1228,4 +1228,20 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+#challengesheader{
+    width: 93%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#challengesheadertext{
+    color: var(--accent);
+    font-family: "Outfit", sans-serif;
+    font-weight: 650;
+    font-size: 2.5em;
+    margin-bottom: 5px;
 }

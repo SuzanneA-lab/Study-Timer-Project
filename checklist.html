@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Pomodoro Timer</title>
+    <title>TaskTimer</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/x-icon" href="starclear.png">
@@ -28,7 +28,7 @@
 
             <div class="popuptext">
                 <h3>What is this?</h3>
-                <p>[app name] is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
+                <p>TaskTimer is a pomodoro timer app that rewards you as you use it! Collect coins to earn rewards for being productive!</p>
                 <h3>How do I earn coins?</h3>
                 <p>Earn coins by completing challenges on the Tasks page!</p>
                 <h3>What do I use coins for?</h3>
@@ -169,6 +169,15 @@
 <div id="centeredelements">
             <div id ="challengesbox">
                 <div id="tasksbg">
+                    <div id="challengesheader">
+                        <h3 id="challengesheadertext">Current Challenges</h3>
+                        <div id="taskbuttonempty" onclick="TaskSkip()">
+                            <span class="material-symbols-outlined" id="refreshicon" type="button" aria-label="skip-icon" role="Swap out the current challenges with new ones">
+                                cached
+                            </span>
+                        </div>
+                    </div>
+
                     <div class="taskbutton" id="taskbutton1"> 
                         <img class="coinicon" src="10coinicon.png" alt="Golden coin icon with the number '10' in the corner"></img> 
                         <p class="challengetext" id="ctext1"> hi </p> 
@@ -198,14 +207,8 @@
                         </div>
                     
                     </div>
-                    
-                    <div id="taskbuttonempty" onclick="TaskSkip()">
-                        <span class="material-symbols-outlined" id="refreshicon" type="button" aria-label="skip-icon" role="Swap out the current challenges with new ones">
-                            fast_forward
-                        </span>
 
-                        </div>
-                    </div>
+                </div>
             </div>
 </div>
         <script> const page = "to-do"; </script>

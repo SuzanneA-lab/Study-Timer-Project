@@ -325,7 +325,7 @@ function Load(){
     let longbreaklength = localStorage.getItem("Lbreaklen");
     let shortbreaklength = localStorage.getItem("Sbreaklen");
 
-    if (theme === null || bg === null || accent == null || storedcoins == null || sfxsetting == null || studylength == null || longbreaklength == null || shortbreaklength == null){
+    if (theme === null || bg === null || accent == null || storedcoins == null || isNaN(storedcoins) || sfxsetting == null || studylength == null || longbreaklength == null || shortbreaklength == null){
         theme = "white";
         accent = "#0a0f72";
         midtone = "#060947";
