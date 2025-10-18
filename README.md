@@ -26,5 +26,6 @@ You can contact me via email at: suzannea.dev@gmail.com
 
 ### Assets
 Programming, background art and overall UI design created by Suzanne A  
-Icons and fonts sourced from google material icons/fonts
-Sound effect created on audiotool.com using breezy piano preset by Lxrd Breezy
+Icons and fonts sourced from google material icons/fonts  
+Sound effects created on audiotool.com using breezy piano synth preset by Lxrd Breezy
+programming support from brocode, w3schools
