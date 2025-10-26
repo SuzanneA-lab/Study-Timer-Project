@@ -19,6 +19,16 @@
     <div id="cover"></div>
     <div id="menucover"></div>
 
+    <div id="popuprestart">
+        <div id="restartbox">
+            <h1 id="restartprompt">Restarting will clear all coins and shop items owned. Proceed anyways?</h1>
+            <div id="rsbuttonbox">
+                <div class="rsbutton" id="restartbutton" onclick="commitRestart()">Yes, restart</div> 
+                <div class="rsbutton" id="dontrestartbutton" onclick="abortRestart()">Quit</div>
+            </div>
+        </div>
+    </div>
+
     <div id="popupbghelp">
         <div class="popupwindow">
             <div class="popuptop">
@@ -162,6 +172,14 @@
                 help
                 </span>
                 Help</a>
+            </li>
+
+            <li>
+            <a onclick="Closemenu(),OpenRestart()">         
+                <span class="material-symbols-outlined" id="menuicon3">
+                refresh
+                </span>
+                Restart</a>
             </li>
 
         </ul>

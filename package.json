@@ -1,6 +1,6 @@
 {
   "name": "TaskTimer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TaskTimer",
   "main": "main.js",
   "scripts": {

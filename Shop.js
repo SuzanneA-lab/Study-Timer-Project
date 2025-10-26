@@ -144,6 +144,8 @@ const Shoplist = [Starsbg, Pinkbg, Paperbg, Oceanbg, Chocobg];
 let currentposition = 0;
 
 function LoadShop(){
+    localStorage.setItem("Starry Background", true);
+    
     let shopitem;
     let shopitemname;
 
@@ -412,6 +414,28 @@ function OpenSettings(){
     popupsettings.style.display = 'flex';
 }
 
+const popuprestart= document.getElementById("popuprestart");
+const rspopupwindow = document.getElementById("restartbox");
+const rspopupprompt = document.getElementById("restartprompt");
+const restartbutton = document.getElementById("restartbutton");
+const dontrestartbutton = document.getElementById("dontrestartbutton")
+
+function OpenRestart(){
+    popuprestart.style.display = 'flex';
+    restartbutton.style.display = 'flex';
+    rspopupwindow.style.width = "850px";
+}
+
+function commitRestart(){
+    popuprestart.style.display = 'none';
+    
+    localStorage.clear();
+    Load();
+}
+
+function abortRestart(){
+    popuprestart.style.display = 'none';
+}
 
 SfxSwitch.addEventListener('change', () => {
     if (SfxSwitch.checked){

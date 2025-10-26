@@ -496,6 +496,29 @@ function OpenSettings(){
     popupsettings.style.display = 'flex';
 }
 
+const popuprestart= document.getElementById("popuprestart");
+const rspopupwindow = document.getElementById("restartbox");
+const rspopupprompt = document.getElementById("restartprompt");
+const restartbutton = document.getElementById("restartbutton");
+const dontrestartbutton = document.getElementById("dontrestartbutton")
+
+function OpenRestart(){
+    popuprestart.style.display = 'flex';
+    restartbutton.style.display = 'flex';
+    rspopupwindow.style.width = "850px";
+}
+
+function commitRestart(){
+    popuprestart.style.display = 'none';
+    
+    localStorage.clear();
+    Load();
+}
+
+function abortRestart(){
+    popuprestart.style.display = 'none';
+}
+
 SfxSwitch.addEventListener('change', () => {
     console.log("changed sfx settimg");
 
@@ -534,6 +557,4 @@ AutoSwitch.addEventListener('change', () => {
         stop();
     }
 })
-
-
 
