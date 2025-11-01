@@ -145,6 +145,11 @@ function update(){
             document.getElementById("ding").play();
         }
 
+        minutes = String(minutes).padStart(2,"0");
+        seconds = String(seconds).padStart(2,"0");
+
+        display.textContent = `${minutes}:${seconds}`;
+
         clearInterval(timer);
         clearInterval(timetracker);
     }
